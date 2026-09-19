@@ -1,0 +1,84 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NeutralLanguage>en</NeutralLanguage>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <AssemblyName>Omnimud</AssemblyName>
+    <RootNamespace>Omnimud.UI</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Omnimud.UI.Tests" />
+  </ItemGroup>
+
+  <!-- Help shipped next to the executable: <OutDir>/docs/ -->
+  <ItemGroup>
+    <Content Include="..\..\docs\API_LUA.md">
+      <Link>docs\API_LUA.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Omnimud.Core\Omnimud.Core.csproj" />
+    <ProjectReference Include="..\Omnimud.Data\Omnimud.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.12" />
+  </ItemGroup>
+
+  <!-- Audio (block D): only the NAudio pieces that are used, all managed; ogg through NVorbis -->
+  <ItemGroup>
+    <PackageReference Include="NAudio.Core" Version="3.1.0" />
+    <PackageReference Include="NAudio.WinMM" Version="3.1.0" />
+    <PackageReference Include="NAudio.Wasapi" Version="3.1.0" />
+    <PackageReference Include="NAudio.Vorbis" Version="3.0.0" />
+  </ItemGroup>
+
+  <!-- Sounds shipped with the client: <OutDir>/sounds/ and <PublishDir>/sounds/ (never inside the single file) -->
+  <ItemGroup>
+    <Content Include="sounds\*.wav;sounds\*.mp3;sounds\*.ogg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Screen reader native libraries: copied per-architecture to <OutDir>/dlls/<arch>/ -->
+  <ItemGroup>
+    <Content Include="..\..\dlls\x64\*.dll">
+      <Link>dlls\x64\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="..\..\dlls\arm64\*.dll">
+      <Link>dlls\arm64\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="..\..\dlls\x86\*.dll">
+      <Link>dlls\x86\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+</Project>

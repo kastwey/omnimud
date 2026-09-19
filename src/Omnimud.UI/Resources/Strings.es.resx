@@ -1,0 +1,2073 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="0" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Application -->
+  <data name="App_Title" xml:space="preserve">
+    <value>Omnimud</value>
+  </data>
+  <data name="App_TitleWithName" xml:space="preserve">
+    <value>Omnimud - {0}</value>
+  </data>
+
+  <!-- Launcher -->
+  <data name="Launcher_StatusAccessible" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Launcher_MudsConfigured" xml:space="preserve">
+    <value>{0} MUD(s) configurados</value>
+  </data>
+  <data name="Launcher_SelectMudFirst" xml:space="preserve">
+    <value>Selecciona un MUD primero</value>
+  </data>
+  <data name="Launcher_ConnectingTo" xml:space="preserve">
+    <value>Conectando a {0}...</value>
+  </data>
+  <data name="Launcher_NodeMud" xml:space="preserve">
+    <value>{0} ({1}:{2})</value>
+  </data>
+  <data name="Launcher_NodeCharacterDefault" xml:space="preserve">
+    <value>{0} (predeterminado)</value>
+  </data>
+
+  <!-- Quick Connect -->
+  <data name="QuickConnect_Title" xml:space="preserve">
+    <value>Conexión rápida</value>
+  </data>
+  <data name="QuickConnect_ServerLabel" xml:space="preserve">
+    <value>&amp;Servidor:</value>
+  </data>
+  <data name="QuickConnect_PortLabel" xml:space="preserve">
+    <value>&amp;Puerto:</value>
+  </data>
+  <data name="QuickConnect_ConnectButton" xml:space="preserve">
+    <value>&amp;Conectar</value>
+  </data>
+
+  <!-- Client -->
+  <data name="Client_Reconnect" xml:space="preserve">
+    <value>Reconectar</value>
+  </data>
+
+  <!-- Status -->
+
+  <!-- Disconnect reasons -->
+
+  <!-- Error messages -->
+
+  <!-- Accessibility -->
+
+  <!-- Common -->
+  <data name="Common_Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="Common_Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+
+  <!-- MUDs -->
+
+  <!-- Characters -->
+
+  <!-- Aliases -->
+
+  <!-- Triggers -->
+
+  <!-- Paths -->
+
+  <!-- Options -->
+  <data name="Options_Language" xml:space="preserve">
+    <value>I&amp;dioma:</value>
+  </data>
+  <data name="Options_ScreenReader" xml:space="preserve">
+    <value>&amp;Lector de pantalla:</value>
+  </data>
+  <data name="Options_SRNone" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="Options_AnnounceMessages" xml:space="preserve">
+    <value>Anunciar los mensajes</value>
+  </data>
+  <data name="Options_AnnounceMudText" xml:space="preserve">
+    <value>Anunciar el texto del MUD</value>
+  </data>
+  <data name="Options_MaxLines" xml:space="preserve">
+    <value>Lí&amp;neas máximas en Recibido:</value>
+  </data>
+  <data name="Options_Volume" xml:space="preserve">
+    <value>&amp;Volumen (0 a 100):</value>
+  </data>
+  <data name="Error_Unexpected" xml:space="preserve">
+    <value>Error inesperado: {0}</value>
+  </data>
+  <data name="Client_InputLabel" xml:space="preserve">
+    <value>&amp;Texto a enviar:</value>
+  </data>
+  <data name="Client_InputName" xml:space="preserve">
+    <value>Texto a enviar</value>
+  </data>
+  <data name="Client_PasswordName" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Client_OutputLabel" xml:space="preserve">
+    <value>&amp;Recibido:</value>
+  </data>
+  <data name="Client_OutputName" xml:space="preserve">
+    <value>Recibido</value>
+  </data>
+  <data name="Client_MessagesLabel" xml:space="preserve">
+    <value>&amp;Mensajes:</value>
+  </data>
+  <data name="Client_MessagesName" xml:space="preserve">
+    <value>Mensajes</value>
+  </data>
+  <data name="Client_BtnCancel" xml:space="preserve">
+    <value>&amp;Cancelar</value>
+  </data>
+  <data name="Client_BtnCancelDescription" xml:space="preserve">
+    <value>Cancela el intento de conexión y cierra la ventana</value>
+  </data>
+  <data name="Client_BtnDisconnect" xml:space="preserve">
+    <value>&amp;Desconectar</value>
+  </data>
+  <data name="Client_BtnDisconnectDescription" xml:space="preserve">
+    <value>Desconecta del MUD y cierra la ventana</value>
+  </data>
+  <data name="Client_BtnClose" xml:space="preserve">
+    <value>&amp;Cerrar</value>
+  </data>
+  <data name="Client_BtnCloseDescription" xml:space="preserve">
+    <value>Cierra la ventana</value>
+  </data>
+  <data name="Client_BtnReconnect" xml:space="preserve">
+    <value>Reco&amp;nectar</value>
+  </data>
+  <data name="Client_StatusConnectionName" xml:space="preserve">
+    <value>Estado de la conexión</value>
+  </data>
+  <data name="Client_StatusTimeName" xml:space="preserve">
+    <value>Tiempo conectado</value>
+  </data>
+  <data name="Client_StatusMessagesName" xml:space="preserve">
+    <value>Estado de mensajes</value>
+  </data>
+  <data name="Client_StatusConnectingTo" xml:space="preserve">
+    <value>Conectando a {0}...</value>
+  </data>
+  <data name="Client_StatusConnectedWith" xml:space="preserve">
+    <value>Conectado con {0} ({1})</value>
+  </data>
+  <data name="Client_StatusConnectedTo" xml:space="preserve">
+    <value>Conectado a {0}</value>
+  </data>
+  <data name="Client_StatusOffline" xml:space="preserve">
+    <value>Modo de desconexión: {0}</value>
+  </data>
+  <data name="Client_StatusDisconnected" xml:space="preserve">
+    <value>Desconectado de {0}</value>
+  </data>
+  <data name="Client_NoMessages" xml:space="preserve">
+    <value>Sin mensajes</value>
+  </data>
+  <data name="Client_LastMessageAt" xml:space="preserve">
+    <value>Último mensaje recibido a las {0:HH:mm:ss}, del {0:d}</value>
+  </data>
+  <data name="Client_SelectedMessageAt" xml:space="preserve">
+    <value>Mensaje seleccionado: {0:HH:mm:ss}, del {0:d}</value>
+  </data>
+  <data name="Client_MessageTime" xml:space="preserve">
+    <value>{0:HH:mm:ss}, el {0:d}</value>
+  </data>
+  <data name="Client_MessageTimeNotFound" xml:space="preserve">
+    <value>Hora no encontrada.</value>
+  </data>
+  <data name="Client_ReviewNoMessages" xml:space="preserve">
+    <value>No hay mensajes.</value>
+  </data>
+  <data name="Client_ReviewOnlyN" xml:space="preserve">
+    <value>Solo hay {0} mensajes.</value>
+  </data>
+  <data name="Client_ReviewOnlyOne" xml:space="preserve">
+    <value>Solo hay un mensaje.</value>
+  </data>
+  <data name="Client_ReviewItem" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Client_MovementOn" xml:space="preserve">
+    <value>Modo movimiento activado.</value>
+  </data>
+  <data name="Client_MovementOff" xml:space="preserve">
+    <value>Modo movimiento desactivado.</value>
+  </data>
+  <data name="Client_MutedOn" xml:space="preserve">
+    <value>Anuncios del lector silenciados.</value>
+  </data>
+  <data name="Client_MutedOff" xml:space="preserve">
+    <value>Anuncios del lector activados.</value>
+  </data>
+  <data name="Client_ConfirmDisconnect" xml:space="preserve">
+    <value>¿Estás seguro de que deseas cortar la conexión?</value>
+  </data>
+  <data name="Client_ConnectFailed" xml:space="preserve">
+    <value>Error al conectar a {0}: {1}</value>
+  </data>
+  <data name="Client_AskOffline" xml:space="preserve">
+    <value>¿Deseas iniciar este personaje en modo de desconexión? Podrás gestionar sus alias, triggers y paths.</value>
+  </data>
+  <data name="Client_NeedsCharacter" xml:space="preserve">
+    <value>Para esto hace falta una sesión con personaje.</value>
+  </data>
+  <data name="Client_UrlFailed" xml:space="preserve">
+    <value>No se pudo abrir {0}.</value>
+  </data>
+  <data name="Client_Day" xml:space="preserve">
+    <value>{0} día</value>
+  </data>
+  <data name="Client_Days" xml:space="preserve">
+    <value>{0} días</value>
+  </data>
+  <data name="Client_Hour" xml:space="preserve">
+    <value>{0} hora</value>
+  </data>
+  <data name="Client_Hours" xml:space="preserve">
+    <value>{0} horas</value>
+  </data>
+  <data name="Client_Minute" xml:space="preserve">
+    <value>{0} minuto</value>
+  </data>
+  <data name="Client_Minutes" xml:space="preserve">
+    <value>{0} minutos</value>
+  </data>
+  <data name="Client_Second" xml:space="preserve">
+    <value>{0} segundo</value>
+  </data>
+  <data name="Client_Seconds" xml:space="preserve">
+    <value>{0} segundos</value>
+  </data>
+  <data name="Menu_Actions" xml:space="preserve">
+    <value>&amp;Acciones</value>
+  </data>
+  <data name="Menu_Edit" xml:space="preserve">
+    <value>&amp;Edición</value>
+  </data>
+  <data name="Menu_EditCopy" xml:space="preserve">
+    <value>&amp;Copiar</value>
+  </data>
+  <data name="Menu_EditCut" xml:space="preserve">
+    <value>C&amp;ortar</value>
+  </data>
+  <data name="Menu_EditPaste" xml:space="preserve">
+    <value>&amp;Pegar</value>
+  </data>
+  <data name="Menu_EditSelectAll" xml:space="preserve">
+    <value>Seleccionar &amp;todo</value>
+  </data>
+  <data name="Menu_EditUndo" xml:space="preserve">
+    <value>&amp;Deshacer</value>
+  </data>
+  <data name="Menu_EditFind" xml:space="preserve">
+    <value>&amp;Buscar...</value>
+  </data>
+  <data name="Menu_EditFindNext" xml:space="preserve">
+    <value>Buscar &amp;siguiente</value>
+  </data>
+  <data name="Menu_EditClear" xml:space="preserve">
+    <value>&amp;Limpiar texto recibido</value>
+  </data>
+  <data name="Menu_View" xml:space="preserve">
+    <value>&amp;Ver</value>
+  </data>
+  <data name="Menu_ViewFocusInput" xml:space="preserve">
+    <value>&amp;Ir a texto a enviar</value>
+  </data>
+  <data name="Menu_ViewIncrease" xml:space="preserve">
+    <value>&amp;Ampliar área de recibido</value>
+  </data>
+  <data name="Menu_ViewDecrease" xml:space="preserve">
+    <value>&amp;Reducir área de recibido</value>
+  </data>
+  <data name="Menu_ViewReset" xml:space="preserve">
+    <value>Res&amp;tablecer tamaños</value>
+  </data>
+  <data name="Menu_ViewHideMessages" xml:space="preserve">
+    <value>&amp;Ocultar panel de mensajes</value>
+  </data>
+  <data name="Menu_ViewShowMessages" xml:space="preserve">
+    <value>M&amp;ostrar panel de mensajes</value>
+  </data>
+  <data name="Menu_Tools" xml:space="preserve">
+    <value>&amp;Herramientas</value>
+  </data>
+  <data name="Menu_ToolsMovement" xml:space="preserve">
+    <value>Modo mo&amp;vimiento</value>
+  </data>
+  <data name="Menu_ToolsAliases" xml:space="preserve">
+    <value>&amp;Alias</value>
+  </data>
+  <data name="Menu_ToolsTriggers" xml:space="preserve">
+    <value>&amp;Triggers</value>
+  </data>
+  <data name="Menu_ToolsPaths" xml:space="preserve">
+    <value>&amp;Paths</value>
+  </data>
+  <data name="Menu_ToolsSilent" xml:space="preserve">
+    <value>Modo &amp;silencioso</value>
+  </data>
+  <data name="Menu_ToolsOptions" xml:space="preserve">
+    <value>&amp;Opciones</value>
+  </data>
+  <data name="Menu_ToolsMovementKeys" xml:space="preserve">
+    <value>Configurar t&amp;eclas de movimiento</value>
+  </data>
+  <data name="Menu_ToolsDirections" xml:space="preserve">
+    <value>&amp;Direcciones para los paths</value>
+  </data>
+  <data name="Menu_ToolsMute" xml:space="preserve">
+    <value>Silenciar &amp;lector de pantalla</value>
+  </data>
+  <data name="Menu_ToolsStopSpeech" xml:space="preserve">
+    <value>&amp;Callar la voz</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Ay&amp;uda</value>
+  </data>
+  <data name="Menu_HelpManual" xml:space="preserve">
+    <value>&amp;Manual de usuario</value>
+  </data>
+  <data name="Menu_HelpLua" xml:space="preserve">
+    <value>Referencia de scripts &amp;Lua</value>
+  </data>
+  <data name="Menu_HelpAbout" xml:space="preserve">
+    <value>&amp;Acerca de Omnimud...</value>
+  </data>
+  <data name="Help_NotFound" xml:space="preserve">
+    <value>No se encontró el fichero de ayuda: {0}</value>
+  </data>
+  <data name="About_Text" xml:space="preserve">
+    <value>Omnimud {0}. Cliente de MUD accesible.</value>
+  </data>
+  <data name="Find_Title" xml:space="preserve">
+    <value>Buscar en {0}</value>
+  </data>
+  <data name="Find_Label" xml:space="preserve">
+    <value>&amp;Buscar:</value>
+  </data>
+  <data name="Find_Name" xml:space="preserve">
+    <value>Texto a buscar</value>
+  </data>
+  <data name="Find_MatchCase" xml:space="preserve">
+    <value>&amp;Distinguir mayúsculas de minúsculas</value>
+  </data>
+  <data name="Find_Direction" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Find_Down" xml:space="preserve">
+    <value>A&amp;bajo</value>
+  </data>
+  <data name="Find_Up" xml:space="preserve">
+    <value>A&amp;rriba</value>
+  </data>
+  <data name="Find_Button" xml:space="preserve">
+    <value>Bu&amp;scar</value>
+  </data>
+  <data name="Find_Cancel" xml:space="preserve">
+    <value>&amp;Cancelar</value>
+  </data>
+  <data name="Find_NotFound" xml:space="preserve">
+    <value>No se encontró el texto buscado.</value>
+  </data>
+  <data name="Movements_Title" xml:space="preserve">
+    <value>Teclas de movimiento - {0}</value>
+  </data>
+  <data name="Movements_Intro" xml:space="preserve">
+    <value>Comando que envía cada tecla con el modo movimiento (F2) activado. El teclado numérico actúa siempre; las flechas, Re Pág, Av Pág, Inicio y Fin solo con el cuadro de envío vacío (el historial sigue en Ctrl+Flecha arriba y Ctrl+Flecha abajo). Deja un cuadro vacío para desactivar esa tecla.</value>
+  </data>
+  <data name="Movements_KeyLabel" xml:space="preserve">
+    <value>Teclado numérico &amp;{0}:</value>
+  </data>
+  <data name="Movements_ScopeCharacter" xml:space="preserve">
+    <value>Estas teclas son del personaje {0}.</value>
+  </data>
+  <data name="Movements_ScopeMud" xml:space="preserve">
+    <value>Estas teclas son del MUD {0} y las usan los personajes sin teclas propias.</value>
+  </data>
+  <data name="Directions_Title" xml:space="preserve">
+    <value>Direcciones para los paths - {0}</value>
+  </data>
+  <data name="Directions_ListLabel" xml:space="preserve">
+    <value>&amp;Direcciones:</value>
+  </data>
+  <data name="Directions_ListName" xml:space="preserve">
+    <value>Direcciones</value>
+  </data>
+  <data name="Directions_ColDirection" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Directions_ColAbbreviation" xml:space="preserve">
+    <value>Abreviatura</value>
+  </data>
+  <data name="Directions_ColOpposite" xml:space="preserve">
+    <value>Contraria</value>
+  </data>
+  <data name="Directions_Add" xml:space="preserve">
+    <value>&amp;Añadir...</value>
+  </data>
+  <data name="Directions_Edit" xml:space="preserve">
+    <value>&amp;Editar...</value>
+  </data>
+  <data name="Directions_Remove" xml:space="preserve">
+    <value>&amp;Quitar</value>
+  </data>
+  <data name="Directions_LoadCommon" xml:space="preserve">
+    <value>Cargar direcciones &amp;habituales</value>
+  </data>
+  <data name="Directions_Close" xml:space="preserve">
+    <value>&amp;Cerrar</value>
+  </data>
+  <data name="Directions_ConfirmRemove" xml:space="preserve">
+    <value>¿Quitar la dirección {0}?</value>
+  </data>
+  <data name="Directions_ConfirmLoadCommon" xml:space="preserve">
+    <value>Se añadirán las direcciones habituales que falten. ¿Continuar?</value>
+  </data>
+  <data name="Directions_LoadedCount" xml:space="preserve">
+    <value>{0} direcciones añadidas.</value>
+  </data>
+  <data name="Directions_Removed" xml:space="preserve">
+    <value>Dirección {0} eliminada.</value>
+  </data>
+  <data name="Directions_AddTitle" xml:space="preserve">
+    <value>Añadir dirección</value>
+  </data>
+  <data name="Directions_EditTitle" xml:space="preserve">
+    <value>Editar dirección</value>
+  </data>
+  <data name="Directions_DirectionLabel" xml:space="preserve">
+    <value>&amp;Dirección:</value>
+  </data>
+  <data name="Directions_DirectionName" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Directions_DirectionDescription" xml:space="preserve">
+    <value>Comando completo que se envía al MUD, por ejemplo norte</value>
+  </data>
+  <data name="Directions_AbbreviationLabel" xml:space="preserve">
+    <value>&amp;Abreviatura (un carácter):</value>
+  </data>
+  <data name="Directions_AbbreviationName" xml:space="preserve">
+    <value>Abreviatura</value>
+  </data>
+  <data name="Directions_AbbreviationDescription" xml:space="preserve">
+    <value>Carácter único que se usa dentro de los paths, por ejemplo n. No puede ser un dígito.</value>
+  </data>
+  <data name="Directions_OppositeLabel" xml:space="preserve">
+    <value>Dirección &amp;contraria:</value>
+  </data>
+  <data name="Directions_OppositeName" xml:space="preserve">
+    <value>Dirección contraria</value>
+  </data>
+  <data name="Directions_OppositeDescription" xml:space="preserve">
+    <value>Comando completo para volver, por ejemplo sur. Necesaria para recorrer los paths al revés.</value>
+  </data>
+  <data name="Directions_ErrDirectionEmpty" xml:space="preserve">
+    <value>La dirección no puede estar vacía.</value>
+  </data>
+  <data name="Directions_ErrAbbreviation" xml:space="preserve">
+    <value>La abreviatura debe ser exactamente un carácter y no puede ser un dígito.</value>
+  </data>
+  <data name="Directions_ErrDuplicate" xml:space="preserve">
+    <value>Ya existe una dirección con ese nombre o esa abreviatura.</value>
+  </data>
+  <data name="Common_OKButton" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="Common_CancelButton" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Common_NeedsMud" xml:space="preserve">
+    <value>Para esto hace falta un MUD guardado.</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="Common_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Options_TitleGlobal" xml:space="preserve">
+    <value>Opciones globales</value>
+  </data>
+  <data name="Options_TitleMud" xml:space="preserve">
+    <value>Opciones del MUD {0}</value>
+  </data>
+  <data name="Options_TitleCharacter" xml:space="preserve">
+    <value>Opciones del personaje {0}</value>
+  </data>
+  <data name="Options_InheritGlobal" xml:space="preserve">
+    <value>&amp;Usar las opciones globales</value>
+  </data>
+  <data name="Options_InheritMud" xml:space="preserve">
+    <value>&amp;Usar las opciones del MUD</value>
+  </data>
+  <data name="Options_Tabs" xml:space="preserve">
+    <value>Categorías de opciones</value>
+  </data>
+  <data name="Options_TabGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Options_TabLogs" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="Options_TabSounds" xml:space="preserve">
+    <value>Sonidos</value>
+  </data>
+  <data name="Options_TabConnection" xml:space="preserve">
+    <value>Conexión</value>
+  </data>
+  <data name="Options_TabAppearance" xml:space="preserve">
+    <value>Apariencia</value>
+  </data>
+  <data name="Options_TabSpecialChars" xml:space="preserve">
+    <value>Caracteres especiales</value>
+  </data>
+  <data name="Options_SRAutomatic" xml:space="preserve">
+    <value>Automático (UI Automation)</value>
+  </data>
+  <data name="Options_SRJaws" xml:space="preserve">
+    <value>JAWS</value>
+  </data>
+  <data name="Options_SRNvda" xml:space="preserve">
+    <value>NVDA</value>
+  </data>
+  <data name="Options_CursorReceived" xml:space="preserve">
+    <value>Cursor en &amp;Recibido:</value>
+  </data>
+  <data name="Options_CursorMessages" xml:space="preserve">
+    <value>Cursor en Mensa&amp;jes:</value>
+  </data>
+  <data name="Options_CursorGoToEnd" xml:space="preserve">
+    <value>Ir siempre al final del texto</value>
+  </data>
+  <data name="Options_CursorKeep" xml:space="preserve">
+    <value>Mantenerlo donde esté</value>
+  </data>
+  <data name="Options_CursorFollow" xml:space="preserve">
+    <value>Ir al final solo si ya estaba al final</value>
+  </data>
+  <data name="Options_HistorySize" xml:space="preserve">
+    <value>Tamaño del &amp;historial (comandos):</value>
+  </data>
+  <data name="Options_LangAuto" xml:space="preserve">
+    <value>Automático</value>
+  </data>
+  <data name="Options_LangSpanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="Options_LangEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Options_PromptFlush" xml:space="preserve">
+    <value>&amp;Espera del prompt (milisegundos):</value>
+  </data>
+  <data name="Options_ConfirmExit" xml:space="preserve">
+    <value>Confirmar antes de salir</value>
+  </data>
+  <data name="Options_TrySave" xml:space="preserve">
+    <value>Intentar guardar la partida antes de salir</value>
+  </data>
+  <data name="Options_Telnet" xml:space="preserve">
+    <value>Habilitar la negociación Telnet</value>
+  </data>
+  <data name="Options_FlashWindow" xml:space="preserve">
+    <value>Parpadear la ventana cuando llega texto en segundo plano</value>
+  </data>
+  <data name="Options_LogType" xml:space="preserve">
+    <value>Tipo de lo&amp;gs:</value>
+  </data>
+  <data name="Options_LogNone" xml:space="preserve">
+    <value>No guardar logs</value>
+  </data>
+  <data name="Options_LogPerDay" xml:space="preserve">
+    <value>Uno por día</value>
+  </data>
+  <data name="Options_LogPerSession" xml:space="preserve">
+    <value>Uno por partida</value>
+  </data>
+  <data name="Options_LogDirectory" xml:space="preserve">
+    <value>&amp;Carpeta de logs (vacío para la predeterminada):</value>
+  </data>
+  <data name="Options_Browse" xml:space="preserve">
+    <value>Exa&amp;minar...</value>
+  </data>
+  <data name="Options_BrowseTitle" xml:space="preserve">
+    <value>Carpeta donde se guardan los logs</value>
+  </data>
+  <data name="Options_EnableSounds" xml:space="preserve">
+    <value>Habilitar los efectos de sonido (MSP)</value>
+  </data>
+  <data name="Options_EnableMusic" xml:space="preserve">
+    <value>Habilitar la música (MSP)</value>
+  </data>
+  <data name="Options_SoundsBackground" xml:space="preserve">
+    <value>Reproducir los efectos con la ventana en segundo plano</value>
+  </data>
+  <data name="Options_MusicBackground" xml:space="preserve">
+    <value>Reproducir la música con la ventana en segundo plano</value>
+  </data>
+  <data name="Options_DownloadSounds" xml:space="preserve">
+    <value>Descargar los sonidos de internet</value>
+  </data>
+  <data name="Options_AllowHttp" xml:space="preserve">
+    <value>Permitir descargas por HTTP sin cifrar si HTTPS falla</value>
+  </data>
+  <data name="Options_Proxy" xml:space="preserve">
+    <value>&amp;Proxy:</value>
+  </data>
+  <data name="Options_ProxyDisabled" xml:space="preserve">
+    <value>No usar proxy</value>
+  </data>
+  <data name="Options_ProxyAutomatic" xml:space="preserve">
+    <value>Usar el proxy del sistema</value>
+  </data>
+  <data name="Options_ProxyManual" xml:space="preserve">
+    <value>Introducirlo manualmente</value>
+  </data>
+  <data name="Options_ProxyHost" xml:space="preserve">
+    <value>Servidor prox&amp;y:</value>
+  </data>
+  <data name="Options_ProxyPort" xml:space="preserve">
+    <value>Puert&amp;o del proxy:</value>
+  </data>
+  <data name="Options_ProxyProtocol" xml:space="preserve">
+    <value>Pro&amp;tocolo del proxy:</value>
+  </data>
+  <data name="Options_ProtocolSocks5" xml:space="preserve">
+    <value>SOCKS5</value>
+  </data>
+  <data name="Options_ProtocolHttp" xml:space="preserve">
+    <value>HTTP CONNECT</value>
+  </data>
+  <data name="Options_ProxyForMud" xml:space="preserve">
+    <value>Usar el proxy también para la conexión con el MUD</value>
+  </data>
+  <data name="Options_Font" xml:space="preserve">
+    <value>&amp;Fuente:</value>
+  </data>
+  <data name="Options_FontSizePoints" xml:space="preserve">
+    <value>Tamaño en punto&amp;s:</value>
+  </data>
+  <data name="Options_ChangeFont" xml:space="preserve">
+    <value>Cam&amp;biar fuente...</value>
+  </data>
+  <data name="Options_Preview" xml:space="preserve">
+    <value>Previsuali&amp;zación:</value>
+  </data>
+  <data name="Options_PreviewText" xml:space="preserve">
+    <value>Estás en la plaza del pueblo. Salidas: norte, sur y este.</value>
+  </data>
+  <data name="Options_UseConcat" xml:space="preserve">
+    <value>Usar un carácter para enviar varios comandos de una vez</value>
+  </data>
+  <data name="Options_ConcatChar" xml:space="preserve">
+    <value>Carácter &amp;que separa los comandos:</value>
+  </data>
+  <data name="Options_UseRepeat" xml:space="preserve">
+    <value>Usar un carácter para repetir un comando varias veces</value>
+  </data>
+  <data name="Options_RepeatChar" xml:space="preserve">
+    <value>C&amp;arácter de repetición:</value>
+  </data>
+  <data name="Options_Export" xml:space="preserve">
+    <value>E&amp;xportar...</value>
+  </data>
+  <data name="Options_Import" xml:space="preserve">
+    <value>&amp;Importar...</value>
+  </data>
+  <data name="Options_ErrHistorySize" xml:space="preserve">
+    <value>El tamaño del historial debe estar entre 1 y 10000.</value>
+  </data>
+  <data name="Options_ErrMaxLines" xml:space="preserve">
+    <value>El número máximo de líneas debe estar entre 100 y 1000000.</value>
+  </data>
+  <data name="Options_ErrPromptFlush" xml:space="preserve">
+    <value>La espera del prompt debe estar entre 0 y 60000 milisegundos.</value>
+  </data>
+  <data name="Options_ErrVolume" xml:space="preserve">
+    <value>El volumen debe estar entre 0 y 100.</value>
+  </data>
+  <data name="Options_ErrProxyHost" xml:space="preserve">
+    <value>Debes introducir el servidor proxy.</value>
+  </data>
+  <data name="Options_ErrProxyPort" xml:space="preserve">
+    <value>El puerto del proxy debe estar entre 1 y 65535.</value>
+  </data>
+  <data name="Options_ErrFontFamily" xml:space="preserve">
+    <value>Debes elegir una fuente.</value>
+  </data>
+  <data name="Options_ErrFontSize" xml:space="preserve">
+    <value>El tamaño de la fuente debe estar entre 4 y 200 puntos.</value>
+  </data>
+  <data name="Options_ErrConcatMissing" xml:space="preserve">
+    <value>Debes introducir el carácter que separa los comandos: exactamente un carácter.</value>
+  </data>
+  <data name="Options_ErrConcatInvalid" xml:space="preserve">
+    <value>El carácter que separa los comandos no puede ser un dígito ni un espacio.</value>
+  </data>
+  <data name="Options_ErrRepeatMissing" xml:space="preserve">
+    <value>Debes introducir el carácter de repetición: exactamente un carácter.</value>
+  </data>
+  <data name="Options_ErrRepeatInvalid" xml:space="preserve">
+    <value>El carácter de repetición no puede ser un dígito ni un espacio.</value>
+  </data>
+  <data name="Options_ErrSameChars" xml:space="preserve">
+    <value>El carácter que separa los comandos y el de repetición deben ser distintos.</value>
+  </data>
+  <data name="Options_ErrLogDirectory" xml:space="preserve">
+    <value>La carpeta de logs no es una ruta válida.</value>
+  </data>
+  <data name="Options_ConfirmCreateDirectory" xml:space="preserve">
+    <value>La carpeta de logs no existe. ¿Quieres crearla?</value>
+  </data>
+  <data name="Options_ErrCreateDirectory" xml:space="preserve">
+    <value>No se ha podido crear la carpeta: {0}</value>
+  </data>
+  <data name="Options_LanguageRestart" xml:space="preserve">
+    <value>El idioma cambiará la próxima vez que inicies Omnimud.</value>
+  </data>
+  <data name="Options_ExportTitle" xml:space="preserve">
+    <value>Exportar opciones</value>
+  </data>
+  <data name="Options_ImportTitle" xml:space="preserve">
+    <value>Importar un fichero de opciones</value>
+  </data>
+  <data name="Options_FileFilter" xml:space="preserve">
+    <value>Ficheros de Omnimud (*.omnimud)|*.omnimud|Todos los ficheros (*.*)|*.*</value>
+  </data>
+  <data name="Options_ExportFileName" xml:space="preserve">
+    <value>opciones</value>
+  </data>
+  <data name="Options_Exported" xml:space="preserve">
+    <value>Opciones exportadas.</value>
+  </data>
+  <data name="Options_Imported" xml:space="preserve">
+    <value>Opciones cargadas. Se guardarán cuando pulses Aceptar.</value>
+  </data>
+  <data name="Options_ErrExport" xml:space="preserve">
+    <value>No se han podido exportar las opciones: {0}</value>
+  </data>
+  <data name="Options_ErrImport" xml:space="preserve">
+    <value>No se han podido importar las opciones: {0}</value>
+  </data>
+  <data name="Options_ErrFileNoOptions" xml:space="preserve">
+    <value>El fichero no contiene opciones.</value>
+  </data>
+  <data name="Options_ErrFileTooLarge" xml:space="preserve">
+    <value>El fichero es demasiado grande.</value>
+  </data>
+  <data name="Options_ErrFileInvalid" xml:space="preserve">
+    <value>El fichero está dañado o no es un fichero de Omnimud.</value>
+  </data>
+  <data name="Options_ErrFileNewer" xml:space="preserve">
+    <value>El fichero lo ha escrito una versión más reciente de Omnimud.</value>
+  </data>
+  <data name="Movements_GroupNavigation" xml:space="preserve">
+    <value>Flechas y navegación</value>
+  </data>
+  <data name="Movements_GroupNumPad" xml:space="preserve">
+    <value>Teclado numérico</value>
+  </data>
+  <data name="Movements_LabelArrowUp" xml:space="preserve">
+    <value>Flecha &amp;arriba:</value>
+  </data>
+  <data name="Movements_LabelArrowDown" xml:space="preserve">
+    <value>Flecha a&amp;bajo:</value>
+  </data>
+  <data name="Movements_LabelArrowLeft" xml:space="preserve">
+    <value>Flecha &amp;izquierda:</value>
+  </data>
+  <data name="Movements_LabelArrowRight" xml:space="preserve">
+    <value>Flecha &amp;derecha:</value>
+  </data>
+  <data name="Movements_LabelPageUp" xml:space="preserve">
+    <value>&amp;Re Pág:</value>
+  </data>
+  <data name="Movements_LabelPageDown" xml:space="preserve">
+    <value>A&amp;v Pág:</value>
+  </data>
+  <data name="Movements_LabelHome" xml:space="preserve">
+    <value>I&amp;nicio:</value>
+  </data>
+  <data name="Movements_LabelEnd" xml:space="preserve">
+    <value>&amp;Fin:</value>
+  </data>
+  <data name="Movements_RestoreButton" xml:space="preserve">
+    <value>Re&amp;staurar valores por defecto</value>
+  </data>
+  <data name="Launcher_TreeLabel" xml:space="preserve">
+    <value>&amp;MUDs y personajes:</value>
+  </data>
+  <data name="Launcher_Connect" xml:space="preserve">
+    <value>&amp;Conectar</value>
+  </data>
+  <data name="Launcher_QuickConnect" xml:space="preserve">
+    <value>Conexión &amp;rápida...</value>
+  </data>
+  <data name="Launcher_AddMudButton" xml:space="preserve">
+    <value>Añadir MU&amp;D...</value>
+  </data>
+  <data name="Launcher_AddCharacterButton" xml:space="preserve">
+    <value>Añadir &amp;personaje...</value>
+  </data>
+  <data name="Launcher_Edit" xml:space="preserve">
+    <value>&amp;Editar...</value>
+  </data>
+  <data name="Launcher_Remove" xml:space="preserve">
+    <value>&amp;Quitar</value>
+  </data>
+  <data name="Launcher_SetDefault" xml:space="preserve">
+    <value>Marcar como predetermi&amp;nado</value>
+  </data>
+  <data name="Launcher_ClearDefault" xml:space="preserve">
+    <value>Quitar predeterminad&amp;o</value>
+  </data>
+  <data name="Launcher_KeyDelete" xml:space="preserve">
+    <value>Supr</value>
+  </data>
+  <data name="Launcher_KeyEnter" xml:space="preserve">
+    <value>Intro</value>
+  </data>
+  <data name="Launcher_MenuFile" xml:space="preserve">
+    <value>&amp;Archivo</value>
+  </data>
+  <data name="Launcher_MenuExit" xml:space="preserve">
+    <value>&amp;Salir</value>
+  </data>
+  <data name="Launcher_MenuGlobalOptions" xml:space="preserve">
+    <value>&amp;Opciones globales...</value>
+  </data>
+  <data name="Launcher_MenuMessageRules" xml:space="preserve">
+    <value>&amp;Reglas de mensajes...</value>
+  </data>
+  <data name="Launcher_MenuImport" xml:space="preserve">
+    <value>&amp;Importar...</value>
+  </data>
+  <data name="Launcher_MenuExportMud" xml:space="preserve">
+    <value>Exportar &amp;MUD...</value>
+  </data>
+  <data name="Launcher_MenuExportCharacter" xml:space="preserve">
+    <value>Exportar &amp;personaje...</value>
+  </data>
+  <data name="Launcher_NeedsMudFirst" xml:space="preserve">
+    <value>Añade antes un MUD: un personaje siempre pertenece a un MUD.</value>
+  </data>
+  <data name="Launcher_SelectCharacterFirst" xml:space="preserve">
+    <value>Selecciona antes un personaje.</value>
+  </data>
+  <data name="Launcher_ConfirmRemoveMud" xml:space="preserve">
+    <value>¿Quitar el MUD {0}? También se quitarán todos sus personajes, con sus alias, triggers y paths.</value>
+  </data>
+  <data name="Launcher_ConfirmRemoveCharacter" xml:space="preserve">
+    <value>¿Quitar el personaje {0} del MUD {1}, con sus alias, triggers y paths?</value>
+  </data>
+  <data name="Launcher_StatusMudAdded" xml:space="preserve">
+    <value>MUD {0} añadido.</value>
+  </data>
+  <data name="Launcher_StatusMudSaved" xml:space="preserve">
+    <value>MUD {0} guardado.</value>
+  </data>
+  <data name="Launcher_StatusMudRemoved" xml:space="preserve">
+    <value>MUD {0} quitado.</value>
+  </data>
+  <data name="Launcher_StatusCharacterAdded" xml:space="preserve">
+    <value>Personaje {0} añadido.</value>
+  </data>
+  <data name="Launcher_StatusCharacterSaved" xml:space="preserve">
+    <value>Personaje {0} guardado.</value>
+  </data>
+  <data name="Launcher_StatusCharacterRemoved" xml:space="preserve">
+    <value>Personaje {0} quitado.</value>
+  </data>
+  <data name="Launcher_StatusDefaultSet" xml:space="preserve">
+    <value>{0} es ahora el personaje predeterminado de {1}.</value>
+  </data>
+  <data name="Launcher_StatusDefaultCleared" xml:space="preserve">
+    <value>{0} ya no tiene personaje predeterminado.</value>
+  </data>
+  <data name="Launcher_StatusExported" xml:space="preserve">
+    <value>{0} exportado.</value>
+  </data>
+  <data name="Launcher_StatusImported" xml:space="preserve">
+    <value>Importación terminada: {0} añadidos, {1} sobrescritos, {2} omitidos, {3} con error.</value>
+  </data>
+  <data name="MudEdit_TitleAdd" xml:space="preserve">
+    <value>Añadir MUD</value>
+  </data>
+  <data name="MudEdit_TitleEdit" xml:space="preserve">
+    <value>Editar {0}</value>
+  </data>
+  <data name="MudEdit_NameLabel" xml:space="preserve">
+    <value>&amp;Nombre:</value>
+  </data>
+  <data name="MudEdit_HostLabel" xml:space="preserve">
+    <value>&amp;Servidor (dirección o dominio):</value>
+  </data>
+  <data name="MudEdit_PortLabel" xml:space="preserve">
+    <value>&amp;Puerto:</value>
+  </data>
+  <data name="MudEdit_UseTls" xml:space="preserve">
+    <value>Usar &amp;TLS (conexión cifrada)</value>
+  </data>
+  <data name="MudEdit_ValidateCertificate" xml:space="preserve">
+    <value>&amp;Validar el certificado del servidor</value>
+  </data>
+  <data name="MudEdit_EncodingLabel" xml:space="preserve">
+    <value>&amp;Codificación:</value>
+  </data>
+  <data name="MudEdit_RuleSetLabel" xml:space="preserve">
+    <value>Conjunto de &amp;reglas de mensajes:</value>
+  </data>
+  <data name="MudEdit_RuleSetNone" xml:space="preserve">
+    <value>(Ninguno)</value>
+  </data>
+  <data name="MudEdit_SoundLabel" xml:space="preserve">
+    <value>Carpeta de s&amp;onidos:</value>
+  </data>
+  <data name="MudEdit_SoundHint" xml:space="preserve">
+    <value>Vacío = carpeta por defecto de este MUD.</value>
+  </data>
+  <data name="MudEdit_Browse" xml:space="preserve">
+    <value>&amp;Examinar...</value>
+  </data>
+  <data name="MudEdit_SoundBrowseTitle" xml:space="preserve">
+    <value>Carpeta de sonidos</value>
+  </data>
+  <data name="MudEdit_SaveCommandLabel" xml:space="preserve">
+    <value>Comando para &amp;guardar la partida:</value>
+  </data>
+  <data name="MudEdit_QuitCommandLabel" xml:space="preserve">
+    <value>Comando para sa&amp;lir del MUD:</value>
+  </data>
+  <data name="MudEdit_LoginScriptLabel" xml:space="preserve">
+    <value>Script de &amp;inicio de sesión:</value>
+  </data>
+  <data name="MudEdit_LoginScriptHint" xml:space="preserve">
+    <value>Comandos que se envían nada más conectar, uno por línea. %character se sustituye por el nombre del personaje y %password por su contraseña guardada. Vacío = enviar el nombre y después la contraseña.</value>
+  </data>
+  <data name="MudEdit_NameRequired" xml:space="preserve">
+    <value>Escribe el nombre del MUD.</value>
+  </data>
+  <data name="MudEdit_NameTooLong" xml:space="preserve">
+    <value>El nombre no puede tener más de {0} caracteres.</value>
+  </data>
+  <data name="MudEdit_HostRequired" xml:space="preserve">
+    <value>Escribe la dirección o el dominio del MUD.</value>
+  </data>
+  <data name="MudEdit_HostInvalid" xml:space="preserve">
+    <value>La dirección no puede contener espacios.</value>
+  </data>
+  <data name="MudEdit_PortInvalid" xml:space="preserve">
+    <value>El puerto debe estar entre 1 y 65535.</value>
+  </data>
+  <data name="MudEdit_EncodingInvalid" xml:space="preserve">
+    <value>La codificación {0} no existe. Elige una de la lista o escribe un nombre válido, por ejemplo iso-8859-15.</value>
+  </data>
+  <data name="MudEdit_SoundDirectoryMissing" xml:space="preserve">
+    <value>La carpeta de sonidos no existe. Comprueba que está bien escrita o déjala vacía.</value>
+  </data>
+  <data name="MudEdit_Duplicate" xml:space="preserve">
+    <value>Ya existe un MUD llamado {0}. Elige otro nombre.</value>
+  </data>
+  <data name="CharEdit_TitleAdd" xml:space="preserve">
+    <value>Añadir personaje</value>
+  </data>
+  <data name="CharEdit_TitleEdit" xml:space="preserve">
+    <value>Editar {0}</value>
+  </data>
+  <data name="CharEdit_NameLabel" xml:space="preserve">
+    <value>&amp;Nombre del personaje:</value>
+  </data>
+  <data name="CharEdit_Remember" xml:space="preserve">
+    <value>&amp;Recordar contraseña</value>
+  </data>
+  <data name="CharEdit_PasswordLabel" xml:space="preserve">
+    <value>&amp;Contraseña:</value>
+  </data>
+  <data name="CharEdit_MudLabel" xml:space="preserve">
+    <value>&amp;MUD:</value>
+  </data>
+  <data name="CharEdit_HintNew" xml:space="preserve">
+    <value>La contraseña se guarda cifrada y nunca se muestra.</value>
+  </data>
+  <data name="CharEdit_HintStored" xml:space="preserve">
+    <value>Hay una contraseña guardada. Deja el cuadro vacío para conservarla o escribe una nueva para sustituirla.</value>
+  </data>
+  <data name="CharEdit_HintNotRemembered" xml:space="preserve">
+    <value>No se guardará ninguna contraseña: la guardada, si la hay, se borra al aceptar.</value>
+  </data>
+  <data name="CharEdit_NameRequired" xml:space="preserve">
+    <value>Escribe el nombre del personaje.</value>
+  </data>
+  <data name="CharEdit_NameTooLong" xml:space="preserve">
+    <value>El nombre no puede tener más de {0} caracteres.</value>
+  </data>
+  <data name="CharEdit_PasswordRequired" xml:space="preserve">
+    <value>Escribe la contraseña del personaje o desmarca Recordar contraseña.</value>
+  </data>
+  <data name="CharEdit_MudRequired" xml:space="preserve">
+    <value>Elige el MUD del personaje.</value>
+  </data>
+  <data name="CharEdit_Duplicate" xml:space="preserve">
+    <value>Este MUD ya tiene un personaje llamado {0}. Elige otro nombre.</value>
+  </data>
+  <data name="QuickConnect_UseTls" xml:space="preserve">
+    <value>Usar &amp;TLS (conexión cifrada)</value>
+  </data>
+  <data name="QuickConnect_ValidateCertificate" xml:space="preserve">
+    <value>&amp;Validar el certificado del servidor</value>
+  </data>
+  <data name="QuickConnect_EncodingLabel" xml:space="preserve">
+    <value>C&amp;odificación:</value>
+  </data>
+  <data name="QuickConnect_HostRequired" xml:space="preserve">
+    <value>Escribe la dirección o el dominio del servidor.</value>
+  </data>
+  <data name="QuickConnect_HostInvalid" xml:space="preserve">
+    <value>La dirección no puede contener espacios.</value>
+  </data>
+  <data name="QuickConnect_PortInvalid" xml:space="preserve">
+    <value>El puerto debe estar entre 1 y 65535.</value>
+  </data>
+  <data name="QuickConnect_EncodingInvalid" xml:space="preserve">
+    <value>La codificación {0} no existe. Elige una de la lista o escribe un nombre válido.</value>
+  </data>
+  <data name="Exchange_FileFilter" xml:space="preserve">
+    <value>Ficheros de Omnimud (*.omnimud)|*.omnimud|Todos los ficheros (*.*)|*.*</value>
+  </data>
+  <data name="Exchange_ExportMudTitle" xml:space="preserve">
+    <value>Exportar MUD</value>
+  </data>
+  <data name="Exchange_ExportCharacterTitle" xml:space="preserve">
+    <value>Exportar personaje</value>
+  </data>
+  <data name="Exchange_ImportTitle" xml:space="preserve">
+    <value>Importar</value>
+  </data>
+  <data name="Exchange_IncludeCharacters" xml:space="preserve">
+    <value>¿Incluir en el fichero los personajes de {0}? Las contraseñas nunca se exportan.</value>
+  </data>
+  <data name="Exchange_ExportDone" xml:space="preserve">
+    <value>Exportado en {0}</value>
+  </data>
+  <data name="Exchange_ExportFailed" xml:space="preserve">
+    <value>No se pudo escribir {0}: {1}</value>
+  </data>
+  <data name="Exchange_ReadFailed" xml:space="preserve">
+    <value>No se pudo leer el fichero: {0}</value>
+  </data>
+  <data name="Exchange_NothingToImport" xml:space="preserve">
+    <value>El fichero no contiene nada que importar.</value>
+  </data>
+  <data name="Exchange_ErrorTooLarge" xml:space="preserve">
+    <value>El fichero es demasiado grande para ser una exportación de Omnimud.</value>
+  </data>
+  <data name="Exchange_ErrorInvalidJson" xml:space="preserve">
+    <value>El fichero está dañado o incompleto: no se puede leer.</value>
+  </data>
+  <data name="Exchange_ErrorNotOmnimud" xml:space="preserve">
+    <value>Este fichero no es una exportación de Omnimud.</value>
+  </data>
+  <data name="Exchange_ErrorUnsupportedVersion" xml:space="preserve">
+    <value>El fichero lo creó una versión más nueva de Omnimud. Actualiza Omnimud para importarlo.</value>
+  </data>
+  <data name="Exchange_ErrorInvalidContent" xml:space="preserve">
+    <value>El contenido del fichero no es válido: falta una sección o una lista es demasiado larga.</value>
+  </data>
+  <data name="Exchange_ErrorTargetRequired" xml:space="preserve">
+    <value>Este fichero necesita un destino que aquí no existe. Para importar un personaje, selecciona antes el MUD al que pertenece.</value>
+  </data>
+  <data name="Exchange_KindMud" xml:space="preserve">
+    <value>MUD</value>
+  </data>
+  <data name="Exchange_KindRuleSet" xml:space="preserve">
+    <value>Conjunto de reglas de mensajes</value>
+  </data>
+  <data name="Exchange_KindCharacter" xml:space="preserve">
+    <value>Personaje</value>
+  </data>
+  <data name="Exchange_KindAlias" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <data name="Exchange_KindTrigger" xml:space="preserve">
+    <value>Trigger</value>
+  </data>
+  <data name="Exchange_KindPath" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="Exchange_KindMovements" xml:space="preserve">
+    <value>Teclas de movimiento</value>
+  </data>
+  <data name="Exchange_KindOptions" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
+  <data name="Exchange_ItemFormat" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Exchange_ItemInParent" xml:space="preserve">
+    <value>{0} ({1} {2})</value>
+  </data>
+  <data name="Exchange_SummaryHeader" xml:space="preserve">
+    <value>Importación terminada.</value>
+  </data>
+  <data name="Exchange_SummaryAdded" xml:space="preserve">
+    <value>Añadidos: {0}</value>
+  </data>
+  <data name="Exchange_SummaryOverwritten" xml:space="preserve">
+    <value>Sobrescritos: {0}</value>
+  </data>
+  <data name="Exchange_SummarySkipped" xml:space="preserve">
+    <value>Omitidos: {0}</value>
+  </data>
+  <data name="Exchange_SummaryFailed" xml:space="preserve">
+    <value>Con error: {0}</value>
+  </data>
+  <data name="Exchange_SummaryFailedItem" xml:space="preserve">
+    <value>Error en {0}. {1}</value>
+  </data>
+  <data name="ImportConflicts_Title" xml:space="preserve">
+    <value>Elementos que ya existen</value>
+  </data>
+  <data name="ImportConflicts_Intro" xml:space="preserve">
+    <value>Estos elementos del fichero ya existen. Marca los que quieras sobrescribir; los que queden sin marcar se omiten y se quedan como están.</value>
+  </data>
+  <data name="ImportConflicts_ListLabel" xml:space="preserve">
+    <value>Elementos en &amp;conflicto (marcado = sobrescribir):</value>
+  </data>
+  <data name="ImportConflicts_OverwriteAll" xml:space="preserve">
+    <value>Sobrescribir &amp;todos</value>
+  </data>
+  <data name="ImportConflicts_SkipAll" xml:space="preserve">
+    <value>&amp;Omitir todos</value>
+  </data>
+  <data name="ImportConflicts_Import" xml:space="preserve">
+    <value>&amp;Importar</value>
+  </data>
+  <data name="ImportConflicts_Status" xml:space="preserve">
+    <value>{0} elementos: {1} se sobrescribirán, {2} se omitirán.</value>
+  </data>
+  <data name="MsgRules_Title" xml:space="preserve">
+    <value>Reglas de mensajes</value>
+  </data>
+  <data name="MsgRules_SetsLabel" xml:space="preserve">
+    <value>Con&amp;juntos de reglas:</value>
+  </data>
+  <data name="MsgRules_SetBuiltIn" xml:space="preserve">
+    <value>{0} (integrado)</value>
+  </data>
+  <data name="MsgRules_NewSet" xml:space="preserve">
+    <value>&amp;Nuevo conjunto...</value>
+  </data>
+  <data name="MsgRules_DuplicateSet" xml:space="preserve">
+    <value>&amp;Duplicar...</value>
+  </data>
+  <data name="MsgRules_RenameSet" xml:space="preserve">
+    <value>Reno&amp;mbrar...</value>
+  </data>
+  <data name="MsgRules_RemoveSet" xml:space="preserve">
+    <value>&amp;Quitar conjunto</value>
+  </data>
+  <data name="MsgRules_RulesLabel" xml:space="preserve">
+    <value>&amp;Reglas del conjunto, en orden:</value>
+  </data>
+  <data name="MsgRules_ColPattern" xml:space="preserve">
+    <value>Patrón</value>
+  </data>
+  <data name="MsgRules_ColState" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="MsgRules_ColTemplate" xml:space="preserve">
+    <value>Plantilla</value>
+  </data>
+  <data name="MsgRules_ColChannel" xml:space="preserve">
+    <value>Canal</value>
+  </data>
+  <data name="MsgRules_ColCase" xml:space="preserve">
+    <value>Distingue mayúsculas</value>
+  </data>
+  <data name="MsgRules_StateEnabled" xml:space="preserve">
+    <value>Activada</value>
+  </data>
+  <data name="MsgRules_StateDisabled" xml:space="preserve">
+    <value>Desactivada</value>
+  </data>
+  <data name="MsgRules_AddRule" xml:space="preserve">
+    <value>&amp;Añadir regla...</value>
+  </data>
+  <data name="MsgRules_EditRule" xml:space="preserve">
+    <value>&amp;Editar regla...</value>
+  </data>
+  <data name="MsgRules_RemoveRule" xml:space="preserve">
+    <value>Qui&amp;tar regla</value>
+  </data>
+  <data name="MsgRules_MoveUp" xml:space="preserve">
+    <value>&amp;Subir</value>
+  </data>
+  <data name="MsgRules_MoveDown" xml:space="preserve">
+    <value>&amp;Bajar</value>
+  </data>
+  <data name="MsgRules_Toggle" xml:space="preserve">
+    <value>Acti&amp;var o desactivar</value>
+  </data>
+  <data name="MsgRules_KeyAltUp" xml:space="preserve">
+    <value>Alt+Flecha arriba</value>
+  </data>
+  <data name="MsgRules_KeyAltDown" xml:space="preserve">
+    <value>Alt+Flecha abajo</value>
+  </data>
+  <data name="MsgRules_KeySpace" xml:space="preserve">
+    <value>Espacio</value>
+  </data>
+  <data name="MsgRules_KeysHint" xml:space="preserve">
+    <value>En la lista de reglas: Insert añade, F2 o Intro edita, Supr quita, Espacio activa o desactiva, Alt+Flecha arriba y Alt+Flecha abajo mueven la regla. Las reglas se prueban en orden y gana la primera que coincide.</value>
+  </data>
+  <data name="MsgRules_SampleLabel" xml:space="preserve">
+    <value>Texto de &amp;prueba para el conjunto:</value>
+  </data>
+  <data name="MsgRules_TestButton" xml:space="preserve">
+    <value>Pr&amp;obar</value>
+  </data>
+  <data name="MsgRules_ResultLabel" xml:space="preserve">
+    <value>Resu&amp;ltado de la prueba:</value>
+  </data>
+  <data name="MsgRules_SetNameLabel" xml:space="preserve">
+    <value>&amp;Nombre del conjunto de reglas:</value>
+  </data>
+  <data name="MsgRules_NewSetTitle" xml:space="preserve">
+    <value>Nuevo conjunto de reglas</value>
+  </data>
+  <data name="MsgRules_DuplicateSetTitle" xml:space="preserve">
+    <value>Duplicar conjunto de reglas</value>
+  </data>
+  <data name="MsgRules_RenameSetTitle" xml:space="preserve">
+    <value>Renombrar conjunto de reglas</value>
+  </data>
+  <data name="MsgRules_CopyName" xml:space="preserve">
+    <value>Copia de {0}</value>
+  </data>
+  <data name="MsgRules_NameRequired" xml:space="preserve">
+    <value>Escribe el nombre del conjunto de reglas.</value>
+  </data>
+  <data name="MsgRules_DuplicateName" xml:space="preserve">
+    <value>Ya existe un conjunto de reglas llamado {0}. Elige otro nombre.</value>
+  </data>
+  <data name="MsgRules_BuiltInReadOnly" xml:space="preserve">
+    <value>{0} es un conjunto integrado y no se puede modificar. Duplícalo para hacer tu propia versión.</value>
+  </data>
+  <data name="MsgRules_ConfirmRemoveSet" xml:space="preserve">
+    <value>¿Quitar el conjunto de reglas {0} con todas sus reglas? Los MUDs que lo usan se quedarán sin reglas de mensajes.</value>
+  </data>
+  <data name="MsgRules_ConfirmRemoveRule" xml:space="preserve">
+    <value>¿Quitar la regla {0}?</value>
+  </data>
+  <data name="MsgRules_NoSetSelected" xml:space="preserve">
+    <value>No hay ningún conjunto de reglas seleccionado.</value>
+  </data>
+  <data name="MsgRules_AlreadyFirst" xml:space="preserve">
+    <value>Ya es la primera regla.</value>
+  </data>
+  <data name="MsgRules_AlreadyLast" xml:space="preserve">
+    <value>Ya es la última regla.</value>
+  </data>
+  <data name="MsgRules_RuleEnabled" xml:space="preserve">
+    <value>Regla activada.</value>
+  </data>
+  <data name="MsgRules_RuleDisabled" xml:space="preserve">
+    <value>Regla desactivada.</value>
+  </data>
+  <data name="MsgRules_StatusRuleMoved" xml:space="preserve">
+    <value>Regla movida a la posición {0} de {1}.</value>
+  </data>
+  <data name="MsgRules_StatusRuleAdded" xml:space="preserve">
+    <value>Regla añadida.</value>
+  </data>
+  <data name="MsgRules_StatusRuleSaved" xml:space="preserve">
+    <value>Regla guardada.</value>
+  </data>
+  <data name="MsgRules_StatusRuleRemoved" xml:space="preserve">
+    <value>Regla quitada.</value>
+  </data>
+  <data name="MsgRules_StatusSetAdded" xml:space="preserve">
+    <value>Conjunto {0} añadido.</value>
+  </data>
+  <data name="MsgRules_StatusSetDuplicated" xml:space="preserve">
+    <value>Conjunto {0} creado como copia.</value>
+  </data>
+  <data name="MsgRules_StatusSetRenamed" xml:space="preserve">
+    <value>Conjunto renombrado a {0}.</value>
+  </data>
+  <data name="MsgRules_StatusSetRemoved" xml:space="preserve">
+    <value>Conjunto {0} quitado.</value>
+  </data>
+  <data name="MsgRule_TitleAdd" xml:space="preserve">
+    <value>Añadir regla de mensajes</value>
+  </data>
+  <data name="MsgRule_TitleEdit" xml:space="preserve">
+    <value>Editar regla de mensajes</value>
+  </data>
+  <data name="MsgRule_PatternLabel" xml:space="preserve">
+    <value>&amp;Patrón (expresión regular):</value>
+  </data>
+  <data name="MsgRule_TemplateLabel" xml:space="preserve">
+    <value>P&amp;lantilla del mensaje:</value>
+  </data>
+  <data name="MsgRule_TemplateHint" xml:space="preserve">
+    <value>$1, $2... son los grupos del patrón, ${nombre} un grupo con nombre y $0 toda la coincidencia.</value>
+  </data>
+  <data name="MsgRule_ChannelLabel" xml:space="preserve">
+    <value>&amp;Canal (opcional):</value>
+  </data>
+  <data name="MsgRule_CaseSensitive" xml:space="preserve">
+    <value>Distinguir &amp;mayúsculas de minúsculas</value>
+  </data>
+  <data name="MsgRule_Enabled" xml:space="preserve">
+    <value>&amp;Activada</value>
+  </data>
+  <data name="MsgRule_SampleLabel" xml:space="preserve">
+    <value>&amp;Texto de prueba:</value>
+  </data>
+  <data name="MsgRule_TestButton" xml:space="preserve">
+    <value>Pro&amp;bar</value>
+  </data>
+  <data name="MsgRule_ResultLabel" xml:space="preserve">
+    <value>&amp;Resultado de la prueba:</value>
+  </data>
+  <data name="MsgRule_PatternRequired" xml:space="preserve">
+    <value>Escribe el patrón de la regla.</value>
+  </data>
+  <data name="MsgRule_PatternInvalid" xml:space="preserve">
+    <value>El patrón no es una expresión regular válida: {0}</value>
+  </data>
+  <data name="MsgRule_TestEmpty" xml:space="preserve">
+    <value>Escribe un texto de prueba.</value>
+  </data>
+  <data name="MsgRule_TestNoMatch" xml:space="preserve">
+    <value>No coincide: este texto no produciría ningún mensaje.</value>
+  </data>
+  <data name="MsgRule_TestMatch" xml:space="preserve">
+    <value>Coincide. Mensaje: {0}</value>
+  </data>
+  <data name="MsgRule_TestMatchRule" xml:space="preserve">
+    <value>Coincide la regla {0}. Mensaje: {1}</value>
+  </data>
+  <data name="MsgRule_TestChannel" xml:space="preserve">
+    <value>{0} Canal: {1}</value>
+  </data>
+  <data name="MsgRule_TestTimeout" xml:space="preserve">
+    <value>La regla {0} tarda demasiado en evaluar este texto. Simplifica su patrón.</value>
+  </data>
+  <data name="Lst_Add" xml:space="preserve">
+    <value>&amp;Añadir</value>
+  </data>
+  <data name="Lst_Edit" xml:space="preserve">
+    <value>&amp;Editar</value>
+  </data>
+  <data name="Lst_Remove" xml:space="preserve">
+    <value>&amp;Quitar</value>
+  </data>
+  <data name="Lst_Enable" xml:space="preserve">
+    <value>Acti&amp;var</value>
+  </data>
+  <data name="Lst_Disable" xml:space="preserve">
+    <value>Desacti&amp;var</value>
+  </data>
+  <data name="Lst_MoveUp" xml:space="preserve">
+    <value>&amp;Subir</value>
+  </data>
+  <data name="Lst_MoveDown" xml:space="preserve">
+    <value>&amp;Bajar</value>
+  </data>
+  <data name="Lst_SortBy" xml:space="preserve">
+    <value>&amp;Ordenar por</value>
+  </data>
+  <data name="Lst_Import" xml:space="preserve">
+    <value>&amp;Importar</value>
+  </data>
+  <data name="Lst_ImportFromFile" xml:space="preserve">
+    <value>Desde &amp;fichero...</value>
+  </data>
+  <data name="Lst_ImportFromCharacter" xml:space="preserve">
+    <value>Desde otro &amp;personaje...</value>
+  </data>
+  <data name="Lst_Export" xml:space="preserve">
+    <value>E&amp;xportar...</value>
+  </data>
+  <data name="Lst_Close" xml:space="preserve">
+    <value>&amp;Cerrar</value>
+  </data>
+  <data name="Lst_ColEnabled" xml:space="preserve">
+    <value>Activado</value>
+  </data>
+  <data name="Lst_Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="Lst_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Lst_Removed" xml:space="preserve">
+    <value>{0} quitado.</value>
+  </data>
+  <data name="Lst_SortItemAscending" xml:space="preserve">
+    <value>{0} (ascendente)</value>
+  </data>
+  <data name="Lst_SortItemDescending" xml:space="preserve">
+    <value>{0} (descendente)</value>
+  </data>
+  <data name="Lst_SortedAscending" xml:space="preserve">
+    <value>Ordenado por {0}, ascendente.</value>
+  </data>
+  <data name="Lst_SortedDescending" xml:space="preserve">
+    <value>Ordenado por {0}, descendente.</value>
+  </data>
+  <data name="AliasList_Title" xml:space="preserve">
+    <value>Alias de {0}</value>
+  </data>
+  <data name="AliasList_Label" xml:space="preserve">
+    <value>A&amp;lias:</value>
+  </data>
+  <data name="AliasList_Name" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <data name="AliasList_ColCommand" xml:space="preserve">
+    <value>Comando</value>
+  </data>
+  <data name="AliasList_ColAction" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="AliasList_ConfirmRemove" xml:space="preserve">
+    <value>¿Seguro que quieres quitar el alias {0}?</value>
+  </data>
+  <data name="AliasList_Enabled" xml:space="preserve">
+    <value>Alias {0} activado</value>
+  </data>
+  <data name="AliasList_Disabled" xml:space="preserve">
+    <value>Alias {0} desactivado</value>
+  </data>
+  <data name="AliasEdit_AddTitle" xml:space="preserve">
+    <value>Crear nuevo alias</value>
+  </data>
+  <data name="AliasEdit_EditTitle" xml:space="preserve">
+    <value>Editar alias</value>
+  </data>
+  <data name="AliasEdit_CommandLabel" xml:space="preserve">
+    <value>&amp;Comando:</value>
+  </data>
+  <data name="AliasEdit_CommandName" xml:space="preserve">
+    <value>Comando</value>
+  </data>
+  <data name="AliasEdit_ActionLabel" xml:space="preserve">
+    <value>&amp;Acción:</value>
+  </data>
+  <data name="AliasEdit_ActionName" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="AliasEdit_Enabled" xml:space="preserve">
+    <value>Acti&amp;vado</value>
+  </data>
+  <data name="AliasEdit_ErrCommandEmpty" xml:space="preserve">
+    <value>El campo del comando debe contener texto.</value>
+  </data>
+  <data name="AliasEdit_ErrCommandSpaces" xml:space="preserve">
+    <value>No se admiten espacios en el comando del alias.</value>
+  </data>
+  <data name="AliasEdit_ErrActionEmpty" xml:space="preserve">
+    <value>La acción del alias no puede quedar vacía.</value>
+  </data>
+  <data name="AliasEdit_ErrSameAsAction" xml:space="preserve">
+    <value>El comando y la acción equivalente son iguales. No es preciso crear un alias para esto.</value>
+  </data>
+  <data name="AliasEdit_ErrDuplicate" xml:space="preserve">
+    <value>Ya existe un alias con el comando {0}.</value>
+  </data>
+  <data name="AliasEdit_WarnSameAction" xml:space="preserve">
+    <value>Ya existe un alias para esta misma acción, asociado al comando {0}. ¿Deseas añadirlo de todos modos?</value>
+  </data>
+  <data name="TrigList_Title" xml:space="preserve">
+    <value>Triggers de {0}</value>
+  </data>
+  <data name="TrigList_Label" xml:space="preserve">
+    <value>&amp;Triggers:</value>
+  </data>
+  <data name="TrigList_Name" xml:space="preserve">
+    <value>Triggers</value>
+  </data>
+  <data name="TrigList_ColName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="TrigList_ColPattern" xml:space="preserve">
+    <value>Patrón</value>
+  </data>
+  <data name="TrigList_ColType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="TrigList_ColAction" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="TrigList_ColPriority" xml:space="preserve">
+    <value>Prioridad</value>
+  </data>
+  <data name="TrigList_SortOrder" xml:space="preserve">
+    <value>Orden de evaluación</value>
+  </data>
+  <data name="TrigList_ConfirmRemove" xml:space="preserve">
+    <value>¿Seguro que quieres quitar el trigger {0}?</value>
+  </data>
+  <data name="TrigList_Enabled" xml:space="preserve">
+    <value>Trigger {0} activado</value>
+  </data>
+  <data name="TrigList_Disabled" xml:space="preserve">
+    <value>Trigger {0} desactivado</value>
+  </data>
+  <data name="TrigList_Moved" xml:space="preserve">
+    <value>{0} movido a la posición {1} de {2}</value>
+  </data>
+  <data name="TrigList_AlreadyFirst" xml:space="preserve">
+    <value>{0} ya es el primero</value>
+  </data>
+  <data name="TrigList_AlreadyLast" xml:space="preserve">
+    <value>{0} ya es el último</value>
+  </data>
+  <data name="TrigList_MoveNeedsOrder" xml:space="preserve">
+    <value>Para mover triggers, ordena antes la lista por orden de evaluación, ascendente.</value>
+  </data>
+  <data name="TrigEdit_AddTitle" xml:space="preserve">
+    <value>Agregar nuevo trigger</value>
+  </data>
+  <data name="TrigEdit_EditTitle" xml:space="preserve">
+    <value>Editar trigger</value>
+  </data>
+  <data name="TrigEdit_NameLabel" xml:space="preserve">
+    <value>&amp;Nombre:</value>
+  </data>
+  <data name="TrigEdit_NameName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="TrigEdit_PatternLabel" xml:space="preserve">
+    <value>&amp;Texto desencadenante:</value>
+  </data>
+  <data name="TrigEdit_PatternName" xml:space="preserve">
+    <value>Texto desencadenante</value>
+  </data>
+  <data name="TrigEdit_CommandInfo" xml:space="preserve">
+    <value>Trigger de comando: se dispara cuando escribes este comando, que no se envía al MUD. Sin espacios; las palabras que le sigan son %1, %2...</value>
+  </data>
+  <data name="TrigEdit_PatternTypeLabel" xml:space="preserve">
+    <value>Tipo de &amp;patrón:</value>
+  </data>
+  <data name="TrigEdit_PatternTypeName" xml:space="preserve">
+    <value>Tipo de patrón</value>
+  </data>
+  <data name="TrigEdit_TypeLiteral" xml:space="preserve">
+    <value>Texto literal</value>
+  </data>
+  <data name="TrigEdit_TypeRegex" xml:space="preserve">
+    <value>Expresión regular</value>
+  </data>
+  <data name="TrigEdit_TypeWildcards" xml:space="preserve">
+    <value>Comodines %s %d %w</value>
+  </data>
+  <data name="TrigEdit_CaseSensitive" xml:space="preserve">
+    <value>&amp;Distinguir mayúsculas de minúsculas</value>
+  </data>
+  <data name="TrigEdit_Multiline" xml:space="preserve">
+    <value>&amp;Multilínea (evaluar el bloque completo)</value>
+  </data>
+  <data name="TrigEdit_GagLine" xml:space="preserve">
+    <value>Ocultar la &amp;línea</value>
+  </data>
+  <data name="TrigEdit_PriorityLabel" xml:space="preserve">
+    <value>P&amp;rioridad:</value>
+  </data>
+  <data name="TrigEdit_PriorityName" xml:space="preserve">
+    <value>Prioridad</value>
+  </data>
+  <data name="TrigEdit_Enabled" xml:space="preserve">
+    <value>Acti&amp;vado</value>
+  </data>
+  <data name="TrigEdit_DoLabel" xml:space="preserve">
+    <value>¿&amp;Qué hará?</value>
+  </data>
+  <data name="TrigEdit_DoName" xml:space="preserve">
+    <value>Qué hará</value>
+  </data>
+  <data name="TrigEdit_DoCommand" xml:space="preserve">
+    <value>Enviar comando</value>
+  </data>
+  <data name="TrigEdit_DoSound" xml:space="preserve">
+    <value>Reproducir sonido</value>
+  </data>
+  <data name="TrigEdit_DoBoth" xml:space="preserve">
+    <value>Ambas</value>
+  </data>
+  <data name="TrigEdit_DoScript" xml:space="preserve">
+    <value>Script Lua</value>
+  </data>
+  <data name="TrigEdit_ActionLabel" xml:space="preserve">
+    <value>&amp;Acción:</value>
+  </data>
+  <data name="TrigEdit_ActionName" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="TrigEdit_ScriptLabel" xml:space="preserve">
+    <value>&amp;Script Lua:</value>
+  </data>
+  <data name="TrigEdit_ScriptName" xml:space="preserve">
+    <value>Script Lua</value>
+  </data>
+  <data name="TrigEdit_TabHint" xml:space="preserve">
+    <value>Tab sangra. Ctrl+Tab sale del cuadro.</value>
+  </data>
+  <data name="TrigEdit_SoundLabel" xml:space="preserve">
+    <value>Son&amp;ido:</value>
+  </data>
+  <data name="TrigEdit_SoundName" xml:space="preserve">
+    <value>Sonido</value>
+  </data>
+  <data name="TrigEdit_Browse" xml:space="preserve">
+    <value>E&amp;xaminar...</value>
+  </data>
+  <data name="TrigEdit_BrowseTitle" xml:space="preserve">
+    <value>Seleccionar archivo de sonido para el trigger</value>
+  </data>
+  <data name="TrigEdit_SoundFilter" xml:space="preserve">
+    <value>Ficheros de sonido (*.wav;*.mp3;*.ogg)|*.wav;*.mp3;*.ogg|Todos los archivos (*.*)|*.*</value>
+  </data>
+  <data name="TrigEdit_PlaySound" xml:space="preserve">
+    <value>Pro&amp;bar sonido</value>
+  </data>
+  <data name="TrigEdit_SampleLabel" xml:space="preserve">
+    <value>Texto de pr&amp;ueba:</value>
+  </data>
+  <data name="TrigEdit_SampleName" xml:space="preserve">
+    <value>Texto de prueba</value>
+  </data>
+  <data name="TrigEdit_Test" xml:space="preserve">
+    <value>Pr&amp;obar</value>
+  </data>
+  <data name="TrigEdit_ResultLabel" xml:space="preserve">
+    <value>R&amp;esultado:</value>
+  </data>
+  <data name="TrigEdit_ResultName" xml:space="preserve">
+    <value>Resultado</value>
+  </data>
+  <data name="TrigEdit_ErrNameEmpty" xml:space="preserve">
+    <value>El trigger necesita un nombre.</value>
+  </data>
+  <data name="TrigEdit_ErrDuplicateName" xml:space="preserve">
+    <value>Ya existe un trigger llamado {0}.</value>
+  </data>
+  <data name="TrigEdit_ErrPatternEmpty" xml:space="preserve">
+    <value>El texto que desencadenará el trigger no puede estar vacío.</value>
+  </data>
+  <data name="TrigEdit_ErrCommandEmpty" xml:space="preserve">
+    <value>Si deseas asociar este trigger a un comando, debes escribir el comando tras la @.</value>
+  </data>
+  <data name="TrigEdit_ErrCommandSpaces" xml:space="preserve">
+    <value>El comando de un trigger de comando no puede contener espacios.</value>
+  </data>
+  <data name="TrigEdit_ErrRegex" xml:space="preserve">
+    <value>La expresión regular no está bien construida. Error: {0}</value>
+  </data>
+  <data name="TrigEdit_ErrRegexSlow" xml:space="preserve">
+    <value>tarda demasiado en evaluarse</value>
+  </data>
+  <data name="TrigEdit_ErrActionEmpty" xml:space="preserve">
+    <value>La acción del trigger no puede estar vacía.</value>
+  </data>
+  <data name="TrigEdit_ErrActionLines" xml:space="preserve">
+    <value>La acción debe ser una sola línea. Para varios pasos usa el carácter de concatenación o un script Lua.</value>
+  </data>
+  <data name="TrigEdit_ErrScriptEmpty" xml:space="preserve">
+    <value>Debes escribir el script Lua de este trigger.</value>
+  </data>
+  <data name="TrigEdit_ErrScript" xml:space="preserve">
+    <value>El script Lua tiene un error: {0}</value>
+  </data>
+  <data name="TrigEdit_ErrScriptAtLine" xml:space="preserve">
+    <value>El script Lua tiene un error en la línea {0}: {1}</value>
+  </data>
+  <data name="TrigEdit_ErrSoundEmpty" xml:space="preserve">
+    <value>El sonido que reproducirá el trigger no puede estar vacío.</value>
+  </data>
+  <data name="TrigEdit_ErrCannotPlay" xml:space="preserve">
+    <value>No se pudo reproducir {0}.</value>
+  </data>
+  <data name="TrigEdit_WarnSamePattern" xml:space="preserve">
+    <value>Ya existe un trigger llamado {0} que responde al mismo texto desencadenante. ¿Deseas continuar?</value>
+  </data>
+  <data name="TrigTest_Matches" xml:space="preserve">
+    <value>Coincide.</value>
+  </data>
+  <data name="TrigTest_NoMatch" xml:space="preserve">
+    <value>No coincide.</value>
+  </data>
+  <data name="TrigTest_NoCaptures" xml:space="preserve">
+    <value>Sin capturas.</value>
+  </data>
+  <data name="TrigTest_Capture" xml:space="preserve">
+    <value>%{0} = {1}</value>
+  </data>
+  <data name="TrigTest_Command" xml:space="preserve">
+    <value>Enviaría: {0}</value>
+  </data>
+  <data name="TrigTest_Sound" xml:space="preserve">
+    <value>Reproduciría: {0}</value>
+  </data>
+  <data name="TrigTest_HidesLine" xml:space="preserve">
+    <value>Ocultaría la línea.</value>
+  </data>
+  <data name="TrigTest_ScriptNothing" xml:space="preserve">
+    <value>El script se ejecutó y no hizo nada visible.</value>
+  </data>
+  <data name="TrigTest_ScriptError" xml:space="preserve">
+    <value>Error del script: {0}</value>
+  </data>
+  <data name="TrigTest_ScriptErrorAtLine" xml:space="preserve">
+    <value>Error del script en la línea {0}: {1}</value>
+  </data>
+  <data name="TrigTest_ErrNoSample" xml:space="preserve">
+    <value>Escribe antes un texto de prueba.</value>
+  </data>
+  <data name="TrigTest_ErrBadRegex" xml:space="preserve">
+    <value>La expresión regular no es válida.</value>
+  </data>
+  <data name="TrigTest_ErrNoEngine" xml:space="preserve">
+    <value>Aquí no se pueden ejecutar scripts.</value>
+  </data>
+  <data name="TrigTest_FxSend" xml:space="preserve">
+    <value>Enviaría: {0}</value>
+  </data>
+  <data name="TrigTest_FxSendRaw" xml:space="preserve">
+    <value>Enviaría directo al MUD: {0}</value>
+  </data>
+  <data name="TrigTest_FxGet" xml:space="preserve">
+    <value>Enviaría y esperaría la respuesta: {0}</value>
+  </data>
+  <data name="TrigTest_FxDisplay" xml:space="preserve">
+    <value>Mostraría: {0}</value>
+  </data>
+  <data name="TrigTest_FxEcho" xml:space="preserve">
+    <value>Pintaría: {0}</value>
+  </data>
+  <data name="TrigTest_FxSay" xml:space="preserve">
+    <value>Diría: {0}</value>
+  </data>
+  <data name="TrigTest_FxMessage" xml:space="preserve">
+    <value>Añadiría el mensaje: {0}</value>
+  </data>
+  <data name="TrigTest_FxPlaySound" xml:space="preserve">
+    <value>Reproduciría: {0}</value>
+  </data>
+  <data name="TrigTest_FxStopSound" xml:space="preserve">
+    <value>Detendría el sonido: {0}</value>
+  </data>
+  <data name="TrigTest_FxSetVar" xml:space="preserve">
+    <value>Guardaría la variable {0} = {1}</value>
+  </data>
+  <data name="TrigTest_FxRemoveVar" xml:space="preserve">
+    <value>Borraría la variable {0}</value>
+  </data>
+  <data name="TrigTest_FxStatus" xml:space="preserve">
+    <value>Pondría en la barra de estado: {0}</value>
+  </data>
+  <data name="TrigTest_FxLog" xml:space="preserve">
+    <value>Escribiría en el log: {0}</value>
+  </data>
+  <data name="PathList_Title" xml:space="preserve">
+    <value>Paths de {0}</value>
+  </data>
+  <data name="PathList_Label" xml:space="preserve">
+    <value>&amp;Paths:</value>
+  </data>
+  <data name="PathList_Name" xml:space="preserve">
+    <value>Paths</value>
+  </data>
+  <data name="PathList_ColName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="PathList_ColPath" xml:space="preserve">
+    <value>Camino</value>
+  </data>
+  <data name="PathList_ConfirmRemove" xml:space="preserve">
+    <value>¿Seguro que quieres borrar el path {0}?</value>
+  </data>
+  <data name="PathEdit_AddTitle" xml:space="preserve">
+    <value>Agregar nuevo path</value>
+  </data>
+  <data name="PathEdit_EditTitle" xml:space="preserve">
+    <value>Editando el path {0}</value>
+  </data>
+  <data name="PathEdit_NameLabel" xml:space="preserve">
+    <value>&amp;Nombre:</value>
+  </data>
+  <data name="PathEdit_NameName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="PathEdit_PathLabel" xml:space="preserve">
+    <value>&amp;Camino:</value>
+  </data>
+  <data name="PathEdit_PathName" xml:space="preserve">
+    <value>Camino</value>
+  </data>
+  <data name="PathEdit_ShowExpansion" xml:space="preserve">
+    <value>&amp;Ver expansión</value>
+  </data>
+  <data name="PathEdit_ExpansionLabel" xml:space="preserve">
+    <value>E&amp;xpansión:</value>
+  </data>
+  <data name="PathEdit_ExpansionName" xml:space="preserve">
+    <value>Expansión</value>
+  </data>
+  <data name="PathEdit_Expansion" xml:space="preserve">
+    <value>{0} pasos: {1}</value>
+  </data>
+  <data name="PathEdit_ExpansionUnavailable" xml:space="preserve">
+    <value>Aquí no están disponibles las direcciones del MUD, así que no se puede expandir el camino.</value>
+  </data>
+  <data name="PathEdit_ErrNameEmpty" xml:space="preserve">
+    <value>El path necesita un nombre.</value>
+  </data>
+  <data name="PathEdit_ErrDuplicateName" xml:space="preserve">
+    <value>Ya existe un path llamado {0}.</value>
+  </data>
+  <data name="PathEdit_ErrPathEmpty" xml:space="preserve">
+    <value>No has especificado direcciones para este path.</value>
+  </data>
+  <data name="PathEdit_ErrNoDirections" xml:space="preserve">
+    <value>Este MUD aún no tiene un diccionario de direcciones. Créalo desde Herramientas, Direcciones para los paths.</value>
+  </data>
+  <data name="PathEdit_ErrUnknownAbbreviation" xml:space="preserve">
+    <value>La abreviatura "{0}" no está en las direcciones de este MUD.</value>
+  </data>
+  <data name="PathEdit_ErrEndsWithNumber" xml:space="preserve">
+    <value>El camino termina en un número. Tras un número debe ir la dirección que repite, como en 3n.</value>
+  </data>
+  <data name="PathEdit_ErrCountTooBig" xml:space="preserve">
+    <value>Un número de repeticiones puede tener tres cifras como máximo.</value>
+  </data>
+  <data name="PathEdit_ErrInvalid" xml:space="preserve">
+    <value>El path introducido no es válido. Asegúrate de haberlo escrito correctamente.</value>
+  </data>
+  <data name="PathEdit_WarnNotReversible" xml:space="preserve">
+    <value>Alguna dirección de este path no tiene contraria, así que no tendrá disponible la opción de revertir. ¿Deseas continuar?</value>
+  </data>
+  <data name="PathEdit_WarnSamePath" xml:space="preserve">
+    <value>El path {0} ya tiene este mismo camino. ¿Deseas continuar?</value>
+  </data>
+  <data name="Exch_ListAliases" xml:space="preserve">
+    <value>alias</value>
+  </data>
+  <data name="Exch_ListTriggers" xml:space="preserve">
+    <value>triggers</value>
+  </data>
+  <data name="Exch_ListPaths" xml:space="preserve">
+    <value>paths</value>
+  </data>
+  <data name="Exch_ExportTitle" xml:space="preserve">
+    <value>Exportar {0}</value>
+  </data>
+  <data name="Exch_ImportTitle" xml:space="preserve">
+    <value>Importar {0}</value>
+  </data>
+  <data name="Exch_WrongKind" xml:space="preserve">
+    <value>Este fichero no contiene {0}.</value>
+  </data>
+  <data name="PickChar_Title" xml:space="preserve">
+    <value>Importar desde otro personaje</value>
+  </data>
+  <data name="PickChar_Label" xml:space="preserve">
+    <value>&amp;Personaje:</value>
+  </data>
+  <data name="PickChar_Name" xml:space="preserve">
+    <value>Personaje</value>
+  </data>
+  <data name="PickChar_ItemFormat" xml:space="preserve">
+    <value>{0} ({1})</value>
+  </data>
+  <data name="PickChar_None" xml:space="preserve">
+    <value>No hay más personajes.</value>
+  </data>
+  <data name="LauncherCtx_Connect" xml:space="preserve">
+    <value>&amp;Conectar</value>
+  </data>
+  <data name="LauncherCtx_EditMud" xml:space="preserve">
+    <value>&amp;Editar MUD...</value>
+  </data>
+  <data name="LauncherCtx_DeleteMud" xml:space="preserve">
+    <value>E&amp;liminar MUD</value>
+  </data>
+  <data name="LauncherCtx_AddCharacter" xml:space="preserve">
+    <value>&amp;Añadir personaje...</value>
+  </data>
+  <data name="LauncherCtx_ExportMud" xml:space="preserve">
+    <value>E&amp;xportar MUD...</value>
+  </data>
+  <data name="LauncherCtx_EditCharacter" xml:space="preserve">
+    <value>&amp;Editar personaje...</value>
+  </data>
+  <data name="LauncherCtx_DeleteCharacter" xml:space="preserve">
+    <value>E&amp;liminar personaje</value>
+  </data>
+  <data name="LauncherCtx_SetDefault" xml:space="preserve">
+    <value>&amp;Marcar como predeterminado</value>
+  </data>
+  <data name="LauncherCtx_ExportCharacter" xml:space="preserve">
+    <value>E&amp;xportar personaje...</value>
+  </data>
+  <data name="LauncherCtx_AddMud" xml:space="preserve">
+    <value>&amp;Añadir MUD...</value>
+  </data>
+  <data name="LauncherCtx_Import" xml:space="preserve">
+    <value>&amp;Importar...</value>
+  </data>
+  <data name="QuickConnect_PortRequired" xml:space="preserve">
+    <value>Escribe el puerto del servidor, un número entre 1 y 65535.</value>
+  </data>
+  <data name="MsgRules_TypeLabel" xml:space="preserve">
+    <value>T&amp;ipo del conjunto:</value>
+  </data>
+  <data name="MsgRules_TypePatterns" xml:space="preserve">
+    <value>Patrones</value>
+  </data>
+  <data name="MsgRules_TypeScript" xml:space="preserve">
+    <value>Script Lua</value>
+  </data>
+  <data name="MsgRules_ScriptLabel" xml:space="preserve">
+    <value>S&amp;cript Lua del conjunto:</value>
+  </data>
+  <data name="MsgRules_ScriptTabHint" xml:space="preserve">
+    <value>Tab escribe un tabulador; Ctrl+Tab sale del cuadro.</value>
+  </data>
+  <data name="MsgRules_SaveScript" xml:space="preserve">
+    <value>&amp;Guardar script</value>
+  </data>
+  <data name="MsgRules_StatusScriptSaved" xml:space="preserve">
+    <value>Script de «{0}» guardado.</value>
+  </data>
+  <data name="MsgRules_ScriptEmpty" xml:space="preserve">
+    <value>El script está vacío. Escríbelo, o cambia el tipo del conjunto a Patrones.</value>
+  </data>
+  <data name="MsgRules_ScriptError" xml:space="preserve">
+    <value>El script tiene un error: {0}</value>
+  </data>
+  <data name="MsgRules_ScriptErrorAtLine" xml:space="preserve">
+    <value>Error en la línea {0} del script: {1}</value>
+  </data>
+  <data name="MsgRules_ConfirmDiscardScript" xml:space="preserve">
+    <value>Al cambiar «{0}» a patrones se descarta su script Lua. ¿Continuar?</value>
+  </data>
+  <data name="MsgRules_ConfirmSaveScript" xml:space="preserve">
+    <value>El script de «{0}» tiene cambios sin guardar. ¿Guardarlos?</value>
+  </data>
+  <data name="MsgRules_TypeChangedScript" xml:space="preserve">
+    <value>«{0}» funciona ahora con un script Lua.</value>
+  </data>
+  <data name="MsgRules_TypeChangedPatterns" xml:space="preserve">
+    <value>«{0}» funciona ahora con patrones.</value>
+  </data>
+  <data name="MsgRules_ScriptTestNone" xml:space="preserve">
+    <value>Ningún mensaje.</value>
+  </data>
+  <data name="MsgRules_ScriptTestCount" xml:space="preserve">
+    <value>Mensajes: {0}</value>
+  </data>
+  <data name="MsgRules_ScriptTestError" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
+  <data name="MsgRules_ScriptTestUnavailable" xml:space="preserve">
+    <value>Lua no está disponible para probar el script.</value>
+  </data>
+  <data name="MsgRules_ScriptTemplate1" xml:space="preserve">
+    <value>Reglas de mensajes: lee om.lines (el bloque recién recibido) y llama a om.message(texto) por cada mensaje.</value>
+  </data>
+  <data name="MsgRules_ScriptTemplate2" xml:space="preserve">
+    <value>Menú Ayuda, referencia de Lua, sección «Reglas de mensajes».</value>
+  </data>
+  <data name="MsgRules_NewSetTypeLabel" xml:space="preserve">
+    <value>&amp;Tipo de conjunto:</value>
+  </data>
+  <data name="Menu_Game" xml:space="preserve">
+    <value>&amp;Partida</value>
+  </data>
+  <data name="Menu_GameSave" xml:space="preserve">
+    <value>&amp;Salvar partida</value>
+  </data>
+  <data name="Menu_GameQuit" xml:space="preserve">
+    <value>&amp;Abandonar la partida</value>
+  </data>
+  <data name="Menu_GameReconnect" xml:space="preserve">
+    <value>&amp;Reconectar</value>
+  </data>
+  <data name="Menu_GameClose" xml:space="preserve">
+    <value>&amp;Cerrar ventana</value>
+  </data>
+  <data name="Options_ProxyUsername" xml:space="preserve">
+    <value>Usuario del proxy (&amp;K):</value>
+  </data>
+  <data name="Options_ProxyPassword" xml:space="preserve">
+    <value>Nueva contraseña del proxy, vacía para no cambiarla (&amp;W):</value>
+  </data>
+  <data name="Options_ClearProxyPassword" xml:space="preserve">
+    <value>Borrar la contraseña del proxy guardada</value>
+  </data>
+  <data name="Options_ErrProxyUserMissing" xml:space="preserve">
+    <value>Introduce el usuario del proxy o deja la contraseña vacía.</value>
+  </data>
+  <data name="Options_ErrProxyUserColon" xml:space="preserve">
+    <value>El usuario de un proxy HTTP no puede contener dos puntos.</value>
+  </data>
+  <data name="Options_ErrProxyUserTooLong" xml:space="preserve">
+    <value>El usuario del proxy es demasiado largo (255 bytes como máximo).</value>
+  </data>
+  <data name="Options_ErrProxyPasswordTooLong" xml:space="preserve">
+    <value>La contraseña del proxy es demasiado larga (255 bytes como máximo).</value>
+  </data>
+  <data name="Options_ErrProxyPasswordNoStore" xml:space="preserve">
+    <value>Este diálogo no puede guardar contraseñas. Deja vacía la contraseña del proxy.</value>
+  </data>
+</root>

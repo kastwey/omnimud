@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <!-- Symbols travel inside each assembly: the portable build stays a single exe with no loose .pdb files. -->
+    <DebugType>embedded</DebugType>
+    <Version>2.0.0</Version>
+    <Product>Omnimud</Product>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="0" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Connection -->
+  <data name="Error_CannotConnectInState" xml:space="preserve">
+    <value>Cannot connect while in state {0}.</value>
+  </data>
+  <data name="Error_PortOutOfRange" xml:space="preserve">
+    <value>Port must be between 1 and 65535.</value>
+  </data>
+  <data name="Error_ConnectionTimedOut" xml:space="preserve">
+    <value>Connection to {0}:{1} timed out.</value>
+  </data>
+  <data name="Error_NotConnected" xml:space="preserve">
+    <value>Not connected.</value>
+  </data>
+
+  <!-- Scripting -->
+  <data name="Error_ScriptTimedOut" xml:space="preserve">
+    <value>Script execution timed out.</value>
+  </data>
+  <data name="Error_ScriptInstructionLimit" xml:space="preserve">
+    <value>Script exceeded maximum instruction count.</value>
+  </data>
+  <data name="Error_ScriptRuntime" xml:space="preserve">
+    <value>Script runtime error: {0}</value>
+  </data>
+  <data name="Error_ScriptSyntax" xml:space="preserve">
+    <value>Script syntax error: {0}</value>
+  </data>
+
+  <!-- Sound -->
+  <data name="Error_OnlyHttpsAllowed" xml:space="preserve">
+    <value>Only HTTPS URLs are allowed for sound downloads.</value>
+  </data>
+  <data name="Error_ExtensionNotAllowed" xml:space="preserve">
+    <value>File extension '{0}' is not allowed.</value>
+  </data>
+  <data name="Error_FileTooLarge" xml:space="preserve">
+    <value>File exceeds maximum size of {0} bytes.</value>
+  </data>
+
+  <!-- Security -->
+  <data name="Error_MasterKeySize" xml:space="preserve">
+    <value>Master key must be {0} bytes.</value>
+  </data>
+  <data name="Error_ProtectedDataTooShort" xml:space="preserve">
+    <value>Protected data is too short.</value>
+  </data>
+
+  <!-- Triggers -->
+  <data name="Cmd_Offline" xml:space="preserve">
+    <value>You are in offline mode. You cannot send any command.</value>
+  </data>
+  <data name="Cmd_NotConnected" xml:space="preserve">
+    <value>You are not connected. The command was not sent.</value>
+  </data>
+  <data name="Cmd_RecursionLimit" xml:space="preserve">
+    <value>Too many nested commands (possible loop between aliases or triggers). Ignored: {0}</value>
+  </data>
+  <data name="Cmd_RequiresCharacter" xml:space="preserve">
+    <value>This command needs a character.</value>
+  </data>
+  <data name="Cmd_ClsOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Path_NoDirections" xml:space="preserve">
+    <value>No directions are defined for this MUD. Add them in Tools, Directions for paths.</value>
+  </data>
+  <data name="Path_Usage" xml:space="preserve">
+    <value>Usage: _path_name. Example: _alandel-turman.</value>
+  </data>
+  <data name="Path_NotFound" xml:space="preserve">
+    <value>There is no path with that name.</value>
+  </data>
+  <data name="Path_NotReversible" xml:space="preserve">
+    <value>This path cannot be reversed: one of its directions has no opposite direction in the dictionary.</value>
+  </data>
+  <data name="Path_Invalid" xml:space="preserve">
+    <value>Error: the path is not valid: {0}</value>
+  </data>
+  <data name="Triggers_Disabled" xml:space="preserve">
+    <value>Trigger system disabled. Use the '+triggers' command to enable it again.</value>
+  </data>
+  <data name="Triggers_Enabled" xml:space="preserve">
+    <value>Trigger system enabled. Use the '-triggers' command to disable it.</value>
+  </data>
+  <data name="Triggers_AlreadyDisabled" xml:space="preserve">
+    <value>The trigger system was already disabled.</value>
+  </data>
+  <data name="Triggers_AlreadyEnabled" xml:space="preserve">
+    <value>The trigger system was already enabled.</value>
+  </data>
+  <data name="Trigger_EnableWhich" xml:space="preserve">
+    <value>Enable which trigger?</value>
+  </data>
+  <data name="Trigger_DisableWhich" xml:space="preserve">
+    <value>Disable which trigger?</value>
+  </data>
+  <data name="Trigger_NotFound" xml:space="preserve">
+    <value>Trigger {0} was not found.</value>
+  </data>
+  <data name="Trigger_AlreadyEnabled" xml:space="preserve">
+    <value>The trigger is already enabled.</value>
+  </data>
+  <data name="Trigger_AlreadyDisabled" xml:space="preserve">
+    <value>The trigger is already disabled.</value>
+  </data>
+  <data name="Trigger_EnabledOk" xml:space="preserve">
+    <value>Trigger enabled.</value>
+  </data>
+  <data name="Trigger_DisabledOk" xml:space="preserve">
+    <value>Trigger disabled.</value>
+  </data>
+  <data name="Trigger_EnableError" xml:space="preserve">
+    <value>Error enabling the trigger.</value>
+  </data>
+  <data name="Trigger_DisableError" xml:space="preserve">
+    <value>Error disabling the trigger.</value>
+  </data>
+  <data name="Alias_RemoveNeedsName" xml:space="preserve">
+    <value>You must specify the name of the alias to remove.</value>
+  </data>
+  <data name="Alias_NameNoSpaces" xml:space="preserve">
+    <value>The alias name cannot contain spaces.</value>
+  </data>
+  <data name="Alias_NotFound" xml:space="preserve">
+    <value>There is no alias with that name.</value>
+  </data>
+  <data name="Alias_Removed" xml:space="preserve">
+    <value>Alias {0} removed.</value>
+  </data>
+  <data name="Alias_RemoveError" xml:space="preserve">
+    <value>Error removing the alias!</value>
+  </data>
+  <data name="Alias_QueryNeedsName" xml:space="preserve">
+    <value>You must specify the name of the alias to look up.</value>
+  </data>
+  <data name="Alias_Assigned" xml:space="preserve">
+    <value>Alias {0} is assigned to the action {1}.</value>
+  </data>
+  <data name="Alias_NotStored" xml:space="preserve">
+    <value>Alias {0} is not stored.</value>
+  </data>
+  <data name="Alias_EmptyCommand" xml:space="preserve">
+    <value>The alias command cannot be empty.</value>
+  </data>
+  <data name="Alias_EmptyAction" xml:space="preserve">
+    <value>The alias action cannot be empty.</value>
+  </data>
+  <data name="Alias_AlreadyExists" xml:space="preserve">
+    <value>There is already an alias for that command. Remove it with the uncalias command, or use another name.</value>
+  </data>
+  <data name="Alias_SameActionConfirm" xml:space="preserve">
+    <value>Alias {0} already performs that same action. Do you want to create this alias anyway?</value>
+  </data>
+  <data name="Alias_Cancelled" xml:space="preserve">
+    <value>Alias cancelled.</value>
+  </data>
+  <data name="Alias_Added" xml:space="preserve">
+    <value>Alias {0} added.</value>
+  </data>
+  <data name="Alias_AddError" xml:space="preserve">
+    <value>Error adding the alias!</value>
+  </data>
+  <data name="Rec_AlreadyStarted" xml:space="preserve">
+    <value>A path recording is already in progress. Type paths detener to save it or paths cancelar to discard it.</value>
+  </data>
+  <data name="Rec_Started" xml:space="preserve">
+    <value>Path recording started. Move as usual: every known direction will be noted down. Commands: paths ultima, paths ultima borrar, paths grabado, paths cancelar and paths detener.</value>
+  </data>
+  <data name="Rec_NotRecording" xml:space="preserve">
+    <value>You are not recording a path right now. Type paths iniciar to start.</value>
+  </data>
+  <data name="Rec_Empty" xml:space="preserve">
+    <value>There are no directions recorded in this path yet.</value>
+  </data>
+  <data name="Rec_Last" xml:space="preserve">
+    <value>The last direction entered was: {0}.
+To remove it, type paths ultima borrar.</value>
+  </data>
+  <data name="Rec_LastRemoved" xml:space="preserve">
+    <value>The last stored direction ({0}) has been removed from the path.</value>
+  </data>
+  <data name="Rec_Recorded" xml:space="preserve">
+    <value>The path recorded so far is:
+{0}</value>
+  </data>
+  <data name="Rec_CancelConfirm" xml:space="preserve">
+    <value>Are you sure you want to cancel the path recording?</value>
+  </data>
+  <data name="Rec_Cancelled" xml:space="preserve">
+    <value>Path recording cancelled.</value>
+  </data>
+  <data name="Rec_Stopped" xml:space="preserve">
+    <value>Path recording stopped.</value>
+  </data>
+  <data name="Rec_Status" xml:space="preserve">
+    <value>Recording path</value>
+  </data>
+  <data name="Silent_On" xml:space="preserve">
+    <value>Enabling silent mode.</value>
+  </data>
+  <data name="Silent_AlreadyOn" xml:space="preserve">
+    <value>Silent mode was already enabled.</value>
+  </data>
+  <data name="Silent_Off" xml:space="preserve">
+    <value>Disabling silent mode.</value>
+  </data>
+  <data name="Silent_NotOn" xml:space="preserve">
+    <value>Silent mode was not enabled.</value>
+  </data>
+  <data name="Session_ServerClosed" xml:space="preserve">
+    <value>The server closed the connection.</value>
+  </data>
+  <data name="Session_ConnectionLost" xml:space="preserve">
+    <value>The connection was lost.</value>
+  </data>
+  <data name="Session_ConnectionTimeout" xml:space="preserve">
+    <value>The connection timed out.</value>
+  </data>
+  <data name="Session_SendError" xml:space="preserve">
+    <value>Error sending: {0}</value>
+  </data>
+  <data name="Session_ScriptError" xml:space="preserve">
+    <value>Error in script {0}: {1}</value>
+  </data>
+  <data name="Session_InvalidGetPattern" xml:space="preserve">
+    <value>om.get: the expected pattern is not a valid regular expression: {0}</value>
+  </data>
+  <data name="Log_SessionEnded" xml:space="preserve">
+    <value>Session ended on {0:yyyy-MM-dd} at {0:HH:mm:ss}.</value>
+  </data>
+  <data name="Log_OpenError" xml:space="preserve">
+    <value>The log file could not be opened: {0}</value>
+  </data>
+  <data name="Session_MessageScriptError" xml:space="preserve">
+    <value>Error in the message rules script: {0}</value>
+  </data>
+  <data name="Session_MessageScriptDisabled" xml:space="preserve">
+    <value>The message rules script keeps exceeding its limits and has been switched off until the rules are reloaded.</value>
+  </data>
+  <data name="Actions_Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="Actions_Exits" xml:space="preserve">
+    <value>Exits</value>
+  </data>
+  <data name="Actions_More" xml:space="preserve">
+    <value>… and {0} more</value>
+  </data>
+  <data name="Proxy_ConnectionFailed" xml:space="preserve">
+    <value>Could not connect to the proxy server ({0}). Check the proxy host and port in Options, Connection tab, and that the proxy is running.</value>
+  </data>
+  <data name="Proxy_AuthenticationFailed" xml:space="preserve">
+    <value>The proxy ({0}) asks for a user name and password, or rejected the ones given. Check them in Options, Connection tab.</value>
+  </data>
+  <data name="Proxy_Rejected" xml:space="preserve">
+    <value>The proxy ({0}) refused to connect to the MUD or could not reach it.</value>
+  </data>
+  <data name="Proxy_RejectedWithCode" xml:space="preserve">
+    <value>The proxy ({0}) refused to connect to the MUD or could not reach it (code {1}).</value>
+  </data>
+  <data name="Proxy_ProtocolError" xml:space="preserve">
+    <value>The proxy gave an unexpected answer. Check that the protocol chosen in Options, Connection tab ({0}) is the one your proxy speaks.</value>
+  </data>
+  <data name="Proxy_NameSocks5" xml:space="preserve">
+    <value>SOCKS5</value>
+  </data>
+  <data name="Proxy_NameHttpConnect" xml:space="preserve">
+    <value>HTTP CONNECT</value>
+  </data>
+
+</root>

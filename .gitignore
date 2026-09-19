@@ -1,0 +1,18 @@
+# Build output
+bin/
+obj/
+publish/
+artifacts/
+TestResults/
+
+# IDE
+.vs/
+*.user
+*.suo
+
+# Portable user data created next to the executable: database, keys, logs, downloaded sounds
+data/
+*.db
+*.db-wal
+*.db-shm
+master.key
