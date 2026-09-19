@@ -26,7 +26,8 @@ internal sealed class GameWindowFactory(
     ISessionDialogs dialogs,
     MudSessionSettings settings,
     TimeProvider time,
-    IProxySettingsResolver? proxySettings = null) : IGameWindowFactory
+    IProxySettingsResolver? proxySettings = null,
+    IAppDialogs? appDialogs = null) : IGameWindowFactory
 {
     public Form Create(SessionProfile profile)
     {
@@ -37,6 +38,6 @@ internal sealed class GameWindowFactory(
         var sound = new SessionSound(player, downloader);
         var session = new MudSession(profile, new TelnetConnection(), store, options, sound,
             new LuaScriptEngine(time), time, settings, proxySettings);
-        return new FrmGame(session, sound, dialogs, time);
+        return new FrmGame(session, sound, dialogs, time, announcer: null, appDialogs);
     }
 }

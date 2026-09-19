@@ -1,0 +1,60 @@
+# Pushing a tag "v<version>" builds, tests and packages that version, and creates the GitHub release with the
+# portable zip, the installer and their SHA-256 files attached. The tag must match <Version> in
+# Directory.Build.props (tools/release.ps1 checks it). No secrets of our own: only the token of the workflow.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+# The minimum needed to create a release and upload its files.
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET (version from global.json)
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      # Inno Setup 6 comes with some runner images and not with others: install it when it is missing.
+      - name: Make sure Inno Setup is available
+        shell: pwsh
+        run: |
+          $known = @("${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe", "$env:ProgramFiles\Inno Setup 6\ISCC.exe")
+          if (-not (Get-Command iscc -ErrorAction SilentlyContinue) -and -not ($known | Where-Object { Test-Path $_ })) {
+            choco install innosetup --no-progress -y
+          }
+
+      # The tag name travels as an environment variable, never pasted into the script text.
+      - name: Build, test, publish, zip and installer
+        shell: pwsh
+        env:
+          TAG: ${{ github.ref_name }}
+        run: ./tools/release.ps1 -Version $env:TAG -CI -RequireInstaller
+
+      - name: Create the release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          $tag = $env:TAG
+          $files = Get-ChildItem artifacts/release -File | ForEach-Object { $_.FullName }
+          $arguments = @('release', 'create', $tag) + $files + @('--title', "Omnimud $($tag.TrimStart('v'))", '--generate-notes', '--verify-tag')
+          # 2.1.0-beta.1 and the like are published as pre-releases: the update check of the program ignores them.
+          if ($tag -match '-') { $arguments += '--prerelease' }
+          gh @arguments

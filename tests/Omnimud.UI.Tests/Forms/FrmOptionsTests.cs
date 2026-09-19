@@ -212,6 +212,23 @@ public sealed class FrmOptionsTests
     });
 
     [Fact]
+    public void UpdateCheckBox_IsOffByDefault_AndOnlyEnabledInTheGlobalOptions() => Ui(() =>
+    {
+        using var global = Create();
+        using var mud = CreateMud();
+        using var character = CreateCharacter();
+
+        var box = Get<CheckBox>(global, "_chkCheckUpdates");
+        box.Checked.Should().BeFalse("nothing goes to the network on its own unless the user asks for it");
+        box.Text.Should().Be("Comprobar si hay actualizaciones al iniciar Omnimud");
+        box.UseMnemonic.Should().BeFalse("the dialog has no letters left: check boxes go without mnemonic");
+        box.Parent!.Parent.Should().BeSameAs(Get<TabPage>(global, "_tabGeneral"));
+        box.Enabled.Should().BeTrue();
+        Get<CheckBox>(mud, "_chkCheckUpdates").Enabled.Should().BeFalse();
+        Get<CheckBox>(character, "_chkCheckUpdates").Enabled.Should().BeFalse();
+    });
+
+    [Fact]
     public void Controls_ShowTheStoredValues() => Ui(() =>
     {
         _service.With(OptionScope.Global, null, OmnimudOptions.Default with

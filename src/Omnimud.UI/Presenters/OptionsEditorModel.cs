@@ -83,6 +83,9 @@ public sealed class OptionsEditorModel
     /// <summary>The language belongs to the application, not to a MUD or a character: only editable in Global.</summary>
     public bool CanEditLanguage => Scope == OptionScope.Global;
 
+    /// <summary>Options of the application as a whole (language, update check): only the Global value counts, so only Global edits them.</summary>
+    public bool CanEditApplicationOptions => Scope == OptionScope.Global;
+
     /// <summary>True = the scope has no block of its own and follows the level above.</summary>
     public bool UseInherited { get; private set; }
 
@@ -321,6 +324,8 @@ public sealed class OptionsEditorModel
 
         var fields = OptionsFields.From(imported);
         if (!CanEditLanguage) fields.Language = current.Language;
+        // A file never switches on the update check (nothing goes to the network unless the user ticks the box himself).
+        fields.CheckUpdatesOnStartup = current.CheckUpdatesOnStartup;
         // A file brings no password: what the dialog had (stored, typed or marked for deletion) stays.
         fields.ProxyPasswordProtected = current.ProxyPasswordProtected;
         fields.NewProxyPassword = current.NewProxyPassword;

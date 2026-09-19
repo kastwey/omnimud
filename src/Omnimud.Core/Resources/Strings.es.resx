@@ -309,5 +309,65 @@ Para borrarla, escribe paths ultima borrar.</value>
   <data name="Proxy_NameHttpConnect" xml:space="preserve">
     <value>HTTP CONNECT</value>
   </data>
+  <data name="Report_TitleError" xml:space="preserve">
+    <value>[Error] {0}</value>
+  </data>
+  <data name="Report_TitleSuggestion" xml:space="preserve">
+    <value>[Sugerencia] {0}</value>
+  </data>
+  <data name="Report_UntitledError" xml:space="preserve">
+    <value>Error inesperado</value>
+  </data>
+  <data name="Report_UntitledSuggestion" xml:space="preserve">
+    <value>Sugerencia</value>
+  </data>
+  <data name="Report_SectionDescription" xml:space="preserve">
+    <value>Descripción:</value>
+  </data>
+  <data name="Report_NoDescription" xml:space="preserve">
+    <value>(sin descripción)</value>
+  </data>
+  <data name="Report_SectionDiagnostics" xml:space="preserve">
+    <value>Datos de diagnóstico:</value>
+  </data>
+  <data name="Report_DiagVersion" xml:space="preserve">
+    <value>Versión de Omnimud: {0}</value>
+  </data>
+  <data name="Report_DiagWindows" xml:space="preserve">
+    <value>Versión de Windows: {0}</value>
+  </data>
+  <data name="Report_DiagDotNet" xml:space="preserve">
+    <value>Versión de .NET: {0}</value>
+  </data>
+  <data name="Report_DiagArchitecture" xml:space="preserve">
+    <value>Arquitectura: {0}</value>
+  </data>
+  <data name="Report_DiagLanguage" xml:space="preserve">
+    <value>Idioma de la interfaz: {0}</value>
+  </data>
+  <data name="Report_DiagScreenReader" xml:space="preserve">
+    <value>Modo de lector de pantalla: {0}</value>
+  </data>
+  <data name="Report_SectionException" xml:space="preserve">
+    <value>Detalles del error:</value>
+  </data>
+  <data name="Report_InnerException" xml:space="preserve">
+    <value>Causado por:</value>
+  </data>
+  <data name="Report_ExceptionType" xml:space="preserve">
+    <value>Tipo: {0}</value>
+  </data>
+  <data name="Report_ExceptionMessage" xml:space="preserve">
+    <value>Mensaje: {0}</value>
+  </data>
+  <data name="Report_StackTrace" xml:space="preserve">
+    <value>Pila de llamadas:</value>
+  </data>
+  <data name="Report_StackCut" xml:space="preserve">
+    <value>[… pila recortada: {0} caracteres más]</value>
+  </data>
+  <data name="Report_Truncated" xml:space="preserve">
+    <value>[El informe no cabía en el enlace y se ha recortado aquí. El informe completo está en tu portapapeles: pégalo encima de este texto.]</value>
+  </data>
 
 </root>

@@ -46,7 +46,7 @@ public sealed partial class FrmOptions : Form
     private ComboBox _cboScreenReader = null!, _cboCursorReceived = null!, _cboCursorMessages = null!, _cboLanguage = null!;
     private NumericUpDown _nudHistorySize = null!, _nudMaxLines = null!, _nudPromptFlush = null!;
     private CheckBox _chkConfirmExit = null!, _chkTrySave = null!, _chkTelnet = null!, _chkAnnounceMudText = null!,
-        _chkAnnounceMessages = null!, _chkFlashWindow = null!;
+        _chkAnnounceMessages = null!, _chkFlashWindow = null!, _chkCheckUpdates = null!;
     // Logs
     private ComboBox _cboLogType = null!;
     private TextBox _txtLogDirectory = null!;
@@ -154,6 +154,7 @@ public sealed partial class FrmOptions : Form
             _chkFlashWindow.Checked = f.FlashWindow;
             SetNumber(_nudMaxLines, f.MaxLines);
             SetNumber(_nudPromptFlush, f.PromptFlushMilliseconds);
+            _chkCheckUpdates.Checked = f.CheckUpdatesOnStartup;
 
             SelectValue(_cboLogType, LogItems, f.LogType);
             _txtLogDirectory.Text = f.LogDirectory;
@@ -207,6 +208,7 @@ public sealed partial class FrmOptions : Form
         FlashWindow = _chkFlashWindow.Checked,
         MaxLines = (int)_nudMaxLines.Value,
         PromptFlushMilliseconds = (int)_nudPromptFlush.Value,
+        CheckUpdatesOnStartup = _chkCheckUpdates.Checked,
         LogType = Selected(_cboLogType, LogItems),
         LogDirectory = _txtLogDirectory.Text,
         EnableSounds = _chkEnableSounds.Checked,
@@ -243,6 +245,7 @@ public sealed partial class FrmOptions : Form
 
         var f = ReadFields();
         _cboLanguage.Enabled = _model.CanEditLanguage;
+        _chkCheckUpdates.Enabled = _model.CanEditApplicationOptions;
         _txtLogDirectory.Enabled = _btnBrowse.Enabled = f.LogDirectoryEnabled;
         _chkSoundsBackground.Enabled = f.SoundsBackgroundEnabled;
         _chkMusicBackground.Enabled = f.MusicBackgroundEnabled;
@@ -496,6 +499,8 @@ public sealed partial class FrmOptions : Form
         _chkAnnounceMudText = AddCheck(table, "_chkAnnounceMudText", Strings.Options_AnnounceMudText, OptionsField.AnnounceMudText);
         _chkAnnounceMessages = AddCheck(table, "_chkAnnounceMessages", Strings.Options_AnnounceMessages, OptionsField.AnnounceMessages);
         _chkFlashWindow = AddCheck(table, "_chkFlashWindow", Strings.Options_FlashWindow, OptionsField.FlashWindow);
+        // Application-wide, like the language: only enabled in the global options. Same switch as Tools > "Check for updates on startup" of the launcher.
+        _chkCheckUpdates = AddCheck(table, "_chkCheckUpdates", Strings.Options_CheckUpdates, OptionsField.CheckUpdatesOnStartup);
         return page;
     }
 

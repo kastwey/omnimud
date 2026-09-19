@@ -32,8 +32,9 @@ om.playsound("aviso.wav")
 | `om.character.name` | Nombre del personaje (cadena vacía si no hay). |
 
 ```lua
--- Trigger de comando "@matar": el usuario escribe  @matar orco rapido
-om.echo(om.command)   --> @matar orco rapido
+-- Trigger de comando con patrón "@matar": el usuario escribe  matar orco rapido
+-- (la arroba solo va en el patrón; al teclear el comando no se pone)
+om.echo(om.command)   --> matar orco rapido
 om.echo(om.args[1])   --> orco
 om.echo(#om.args)     --> 2
 om.echo(om.character.name .. " juega en " .. om.mud.name)
@@ -405,7 +406,7 @@ end
 om.message(om.args[1] .. " canta: '" .. om.args[2] .. "'")
 ```
 
-**Comando `@AvisaCura`: avisar cuando estés curado del todo**
+**Comando con patrón `@AvisaCura` (se teclea `AvisaCura`): avisar cuando estés curado del todo**
 ```lua
 while true do
   om.sleep(2)

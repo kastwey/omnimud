@@ -23,6 +23,7 @@ public sealed class OptionsSerializerTests
         FlashWindow = false,
         MaxLines = 2_500,
         PromptFlushMilliseconds = 275,
+        CheckUpdatesOnStartup = true,
         LogType = LogMode.PerSession,
         LogDirectory = @"D:\Mis registros\año 2026",
         EnableSounds = false,
@@ -67,10 +68,22 @@ public sealed class OptionsSerializerTests
     {
         var exported = OptionsSerializer.SerializeForExport(NonDefault);
 
-        exported.Keys.Should().BeEquivalentTo(OptionsSerializer.Keys.Except([nameof(OmnimudOptions.ProxyPasswordProtected)]));
+        exported.Keys.Should().BeEquivalentTo(OptionsSerializer.Keys.Except(
+            [nameof(OmnimudOptions.ProxyPasswordProtected), nameof(OmnimudOptions.CheckUpdatesOnStartup)]));
         exported.Values.Should().NotContain(NonDefault.ProxyPasswordProtected!);
         exported[nameof(OmnimudOptions.ProxyUsername)].Should().Be("juan", "the user name is not a secret");
-        OptionsSerializer.Deserialize(exported).Should().Be(NonDefault with { ProxyPasswordProtected = null });
+        OptionsSerializer.Deserialize(exported).Should().Be(NonDefault with { ProxyPasswordProtected = null, CheckUpdatesOnStartup = false });
+    }
+
+    /// <summary>A file made by somebody else must never be able to make Omnimud go to the network on its own.</summary>
+    [Fact]
+    public void TheUpdateCheck_NeverTravelsInAFile_InEitherDirection()
+    {
+        OptionsSerializer.SecretKeys.Should().Contain(nameof(OmnimudOptions.CheckUpdatesOnStartup));
+        OptionsSerializer.SerializeForExport(new OmnimudOptions { CheckUpdatesOnStartup = true })
+            .Should().NotContainKey(nameof(OmnimudOptions.CheckUpdatesOnStartup));
+        OptionsSerializer.Deserialize(OptionsSerializer.WithoutSecrets(new Dictionary<string, string> { ["CheckUpdatesOnStartup"] = "true" }))
+            .CheckUpdatesOnStartup.Should().BeFalse();
     }
 
     [Fact]

@@ -1,7 +1,10 @@
-using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using Omnimud.Core.Options;
+using Omnimud.Core.Reports;
 using Omnimud.Core.Security;
 using Omnimud.Core.Session;
+using Omnimud.Core.Updates;
+using Omnimud.Data.Options;
 using Omnimud.Data.Exchange;
 using Omnimud.Data.Repositories;
 using Omnimud.UI.Presenters;
@@ -23,6 +26,9 @@ public sealed class FrmLauncher : Form
     private readonly IUserPrompts _prompts;
     private readonly LauncherPresenter _presenter;
     private readonly Func<FrmOptions>? _globalOptionsDialog;
+    private readonly IAppDialogs _app;
+    private readonly UpdateCheckPresenter? _updates;
+    private ToolStripMenuItem? _miCheckOnStartup;
 
     private readonly LauncherTreeView _tree;
     private readonly ContextMenuStrip _treeMenu;
@@ -46,7 +52,9 @@ public sealed class FrmLauncher : Form
     public FrmLauncher(IServiceProvider services, IMudRepository mudRepo, ICharacterRepository charRepo, IPasswordProtector protector,
         IMessageRuleRepository ruleRepo, IExchangeService exchange, IOptionRepository optionRepo, IUserPrompts prompts)
         : this(mudRepo, charRepo, protector, ruleRepo, exchange, optionRepo, prompts,
-            () => services.GetRequiredService<IGameWindowFactory>(), dialogs: null, conflicts: null)
+            () => services.GetRequiredService<IGameWindowFactory>(), dialogs: null, conflicts: null,
+            app: services.GetService<IAppDialogs>(), updateChecker: services.GetService<IUpdateChecker>(),
+            optionsService: services.GetService<IOptionsService>(), externalLauncher: services.GetService<IExternalLauncher>())
     {
         // The shared options service, so open game windows hear about the change.
         _globalOptionsDialog = () => new FrmOptions(services.GetRequiredService<Omnimud.Core.Options.IOptionsService>(),
@@ -57,8 +65,15 @@ public sealed class FrmLauncher : Form
     /// <summary>For tests: no container, and the dialogs can be answered without opening a window.</summary>
     internal FrmLauncher(IMudRepository mudRepo, ICharacterRepository charRepo, IPasswordProtector protector,
         IMessageRuleRepository ruleRepo, IExchangeService exchange, IOptionRepository optionRepo, IUserPrompts prompts,
-        Func<IGameWindowFactory> windows, ILauncherDialogs? dialogs, IImportConflictResolver? conflicts)
+        Func<IGameWindowFactory> windows, ILauncherDialogs? dialogs, IImportConflictResolver? conflicts,
+        IAppDialogs? app = null, IUpdateChecker? updateChecker = null, IOptionsService? optionsService = null,
+        IExternalLauncher? externalLauncher = null, IUpdateNotice? updateNotice = null)
     {
+        _app = app ?? AppDialogs.CreateBasic(prompts);
+        // Without a checker (a launcher built by hand) the update entries are simply not there.
+        if (updateChecker is not null)
+            _updates = new UpdateCheckPresenter(updateChecker, optionsService ?? new OptionsService(optionRepo), prompts,
+                updateNotice ?? new LauncherUpdateNotice(this), externalLauncher ?? new ShellExternalLauncher());
         _windows = windows;
         _ruleRepo = ruleRepo;
         _optionRepo = optionRepo;
@@ -152,6 +167,20 @@ public sealed class FrmLauncher : Form
 
     internal Task LoadAsync() => _presenter.LoadAsync();
 
+    protected override void OnShown(EventArgs e)
+    {
+        base.OnShown(e);
+        Run(CheckUpdatesOnStartupAsync);
+    }
+
+    /// <summary>
+    /// Only when the user switched it on (off by default). In the background: the window is already usable, nothing
+    /// is said unless there is a new version, and a failure is silent.
+    /// </summary>
+    internal Task CheckUpdatesOnStartupAsync() => _updates?.CheckOnStartupAsync() ?? Task.CompletedTask;
+
+    internal UpdateCheckPresenter? Updates => _updates;
+
     private void Run(Func<Task> action) => ErrorReporter.Run(this, action);
 
     /// <summary>Every button, menu entry and key ends here.</summary>
@@ -188,12 +217,27 @@ public sealed class FrmLauncher : Form
             new ToolStripSeparator(),
             Item(Strings.Launcher_MenuImport, LauncherCommand.Import, Keys.Control | Keys.I),
             Item(Strings.Launcher_MenuExportMud, LauncherCommand.ExportMud, Keys.Control | Keys.E),
-            Item(Strings.Launcher_MenuExportCharacter, LauncherCommand.ExportCharacter, Keys.Control | Keys.Shift | Keys.E)]);
+            Item(Strings.Launcher_MenuExportCharacter, LauncherCommand.ExportCharacter, Keys.Control | Keys.Shift | Keys.E),
+            new ToolStripSeparator(),
+            Named("_miPersonalInfo", Item(Strings.Launcher_MenuPersonalInfo, () => _app.ShowPersonalInfo(this)))]);
+        if (_updates is not null)
+        {
+            _miCheckOnStartup = Named("_miCheckOnStartup", Item(Strings.Launcher_MenuCheckUpdatesOnStartup, ToggleCheckOnStartup));
+            tools.DropDownItems.AddRange([
+                new ToolStripSeparator(),
+                Named("_miCheckUpdates", Item(Strings.Launcher_MenuCheckUpdates, () => Run(() => _updates.CheckNowAsync()))),
+                _miCheckOnStartup]);
+            // The box always shows what is stored (it can also be changed in the global options).
+            tools.DropDownOpening += (_, _) => RefreshCheckOnStartup();
+        }
 
         var help = new ToolStripMenuItem(Strings.Menu_Help);
         help.DropDownItems.AddRange([
-            Item(Strings.Menu_HelpManual, () => OpenHelpFile("manual.html"), Keys.F1),
-            Item(Strings.Menu_HelpLua, () => OpenHelpFile("API_LUA.md")),
+            Item(Strings.Menu_HelpManual, _app.Help.OpenManual, Keys.F1),
+            Item(Strings.Menu_HelpLua, _app.Help.OpenLuaReference),
+            new ToolStripSeparator(),
+            Named("_miSuggestion", Item(Strings.Menu_HelpSuggestion, () => _app.ShowReport(this, ReportKind.Suggestion))),
+            Named("_miReportError", Item(Strings.Menu_HelpReportError, () => _app.ShowReport(this, ReportKind.Error))),
             new ToolStripSeparator(),
             Item(Strings.Menu_HelpAbout, ShowAbout)]);
 
@@ -219,6 +263,33 @@ public sealed class FrmLauncher : Form
         return item;
     }
 
+    private static ToolStripMenuItem Named(string name, ToolStripMenuItem item)
+    {
+        item.Name = name;
+        return item;
+    }
+
+    internal void RefreshCheckOnStartup()
+    {
+        if (_updates is null || _miCheckOnStartup is null) return;
+        try
+        {
+            _miCheckOnStartup.Checked = Task.Run(() => _updates.GetCheckOnStartupAsync()).GetAwaiter().GetResult();
+        }
+        catch (Exception)
+        {
+            _miCheckOnStartup.Checked = false;
+        }
+    }
+
+    private void ToggleCheckOnStartup()
+    {
+        if (_updates is null || _miCheckOnStartup is null) return;
+        var value = !_miCheckOnStartup.Checked;
+        _miCheckOnStartup.Checked = value;
+        Run(() => _updates.SetCheckOnStartupAsync(value));
+    }
+
     private void ShowGlobalOptions()
     {
         using var dialog = _globalOptionsDialog?.Invoke() ?? new FrmOptions(_optionRepo);
@@ -231,22 +302,8 @@ public sealed class FrmLauncher : Form
         dialog.ShowDialog(this);
     }
 
-    private void OpenHelpFile(string fileName)
-    {
-        var path = Path.Combine(AppContext.BaseDirectory, "docs", fileName);
-        if (!File.Exists(path))
-        {
-            _prompts.Info(string.Format(Strings.Help_NotFound, path), Text);
-            return;
-        }
-        UrlOpener.OpenFile(path);
-    }
-
-    private void ShowAbout()
-    {
-        var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "2";
-        _prompts.Info(string.Format(Strings.About_Text, version), Strings.App_Title);
-    }
+    private void ShowAbout() =>
+        _prompts.Info(string.Format(Strings.About_Text, AppInfo.Version), Strings.App_Title);
 
     // ── Context menu of the tree ───────────────────────────────────────────
 
@@ -381,6 +438,39 @@ public sealed class FrmLauncher : Form
             default: return;
         }
         e.Handled = e.SuppressKeyPress = true;
+    }
+}
+
+/// <summary>
+/// The "new version" dialog of the launcher. It never pops up over something else: when the launcher is not the
+/// active window (a game is being played, a dialog is open) it waits until the user comes back to the launcher.
+/// </summary>
+internal sealed class LauncherUpdateNotice(Form launcher) : IUpdateNotice
+{
+    public async Task<bool> ShowAsync(UpdateAvailable update)
+    {
+        if (launcher.IsDisposed) return false;
+        if (!ReferenceEquals(Form.ActiveForm, launcher) && !await WaitUntilActiveAsync()) return false;
+
+        using var dialog = new FrmUpdateAvailable(update, AppInfo.Version);
+        return dialog.ShowDialog(launcher) == DialogResult.OK;
+    }
+
+    /// <summary>False when the launcher was closed while waiting.</summary>
+    private Task<bool> WaitUntilActiveAsync()
+    {
+        var waiting = new TaskCompletionSource<bool>();
+        void Activated(object? sender, EventArgs e) => Finish(true);
+        void Closed(object? sender, FormClosedEventArgs e) => Finish(false);
+        void Finish(bool result)
+        {
+            launcher.Activated -= Activated;
+            launcher.FormClosed -= Closed;
+            waiting.TrySetResult(result);
+        }
+        launcher.Activated += Activated;
+        launcher.FormClosed += Closed;
+        return waiting.Task;
     }
 }
 

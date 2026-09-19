@@ -1,0 +1,50 @@
+# Continuous integration: every push and pull request is restored, built WITHOUT WARNINGS and tested.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET (version from global.json)
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore Omnimud.sln
+
+      - name: Build (warnings are errors)
+        run: dotnet build Omnimud.sln -c Release --no-restore -warnaserror
+
+      # The UI tests create real WinForms windows, which works on the hosted Windows runners. The few that need
+      # a window to become the ACTIVE one, or an external UI Automation client, carry the trait
+      # Category=InteractiveDesktop (tests/Omnimud.UI.Tests/TestCategories.cs) and are run on a developer machine.
+      - name: Test
+        run: dotnet test Omnimud.sln -c Release --no-build --filter "Category!=InteractiveDesktop" --logger "trx;LogFilePrefix=results" --results-directory TestResults
+
+      - name: Keep the test results when something fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults
+          if-no-files-found: ignore

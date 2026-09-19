@@ -1,4 +1,4 @@
-using System.Reflection;
+using Omnimud.Core.Reports;
 using Omnimud.Core.Session;
 using Omnimud.UI.Controls;
 using Omnimud.UI.Resources;
@@ -81,8 +81,11 @@ partial class FrmGame
 
         var help = new ToolStripMenuItem(Strings.Menu_Help);
         help.DropDownItems.AddRange([
-            Item(Strings.Menu_HelpManual, Keys.F1, () => OpenHelpFile("manual.html")),
-            Item(Strings.Menu_HelpLua, Keys.None, () => OpenHelpFile("API_LUA.md")),
+            Item(Strings.Menu_HelpManual, Keys.F1, _app.Help.OpenManual),
+            Item(Strings.Menu_HelpLua, Keys.None, _app.Help.OpenLuaReference),
+            new ToolStripSeparator(),
+            Item(Strings.Menu_HelpSuggestion, Keys.None, () => _app.ShowReport(this, ReportKind.Suggestion)),
+            Item(Strings.Menu_HelpReportError, Keys.None, () => _app.ShowReport(this, ReportKind.Error)),
             new ToolStripSeparator(),
             Item(Strings.Menu_HelpAbout, Keys.None, ShowAbout)]);
 
@@ -235,20 +238,8 @@ partial class FrmGame
 
     // ── Help ───────────────────────────────────────────────────────────────
 
-    private void OpenHelpFile(string fileName)
-    {
-        var path = Path.Combine(AppContext.BaseDirectory, "docs", fileName);
-        if (!File.Exists(path))
-        {
-            MessageBox.Show(this, string.Format(Strings.Help_NotFound, path), Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return;
-        }
-        UrlOpener.OpenFile(path);
-    }
-
     private void ShowAbout()
     {
-        var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "2";
-        MessageBox.Show(this, string.Format(Strings.About_Text, version), Strings.App_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show(this, string.Format(Strings.About_Text, AppInfo.Version), Strings.App_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 }

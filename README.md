@@ -24,8 +24,23 @@ Cliente de MUD para Windows **pensado desde el principio para usarse con lector 
 - **Reglas de mensajes** por MUD, con patrones o con script Lua, para llevar las conversaciones al cuadro de Mensajes.
 - Opciones en tres niveles (global, MUD, personaje) con herencia; registros de sesión; importación y exportación en ficheros `.omnimud`.
 
+**Privacidad**
+- Nada sale de tu equipo por su cuenta: sin telemetría, la comprobación de actualizaciones es manual (o al iniciar, solo si tú la activas) y anónima, y los informes de error o sugerencias se abren ya escritos en tu navegador (issue de GitHub) o en tu correo para que los revises y los envíes tú. Nunca incluyen contraseñas, texto del MUD, registros, direcciones de MUD ni nombres de personaje.
+
 **Portable**
 - Todo se guarda en SQLite dentro de una carpeta `data\` junto al ejecutable. No usa el Registro de Windows. Copiando la carpeta te llevas todo (salvo las contraseñas guardadas, que van cifradas y ligadas a tu usuario de Windows).
+
+## Descargar
+
+Las versiones publicadas están en **[Releases](https://github.com/kastwey/omnimud/releases)**. Cada una trae:
+
+- `Omnimud-<versión>-win-x64-portable.zip`: descomprímelo en una carpeta donde puedas escribir y ejecuta `Omnimud.exe`. No necesita instalación ni .NET.
+- `Omnimud-<versión>-win-x64-setup.exe`: instalador por usuario (en `%LocalAppData%\Programs\Omnimud`), que **no pide permisos de administrador**. Al desinstalar pregunta si quieres conservar tus datos.
+- Un fichero `.sha256` por cada uno, para comprobar la descarga (`Get-FileHash fichero -Algorithm SHA256` en PowerShell).
+
+En los dos casos tus datos quedan en la carpeta `data` junto al ejecutable. El manual de usuario se abre con `F1` y también está en [docs/manual/](docs/manual/) (español e inglés).
+
+Omnimud **no se actualiza solo ni descarga nada**: desde el lanzador, Herramientas → «Comprobar actualizaciones ahora» consulta de forma anónima las releases de GitHub y, si hay una versión nueva, ofrece abrir su página en el navegador. La comprobación al iniciar está desactivada por defecto.
 
 ## Requisitos
 
@@ -48,6 +63,22 @@ Ejecutable autocontenido y portable (no necesita .NET instalado), en `publish\wi
 dotnet publish src/Omnimud.UI -p:PublishProfile=portable-win-x64
 ```
 
+Paquete completo de una versión (compila, prueba, publica en una carpeta limpia y genera el zip portable con su SHA-256 y, si está instalado [Inno Setup 6](https://jrsoftware.org/isinfo.php), también el instalador), en `artifacts\release\`:
+
+```powershell
+.\tools\release.ps1
+```
+
+### Publicar una versión
+
+1. Cambia `<Version>` en `Directory.Build.props` (es la única fuente de la versión: la que muestra «Acerca de», la que llevan los informes y la que se compara al comprobar actualizaciones) y haz commit.
+2. Opcional pero recomendable: ejecuta `.\tools\release.ps1` en local y prueba el zip.
+3. Crea y empuja la etiqueta con el mismo número: `git tag v2.1.0` y `git push origin v2.1.0`.
+4. El flujo `.github/workflows/release.yml` compila, ejecuta los tests, empaqueta y crea la release de GitHub con el zip, el instalador y sus hashes. Si la etiqueta no coincide con `Directory.Build.props`, falla sin publicar nada. Una etiqueta con guion (`v2.1.0-beta.1`) se publica como versión preliminar, que la comprobación de actualizaciones ignora.
+5. Revisa las notas generadas en la página de la release: son las que verá el usuario en el aviso de versión nueva.
+
+Cada push y cada pull request pasan por `.github/workflows/ci.yml` (compilación sin avisos y tests). Los pocos tests que necesitan un escritorio interactivo de verdad llevan el rasgo `Category=InteractiveDesktop` y solo se ejecutan en local.
+
 ## Organización del código
 
 | Proyecto | Contenido |
@@ -67,6 +98,7 @@ En [docs/](docs/), en español:
 - [Plan de paridad](docs/02_PLAN_PARIDAD_V2.md) y [arquitectura](docs/03_ARQUITECTURA_Y_REPARTO.md).
 - [Estado actual y pendientes](docs/04_ESTADO.md).
 - [Referencia de scripts Lua](docs/API_LUA.md).
+- Manual de usuario: [español](docs/manual/manual.es.html) e [inglés](docs/manual/manual.en.html).
 
 ## Componentes de terceros
 

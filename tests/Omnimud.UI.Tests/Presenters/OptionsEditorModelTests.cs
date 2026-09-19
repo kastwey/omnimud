@@ -619,10 +619,35 @@ public sealed class OptionsEditorModelTests
 
         var fields = await model.ImportAsync(model.Fields, _prompts);
 
-        fields.Should().Be(OptionsFields.From(sample with { ProxyPasswordProtected = null }), "a file never brings a proxy password: the dialog keeps its own (none here)");
+        fields.Should().Be(OptionsFields.From(sample with { ProxyPasswordProtected = null, CheckUpdatesOnStartup = false }),
+            "a file never brings a proxy password, and never switches on the update check: the dialog keeps its own (none, and off, here)");
         model.Fields.Should().Be(fields);
         _service.Saved.Should().BeEmpty("nothing is stored until OK");
         _prompts.Received(1).Info("Opciones cargadas. Se guardarán cuando pulses Aceptar.", Arg.Any<string?>());
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task Import_NeverChangesTheUpdateCheck_WhateverTheFileSays(bool current)
+    {
+        _service.With(OptionScope.Global, null, OmnimudOptions.Default with { CheckUpdatesOnStartup = current });
+        _prompts.PickOpenFile(Arg.Any<string>(), Arg.Any<string>()).Returns("in.omnimud");
+        _files.LoadAsync("in.omnimud", Arg.Any<CancellationToken>()).Returns(OmnimudOptions.Default with { CheckUpdatesOnStartup = !current, Volume = 12 });
+        var model = Loaded(OptionScope.Global);
+
+        var fields = await model.ImportAsync(model.Fields, _prompts);
+
+        fields!.Volume.Should().Be(12);
+        fields.CheckUpdatesOnStartup.Should().Be(current, "going to the network on startup is only ever switched on by the user ticking the box");
+    }
+
+    [Fact]
+    public void TheUpdateCheck_IsAnApplicationOption_OnlyEditableInGlobal()
+    {
+        Model(OptionScope.Global).CanEditApplicationOptions.Should().BeTrue();
+        Model(OptionScope.Mud, MudId).CanEditApplicationOptions.Should().BeFalse();
+        Model(OptionScope.Character, CharacterId).CanEditApplicationOptions.Should().BeFalse();
     }
 
     [Fact]

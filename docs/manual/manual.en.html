@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Omnimud user manual</title>
+<style>
+body { font-family: system-ui, "Segoe UI", sans-serif; font-size: 100%; line-height: 1.5; max-width: 60em; margin: 0 auto; padding: 1em; color: CanvasText; background: Canvas; }
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; margin-top: 2em; border-bottom: 0.1em solid; }
+h3 { font-size: 1.2em; margin-top: 1.5em; }
+kbd { font-family: inherit; font-size: 0.95em; border: 0.08em solid; border-radius: 0.25em; padding: 0 0.3em; white-space: nowrap; }
+code, pre { font-family: Consolas, "Courier New", monospace; font-size: 0.95em; }
+pre { border: 0.08em solid; padding: 0.6em; overflow-x: auto; white-space: pre-wrap; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+caption { font-weight: bold; text-align: left; padding: 0.4em 0; }
+th, td { border: 0.08em solid; padding: 0.3em 0.5em; text-align: left; vertical-align: top; }
+nav ul { list-style: none; padding-left: 1.2em; }
+a { color: LinkText; }
+a:visited { color: VisitedText; }
+a:focus, summary:focus { outline: 0.15em solid; outline-offset: 0.1em; }
+footer { margin-top: 3em; border-top: 0.1em solid; padding-top: 1em; font-size: 0.9em; }
+@media (forced-colors: active) {
+  kbd, pre, th, td { border-color: CanvasText; }
+}
+@media print {
+  body { max-width: none; }
+  nav { display: none; }
+  a { text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Omnimud user manual</h1>
+<p>Omnimud is a MUD client for Windows, designed from the start to be used with a screen reader. This manual describes version 2.</p>
+<p>Keys are written like this: <kbd>Ctrl+K</kbd>. Commands that you type in the game are written like this: <code>cls</code>.</p>
+
+<nav aria-label="Table of contents">
+<p>Contents of the manual:</p>
+<ul>
+<li><a href="#intro">1. Introduction and requirements</a>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+</ul></li>
+<li><a href="#getting-started">2. Installation and first steps</a>
+<ul>
+<li><a href="#install">Installation</a></li>
+<li><a href="#first-steps">First steps</a></li>
+</ul></li>
+<li><a href="#launcher">3. The launcher</a>
+<ul>
+<li><a href="#launcher-tree">The tree of MUDs and characters</a></li>
+<li><a href="#launcher-buttons">Buttons</a></li>
+<li><a href="#launcher-menus">Menus</a></li>
+<li><a href="#launcher-context-menu">Context menu</a></li>
+<li><a href="#launcher-shortcuts">Launcher shortcuts</a></li>
+</ul></li>
+<li><a href="#quick-connect">4. Quick connect</a></li>
+<li><a href="#muds-characters">5. MUDs and characters</a>
+<ul>
+<li><a href="#mud-dialog">Adding or editing a MUD</a></li>
+<li><a href="#login-script">Login script</a></li>
+<li><a href="#character-dialog">Adding or editing a character</a></li>
+</ul></li>
+<li><a href="#game-window">6. The game window</a>
+<ul>
+<li><a href="#game-boxes">The boxes and the button</a></li>
+<li><a href="#status-bar">Status bar</a></li>
+<li><a href="#typing">Typing and sending</a></li>
+<li><a href="#history">Command history</a></li>
+<li><a href="#password-mode">Password mode</a></li>
+<li><a href="#received-context-menu">Context menu, find and links</a></li>
+<li><a href="#game-menus">Menus of the game window</a></li>
+<li><a href="#closing">Disconnecting, reconnecting and closing</a></li>
+</ul></li>
+<li><a href="#shortcuts">7. Game window shortcuts</a></li>
+<li><a href="#message-review">8. Reading messages</a></li>
+<li><a href="#movement-mode">9. Movement mode</a></li>
+<li><a href="#silent-mode">10. Silent mode and all_speak</a></li>
+<li><a href="#mute-stop">11. Muting the screen reader and stopping speech</a></li>
+<li><a href="#internal-commands">12. Internal commands</a></li>
+<li><a href="#aliases">13. Aliases</a></li>
+<li><a href="#triggers">14. Triggers</a>
+<ul>
+<li><a href="#trigger-list">The trigger list</a></li>
+<li><a href="#trigger-patterns">Pattern types and wildcards</a></li>
+<li><a href="#trigger-options">Multiline, hide the line and priority</a></li>
+<li><a href="#trigger-actions">What the trigger does</a></li>
+<li><a href="#command-triggers">Command triggers (@)</a></li>
+<li><a href="#trigger-test">The Test button</a></li>
+</ul></li>
+<li><a href="#lua">15. Lua scripts</a></li>
+<li><a href="#paths">16. Paths and directions</a>
+<ul>
+<li><a href="#directions">Directions of the MUD</a></li>
+<li><a href="#path-editing">Creating and using paths</a></li>
+<li><a href="#path-recording">Recording a path</a></li>
+</ul></li>
+<li><a href="#sound">17. Sound and MSP</a></li>
+<li><a href="#gmcp">18. GMCP: channels and the Actions menu</a></li>
+<li><a href="#message-rules">19. Message rules</a></li>
+<li><a href="#options">20. Options</a>
+<ul>
+<li><a href="#options-inheritance">Three levels and inheritance</a></li>
+<li><a href="#options-general">General tab</a></li>
+<li><a href="#options-logs">Logs tab</a></li>
+<li><a href="#options-sounds">Sounds tab</a></li>
+<li><a href="#options-connection">Connection tab</a></li>
+<li><a href="#options-appearance">Appearance tab</a></li>
+<li><a href="#options-special">Special characters tab</a></li>
+</ul></li>
+<li><a href="#proxy">21. Proxy</a></li>
+<li><a href="#logs">22. Logs</a></li>
+<li><a href="#import-export">23. Import and export</a></li>
+<li><a href="#portability">24. Portability</a></li>
+<li><a href="#updates">25. Updates</a></li>
+<li><a href="#feedback">26. Suggestions, errors and privacy</a>
+<ul>
+<li><a href="#report-dialog">The report dialog</a></li>
+<li><a href="#privacy">Privacy</a></li>
+<li><a href="#unexpected-error">Unexpected error</a></li>
+</ul></li>
+<li><a href="#personal-info">27. Personal information</a></li>
+<li><a href="#screen-readers">28. Tips for screen readers</a>
+<ul>
+<li><a href="#nvda">NVDA</a></li>
+<li><a href="#jaws">JAWS</a></li>
+</ul></li>
+<li><a href="#troubleshooting">29. Troubleshooting</a></li>
+<li><a href="#license">30. License and credits</a></li>
+</ul>
+</nav>
+
+<section id="intro">
+<h2>1. Introduction and requirements</h2>
+<p>A MUD is a text-only online role-playing game. Omnimud connects to the MUD, shows what the game writes and sends what you type.</p>
+<p>What makes Omnimud different:</p>
+<ul>
+<li>Everything works from the keyboard. Every box has a label and an accessible name.</li>
+<li>Every shortcut is also in the menus, so you can discover them by walking the menus.</li>
+<li>The text of the MUD is announced through UI Automation, which any modern screen reader understands. The JAWS and NVDA libraries remain as a fallback.</li>
+<li>The cursor of the Received box does not move when new text arrives. You can review earlier text while the MUD keeps writing.</li>
+<li>Conversations are copied to a separate box, Messages, and you can review them with <kbd>Ctrl+1</kbd> to <kbd>Ctrl+0</kbd> without moving the focus.</li>
+<li>It has aliases, triggers with Lua scripts, paths, movement mode, MSP sound, GMCP, session logs and options at three levels.</li>
+<li>It is portable: all the data lives in a <code>data</code> folder next to the program.</li>
+<li>The interface is available in Spanish and English.</li>
+</ul>
+
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Windows 10 (version 1709) or later, 64-bit.</li>
+<li>You do not need to install .NET: the program carries it inside.</li>
+<li>A screen reader if you need one: NVDA, JAWS or Narrator.</li>
+<li>An internet connection to play. Omnimud does not need administrator rights.</li>
+</ul>
+</section>
+
+<section id="getting-started">
+<h2>2. Installation and first steps</h2>
+
+<h3 id="install">Installation</h3>
+<p>Omnimud is downloaded from the Releases page on GitHub: <a href="https://github.com/kastwey/omnimud/releases">https://github.com/kastwey/omnimud/releases</a>. There are two ways to install it:</p>
+<ul>
+<li><strong>Portable zip</strong>, named <code>Omnimud-&lt;version&gt;-win-x64-portable.zip</code>. Unzip it into a folder where you have write permission, for example inside Documents or on a USB drive. Then run <code>Omnimud.exe</code>.</li>
+<li><strong>Per-user installer</strong>, if the release offers one. It installs the program for your user only and does not ask for administrator rights.</li>
+</ul>
+<p>In both cases, all your data is stored in the <code>data</code> folder next to <code>Omnimud.exe</code>. Nothing is written to the Windows Registry.</p>
+<p>Do not unzip the file inside "Program Files": programs cannot write there. More details in <a href="#portability">Portability</a>.</p>
+
+<h3 id="first-steps">First steps</h3>
+<ol>
+<li>Run <code>Omnimud.exe</code>. The launcher opens, with the focus on the "MUDs and characters" tree.</li>
+<li>Press <kbd>Ctrl+N</kbd> to add a MUD. Type its name, its host and its port, and press OK.</li>
+<li>Press <kbd>Ctrl+Shift+N</kbd> to add a character to that MUD. Type its name and, if you want, its password.</li>
+<li>With the character selected in the tree, press <kbd>Enter</kbd>. The game window opens and connects.</li>
+<li>Type in the "Text to send" box and press <kbd>Enter</kbd> to send each command.</li>
+<li>Press <kbd>F1</kbd> at any time to open this manual.</li>
+</ol>
+<p>If you only want to try a MUD without saving it, use <a href="#quick-connect">quick connect</a> with <kbd>Ctrl+Q</kbd>.</p>
+<p>The language of the interface is chosen automatically: Spanish if Windows has Spanish installed, English otherwise. You can change it in the <a href="#options-general">global options</a>.</p>
+</section>
+
+<section id="launcher">
+<h2>3. The launcher</h2>
+<p>The launcher is the start window. From it you manage your MUDs and characters, connect, import and export. You can have several game windows open at the same time; the launcher stays open.</p>
+<p>Every action of the launcher is in four places at once: the buttons, the main menu, the context menu of the tree and the keys. Use whichever you prefer.</p>
+
+<h3 id="launcher-tree">The tree of MUDs and characters</h3>
+<ul>
+<li>The tree is called "MUDs and characters". You reach it with <kbd>Alt+M</kbd>.</li>
+<li>Each MUD is a top-level node. It is read with its name, host and port, for example "My MUD (mud.example.org:23)".</li>
+<li>Inside each MUD are its characters. The default character is read with the text "(default)".</li>
+<li>The up and down arrows move through the nodes. The right arrow expands a MUD and the left arrow collapses it.</li>
+<li>After adding, editing or removing something, the selection is kept. When you remove an element, its neighbour becomes selected.</li>
+</ul>
+<p>Keys inside the tree:</p>
+<ul>
+<li><kbd>Enter</kbd>: connect. On a character, it connects with that character. On a MUD, it connects with its default character; if it has none, it connects to the MUD without a character. A double click on a character also connects.</li>
+<li><kbd>F2</kbd>: edit the selected MUD or character.</li>
+<li><kbd>Del</kbd>: remove the selected element, after a confirmation. Removing a MUD also removes its characters, with their aliases, triggers and paths.</li>
+<li><kbd>Insert</kbd>: add a sibling of what is selected. On a character it adds another character; on a MUD it adds another MUD.</li>
+<li>The <kbd>Applications</kbd> key or <kbd>Shift+F10</kbd>: opens the context menu next to the node.</li>
+</ul>
+<p>At the bottom there is a status line, with the accessible name "Status". It tells the result of the last action, for example "MUD My MUD added."</p>
+
+<h3 id="launcher-buttons">Buttons</h3>
+<ul>
+<li>Connect (<kbd>Alt+C</kbd>). It is the default button of the window.</li>
+<li>Quick connect… (<kbd>Alt+Q</kbd>).</li>
+<li>Add MUD… (<kbd>Alt+A</kbd>).</li>
+<li>Add character… (<kbd>Alt+T</kbd>). If there is no MUD yet, the program asks you to add one first.</li>
+<li>Edit… (<kbd>Alt+E</kbd>).</li>
+<li>Remove (<kbd>Alt+R</kbd>).</li>
+<li>Set as default (<kbd>Alt+D</kbd>). Only enabled on a character that is not the default one yet.</li>
+</ul>
+<p>The buttons that cannot be used with the current selection are disabled.</p>
+
+<h3 id="launcher-menus">Menus</h3>
+<p><strong>File menu</strong> (<kbd>Alt+F</kbd>):</p>
+<ul>
+<li>Connect (<kbd>Enter</kbd> in the tree).</li>
+<li>Quick connect… (<kbd>Ctrl+Q</kbd>).</li>
+<li>Add MUD… (<kbd>Ctrl+N</kbd>).</li>
+<li>Add character… (<kbd>Ctrl+Shift+N</kbd>).</li>
+<li>Edit… (<kbd>F2</kbd> in the tree).</li>
+<li>Remove (<kbd>Del</kbd> in the tree).</li>
+<li>Set as default (<kbd>Ctrl+D</kbd>).</li>
+<li>Clear default. Only enabled on the default character.</li>
+<li>Exit (<kbd>Alt+F4</kbd>).</li>
+</ul>
+<p><strong>Tools menu</strong> (<kbd>Alt+O</kbd>):</p>
+<ul>
+<li>Global options… (<kbd>Ctrl+O</kbd>). See <a href="#options">Options</a>.</li>
+<li>Message rules… (<kbd>Ctrl+R</kbd>). See <a href="#message-rules">Message rules</a>.</li>
+<li>Import… (<kbd>Ctrl+I</kbd>).</li>
+<li>Export MUD… (<kbd>Ctrl+E</kbd>).</li>
+<li>Export character… (<kbd>Ctrl+Shift+E</kbd>). See <a href="#import-export">Import and export</a>.</li>
+<li>Check for updates now. See <a href="#updates">Updates</a>.</li>
+<li>Check for updates on startup. It is a check box inside the menu and it is off by default.</li>
+<li>Personal information… See <a href="#personal-info">Personal information</a>.</li>
+</ul>
+<p><strong>Help menu</strong> (<kbd>Alt+H</kbd>):</p>
+<ul>
+<li>User manual (<kbd>F1</kbd>). Opens this manual in the browser, in the language of the interface.</li>
+<li>Lua scripting reference. Opens the file <a href="API_LUA.md">API_LUA.md</a>, which is written in Spanish.</li>
+<li>Send suggestion…</li>
+<li>Report an error… See <a href="#feedback">Suggestions, errors and privacy</a>.</li>
+<li>About Omnimud… Tells the installed version.</li>
+</ul>
+
+<h3 id="launcher-context-menu">Context menu</h3>
+<p>It opens with the <kbd>Applications</kbd> key, with <kbd>Shift+F10</kbd> or with the right mouse button. From the keyboard it appears next to the selected node. Its content depends on the node:</p>
+<ul>
+<li><strong>On a MUD</strong>: Connect, Edit MUD…, Delete MUD, Add character…, Export MUD…</li>
+<li><strong>On a character</strong>: Connect, Edit character…, Delete character, Set as default, Export character… If the character already is the default one, that entry is shown checked and disabled: that way the state can be heard.</li>
+<li><strong>With an empty tree</strong>, or with a right click on the empty area: Add MUD…, Import…</li>
+</ul>
+
+<h3 id="launcher-shortcuts">Launcher shortcuts</h3>
+<table>
+<caption>Keyboard shortcuts of the launcher</caption>
+<thead>
+<tr><th scope="col">Shortcut</th><th scope="col">Action</th><th scope="col">Where it works</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><kbd>Enter</kbd></th><td>Connect with what is selected</td><td>In the tree</td></tr>
+<tr><th scope="row"><kbd>F2</kbd></th><td>Edit the MUD or the character</td><td>In the tree</td></tr>
+<tr><th scope="row"><kbd>Del</kbd></th><td>Remove the MUD or the character</td><td>In the tree</td></tr>
+<tr><th scope="row"><kbd>Insert</kbd></th><td>Add a character (on a character) or a MUD (on a MUD)</td><td>In the tree</td></tr>
+<tr><th scope="row"><kbd>Applications</kbd> or <kbd>Shift+F10</kbd></th><td>Context menu of the node</td><td>In the tree</td></tr>
+<tr><th scope="row"><kbd>Ctrl+Q</kbd></th><td>Quick connect</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+N</kbd></th><td>Add MUD</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+Shift+N</kbd></th><td>Add character</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+D</kbd></th><td>Set as default</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+O</kbd></th><td>Global options</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+R</kbd></th><td>Message rules</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+I</kbd></th><td>Import an .omnimud file</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+E</kbd></th><td>Export the selected MUD</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+Shift+E</kbd></th><td>Export the selected character</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>F1</kbd></th><td>User manual</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Alt+F4</kbd></th><td>Exit</td><td>Whole window</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="quick-connect">
+<h2>4. Quick connect</h2>
+<p>Quick connect (<kbd>Ctrl+Q</kbd> in the launcher) connects to a server without saving it as a MUD. The dialog has these fields:</p>
+<ul>
+<li>Server: the address or the domain. It cannot contain spaces.</li>
+<li>Port: a number between 1 and 65535.</li>
+<li>Use TLS (encrypted connection).</li>
+<li>Validate the server certificate. It can only be changed while TLS is checked.</li>
+<li>Encoding. <code>utf-8</code> by default.</li>
+<li>The Connect button.</li>
+</ul>
+<p>The first time, server and port are empty. Afterwards the dialog remembers the last connection used. When you enter each box, its text is selected so that you can type over it.</p>
+<p>A quick connect session has no saved MUD or character. Because of that, in such a session:</p>
+<ul>
+<li>There are no aliases, triggers or paths: <kbd>F5</kbd>, <kbd>F6</kbd> and <kbd>F7</kbd> tell you that a session with a character is required.</li>
+<li>There are no directions or movement keys of its own: those dialogs tell you that a saved MUD is required. Movement mode works with the default commands.</li>
+<li>There is no automatic login and there are no message rules.</li>
+<li><kbd>F9</kbd> opens the global options.</li>
+</ul>
+</section>
+
+<section id="muds-characters">
+<h2>5. MUDs and characters</h2>
+<p>A MUD stores the connection data of a game. A character always belongs to a MUD. Aliases, triggers and paths belong to each character. The directions for paths and the message rule set belong to each MUD.</p>
+
+<h3 id="mud-dialog">Adding or editing a MUD</h3>
+<p>The "Add MUD" dialog has these fields:</p>
+<ul>
+<li><strong>Name</strong>. Required. Two MUDs cannot have the same name.</li>
+<li><strong>Host (address or domain)</strong>. Required, without spaces.</li>
+<li><strong>Port</strong>. Between 1 and 65535. 23 by default.</li>
+<li><strong>Use TLS (encrypted connection)</strong>. Check it only if the MUD offers an encrypted port. TLS 1.2 or 1.3 is used.</li>
+<li><strong>Validate the server certificate</strong>. It can only be changed while TLS is checked, and it comes checked. If the certificate of the MUD is not valid, the connection fails and the message explains why. Uncheck it only if you trust that server, for example if it uses a self-signed certificate.</li>
+<li><strong>Encoding</strong>. The character encoding of the MUD, in both directions. The list offers <code>utf-8</code>, <code>iso-8859-1</code>, <code>windows-1252</code> and <code>ascii</code>. You can also type another valid name, for example <code>iso-8859-15</code>. If accented letters look wrong, try another encoding.</li>
+<li><strong>Message rule set</strong>. Choose which rule set carries the conversations of this MUD to the Messages box. "(None)" means no rules. See <a href="#message-rules">Message rules</a>.</li>
+<li><strong>Sound folder</strong>, with the Browse… button. Empty means the default folder for this MUD: <code>data\sounds\name of the MUD</code>. If you type a folder, it must exist.</li>
+<li><strong>Save command</strong>. Used by <kbd>F3</kbd> and when the window closes. If it is empty, <kbd>F3</kbd> is disabled.</li>
+<li><strong>Quit command</strong>. Used by <kbd>F4</kbd> and when the window closes. If it is empty, <kbd>F4</kbd> is disabled.</li>
+<li><strong>Login script</strong>. See the next section.</li>
+</ul>
+<p>If something is not valid, a message appears and the focus goes to the field that must be corrected.</p>
+
+<h3 id="login-script">Login script</h3>
+<p>These are the commands Omnimud sends right after connecting, one per line. Empty lines are ignored. There are two placeholders:</p>
+<ul>
+<li><code>%character</code> is replaced with the name of the character.</li>
+<li><code>%password</code> is replaced with its saved password.</li>
+</ul>
+<p>If you leave the script empty, Omnimud sends the name of the character and then its password, if one is saved. If you connect to the MUD without a character, it sends nothing.</p>
+<p>An example for a MUD that first asks whether you want colours:</p>
+<pre><code>n
+%character
+%password</code></pre>
+<p>Lines that contain <code>%password</code> are never written to the session log.</p>
+
+<h3 id="character-dialog">Adding or editing a character</h3>
+<ul>
+<li><strong>Name of the character</strong>. Required. It cannot be repeated inside the same MUD.</li>
+<li><strong>MUD</strong>. The MUD it belongs to.</li>
+<li><strong>Remember password</strong>. A check box.</li>
+<li><strong>Password</strong>. It is typed hidden.</li>
+</ul>
+<p>How the password is handled:</p>
+<ul>
+<li>It is stored encrypted and is never shown, not even as dots.</li>
+<li>When you edit a character that already has a password, the box is empty. Leave it empty to keep the password, or type a new one to replace it.</li>
+<li>To make Omnimud forget the password, uncheck "Remember password" and accept. The saved password is deleted.</li>
+<li>If you check "Remember password" on a character without a saved password, you have to type one.</li>
+<li>Passwords are never exported and do not work on another computer. See <a href="#portability">Portability</a>.</li>
+</ul>
+<p>The <strong>default character</strong> of a MUD is the one used when you press <kbd>Enter</kbd> on the MUD node. Set it with <kbd>Ctrl+D</kbd> and clear it with "Clear default" in the File menu.</p>
+</section>
+
+<section id="game-window">
+<h2>6. The game window</h2>
+<p>Each connection has its own window. The title is "Omnimud - " followed by the character and the MUD. When it opens, the window connects by itself.</p>
+
+<h3 id="game-boxes">The boxes and the button</h3>
+<p>The tab order is this:</p>
+<ol>
+<li><strong>Text to send</strong> (<kbd>Alt+T</kbd>, and also <kbd>Ctrl+K</kbd> from anywhere). Here you type the commands.</li>
+<li><strong>Received</strong> (<kbd>Alt+R</kbd>). All the text of the MUD, with its colours. It is read-only.</li>
+<li><strong>Messages</strong> (<kbd>Alt+M</kbd>). The conversations: channels, tells, what other players say. It is filled by the <a href="#message-rules">message rules</a> and by <a href="#gmcp">GMCP</a>. It is read-only.</li>
+<li>A <strong>button</strong> that closes the window. It is called Cancel while connecting, Disconnect while connected and Close otherwise.</li>
+</ol>
+<p>Things worth knowing about Received and Messages:</p>
+<ul>
+<li>The cursor does not move when new text arrives, unless it already was at the end. You can read backwards calmly. This behaviour can be changed in the <a href="#options-general">options</a>.</li>
+<li>When one of these boxes gets the focus, the screen reader says its name and only the line where the cursor is.</li>
+<li>If you start typing inside Received or Messages, the letter is not lost: the focus moves to "Text to send" and the letter is typed there.</li>
+<li>Received keeps a maximum number of lines (10,000 by default). The oldest ones are removed.</li>
+<li>The Messages box can be hidden from the View menu.</li>
+</ul>
+
+<h3 id="status-bar">Status bar</h3>
+<p>It is at the bottom of the window and has three parts:</p>
+<ul>
+<li><strong>Connection status</strong>: "Connecting to…", "Connected as…", "Disconnected from…" or "Offline mode". While you record a path it says "Recording path". A Lua script can also write here.</li>
+<li><strong>Time connected</strong>, for example "1 hour, 5 minutes, 12 seconds."</li>
+<li><strong>Messages status</strong>: "No messages" or the time of the last message. While you move through the Messages box it shows, for a few seconds, the time of the message where the cursor is.</li>
+</ul>
+
+<h3 id="typing">Typing and sending</h3>
+<ul>
+<li><kbd>Enter</kbd> sends what you typed and empties the box.</li>
+<li><kbd>Enter</kbd> on an empty box <strong>repeats the last command</strong>. If you have not sent any command yet, it sends a blank line.</li>
+<li><kbd>Shift+Enter</kbd> or <kbd>Ctrl+Enter</kbd> insert a line break. That way you can prepare several lines and send them together with <kbd>Enter</kbd>. On an empty box, these keys send a blank line, without repeating anything.</li>
+<li>Inside a text of several lines, the up and down arrows move between its lines and the screen reader reads them.</li>
+<li><kbd>Escape</kbd> deletes what you typed.</li>
+<li>You can also send several commands in one line, or repeat one several times, with the <a href="#options-special">special characters</a>. They are off by default.</li>
+</ul>
+<p>Before leaving for the MUD, what you type goes through this order: paths (<code>_name</code>), aliases, command triggers, internal commands and, last, command stacking and repetition.</p>
+
+<h3 id="history">Command history</h3>
+<ul>
+<li><kbd>Ctrl+Up arrow</kbd> and <kbd>Ctrl+Down arrow</kbd> always browse the history.</li>
+<li><kbd>Up arrow</kbd> and <kbd>Down arrow</kbd> browse it too, when they are not moving the cursor inside a text of several lines and when movement mode is not using them.</li>
+<li>Each step through the history plays a click. The recalled command is selected: if you type, you replace it.</li>
+<li>When you go down past the most recent command, the box becomes empty.</li>
+<li>A command equal to the previous one is not stored twice. The history keeps 50 commands by default; this can be changed in the options.</li>
+</ul>
+
+<h3 id="password-mode">Password mode</h3>
+<p>When the MUD announces that it is going to ask for a password (with the Telnet ECHO option), the input box changes:</p>
+<ul>
+<li>It is renamed "Password", and what you type is neither shown nor read.</li>
+<li>What you send does not enter the history, is not written to the log, does not go through aliases or triggers and does not count as "last command".</li>
+<li>The history and the movement keys are disabled.</li>
+</ul>
+<p>When the MUD has finished asking for the password, the box becomes "Text to send" again.</p>
+
+<h3 id="received-context-menu">Context menu, find and links</h3>
+<p>In Received and in Messages, the <kbd>Applications</kbd> key, <kbd>Shift+F10</kbd> or the right mouse button open a context menu. From the keyboard it opens next to the text cursor. It contains:</p>
+<ul>
+<li>Copy (<kbd>Ctrl+C</kbd>), Select all (<kbd>Ctrl+E</kbd>), Find… (<kbd>Ctrl+B</kbd>) and Find next (<kbd>Ctrl+S</kbd>).</li>
+<li>Only in Received, and only if the MUD offers them: the sections of the <a href="#gmcp">Actions menu</a>, such as Inventory and Exits.</li>
+</ul>
+<p><strong>Find</strong> works on the box that has the focus, Received or Messages. The dialog has the text to find, the "Match case" check box and the direction, Down or Up. If you had text selected, it is already typed in. The text found becomes selected. "Find next" repeats the last search; if there are no more matches a warning sound plays.</p>
+<p><strong>Links</strong>: place the cursor on a web address inside Received or Messages and press <kbd>Enter</kbd>. It opens in the browser and a sound plays. Only http, https, ftp and mail addresses are opened. If there is no link under the cursor, you hear a beep.</p>
+
+<h3 id="game-menus">Menus of the game window</h3>
+<p>The menu bar is: Actions, Game, Edit, View, Tools, Help.</p>
+<ul>
+<li><strong>Actions</strong> (<kbd>Alt+A</kbd>). It only appears while the MUD offers actions through GMCP. See <a href="#gmcp">GMCP</a>.</li>
+<li><strong>Game</strong> (<kbd>Alt+G</kbd>): Save game (<kbd>F3</kbd>), Quit the game (<kbd>F4</kbd>), Reconnect, Close window.</li>
+<li><strong>Edit</strong> (<kbd>Alt+E</kbd>): Copy, Cut, Paste, Select all, Undo, Find…, Find next, Clear received text. They act on the box that has the focus. Cut, Paste and Undo only work in "Text to send"; Find only works in Received and Messages.</li>
+<li><strong>View</strong> (<kbd>Alt+V</kbd>): Go to text to send (<kbd>Ctrl+K</kbd>), Enlarge received area (<kbd>Ctrl++</kbd>), Shrink received area (<kbd>Ctrl+-</kbd>), Reset sizes, and Hide messages panel or Show messages panel. Enlarge and shrink share the space between Received and Messages.</li>
+<li><strong>Tools</strong> (<kbd>Alt+O</kbd>): Movement mode (<kbd>F2</kbd>), Aliases (<kbd>F5</kbd>), Triggers (<kbd>F6</kbd>), Paths (<kbd>F7</kbd>), Silent mode (<kbd>F8</kbd>), Options (<kbd>F9</kbd>), Configure movement keys, Directions for paths, Mute screen reader (<kbd>Ctrl+M</kbd>) and Stop speech (<kbd>Alt+S</kbd>). The entries that are a switch are shown checked while they are on.</li>
+<li><strong>Help</strong> (<kbd>Alt+H</kbd>): User manual (<kbd>F1</kbd>), Lua scripting reference, Send suggestion…, Report an error…, About Omnimud…</li>
+</ul>
+<p>Aliases, Triggers and Paths require a session with a character. When you close any of these dialogs, the changes are applied at once to the open session.</p>
+
+<h3 id="closing">Disconnecting, reconnecting and closing</h3>
+<ul>
+<li>If the server closes the connection, the window <strong>does not close</strong>. The Reconnect button (<kbd>Alt+N</kbd>) appears and gets the focus. It is also in the Game menu.</li>
+<li>When you close the window while connected, Omnimud asks for confirmation. Then it sends the save command and the quit command of the MUD, waits a moment so that you can see the farewell, and disconnects. Both things can be turned off in the <a href="#options-general">options</a>.</li>
+<li>If the connection fails when the window opens, a message tells the reason. If the session has a character, Omnimud asks whether you want to open it in <strong>offline mode</strong>. In that mode nothing is sent to the MUD, but you can manage its aliases, triggers and paths.</li>
+<li>If text arrives while the window is in the background, its taskbar button flashes. The text of the MUD is only announced by voice while the window is in the foreground.</li>
+</ul>
+</section>
+
+<section id="shortcuts">
+<h2>7. Game window shortcuts</h2>
+<p>The table gathers all the shortcuts. Those that have a menu entry say which menu.</p>
+<table id="game-shortcuts">
+<caption>Keyboard shortcuts of the game window</caption>
+<thead>
+<tr><th scope="col">Shortcut</th><th scope="col">Action</th><th scope="col">Menu or place</th></tr>
+</thead>
+<tbody>
+<tr data-keys="F1"><th scope="row"><kbd>F1</kbd></th><td>User manual</td><td>Help menu</td></tr>
+<tr data-keys="F2"><th scope="row"><kbd>F2</kbd></th><td>Turn movement mode on or off</td><td>Tools menu</td></tr>
+<tr data-keys="F3"><th scope="row"><kbd>F3</kbd></th><td>Save game: sends the save command of the MUD</td><td>Game menu</td></tr>
+<tr data-keys="F4"><th scope="row"><kbd>F4</kbd></th><td>Quit the game: sends the quit command of the MUD</td><td>Game menu</td></tr>
+<tr data-keys="F5"><th scope="row"><kbd>F5</kbd></th><td>Aliases of the character</td><td>Tools menu</td></tr>
+<tr data-keys="F6"><th scope="row"><kbd>F6</kbd></th><td>Triggers of the character</td><td>Tools menu</td></tr>
+<tr data-keys="F7"><th scope="row"><kbd>F7</kbd></th><td>Paths of the character</td><td>Tools menu</td></tr>
+<tr data-keys="F8"><th scope="row"><kbd>F8</kbd></th><td>Turn silent mode on or off</td><td>Tools menu</td></tr>
+<tr data-keys="F9"><th scope="row"><kbd>F9</kbd></th><td>Options of this session</td><td>Tools menu</td></tr>
+<tr data-keys="Ctrl+C"><th scope="row"><kbd>Ctrl+C</kbd></th><td>Copy the selection</td><td>Edit menu</td></tr>
+<tr data-keys="Ctrl+X"><th scope="row"><kbd>Ctrl+X</kbd></th><td>Cut (only in Text to send)</td><td>Edit menu</td></tr>
+<tr data-keys="Ctrl+V"><th scope="row"><kbd>Ctrl+V</kbd></th><td>Paste (only in Text to send)</td><td>Edit menu</td></tr>
+<tr data-keys="Ctrl+E"><th scope="row"><kbd>Ctrl+E</kbd></th><td>Select all</td><td>Edit menu</td></tr>
+<tr data-keys="Ctrl+Z"><th scope="row"><kbd>Ctrl+Z</kbd></th><td>Undo (only in Text to send)</td><td>Edit menu</td></tr>
+<tr data-keys="Ctrl+B"><th scope="row"><kbd>Ctrl+B</kbd></th><td>Find in Received or in Messages</td><td>Edit menu</td></tr>
+<tr data-keys="Ctrl+S"><th scope="row"><kbd>Ctrl+S</kbd></th><td>Find next</td><td>Edit menu</td></tr>
+<tr data-keys="Ctrl+L"><th scope="row"><kbd>Ctrl+L</kbd></th><td>Clear received text</td><td>Edit menu</td></tr>
+<tr data-keys="Ctrl+K"><th scope="row"><kbd>Ctrl+K</kbd></th><td>Go to text to send</td><td>View menu</td></tr>
+<tr data-keys="Ctrl+Oemplus"><th scope="row"><kbd>Ctrl++</kbd></th><td>Enlarge received area</td><td>View menu</td></tr>
+<tr data-keys="Ctrl+OemMinus"><th scope="row"><kbd>Ctrl+-</kbd></th><td>Shrink received area</td><td>View menu</td></tr>
+<tr data-keys="Ctrl+M"><th scope="row"><kbd>Ctrl+M</kbd></th><td>Mute or unmute the announcements to the screen reader</td><td>Tools menu</td></tr>
+<tr data-keys="Alt+S"><th scope="row"><kbd>Alt+S</kbd></th><td>Stop speech: cuts what the screen reader is saying</td><td>Tools menu</td></tr>
+<tr><th scope="row"><kbd>Enter</kbd></th><td>Send what you typed. On an empty box, repeat the last command</td><td>Text to send</td></tr>
+<tr><th scope="row"><kbd>Shift+Enter</kbd> or <kbd>Ctrl+Enter</kbd></th><td>Insert a line break. On an empty box or in password mode, send a blank line</td><td>Text to send</td></tr>
+<tr><th scope="row"><kbd>Ctrl+Up arrow</kbd> and <kbd>Ctrl+Down arrow</kbd></th><td>Previous and next command of the history, always</td><td>Text to send</td></tr>
+<tr><th scope="row"><kbd>Up arrow</kbd> and <kbd>Down arrow</kbd></th><td>History. In a text of several lines, they first move between its lines. With movement mode on and an empty box, they send directions</td><td>Text to send</td></tr>
+<tr><th scope="row"><kbd>Escape</kbd></th><td>Delete what you typed and leave the history. In the whole window, cancel a pending digit sequence of message reading</td><td>Text to send and whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+1</kbd> to <kbd>Ctrl+9</kbd> and <kbd>Ctrl+0</kbd></th><td>Read message number 1 to 10, counting from the most recent. Digits pressed in a row are concatenated</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+º</kbd></th><td>Read the messages backwards, one per key press</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Ctrl+F</kbd></th><td>Say the date and the time. In Messages, those of the message under the cursor; in Received, those of the last message</td><td>Received and Messages</td></tr>
+<tr><th scope="row"><kbd>Enter</kbd></th><td>Open the link under the cursor</td><td>Received and Messages</td></tr>
+<tr><th scope="row"><kbd>Applications</kbd> or <kbd>Shift+F10</kbd></th><td>Context menu next to the cursor</td><td>Received and Messages</td></tr>
+<tr><th scope="row"><kbd>A</kbd> to <kbd>Z</kbd> and any other character</th><td>Moves the focus to Text to send and types the letter there</td><td>Received and Messages</td></tr>
+<tr><th scope="row"><kbd>Arrows</kbd>, <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, <kbd>Home</kbd>, <kbd>End</kbd></th><td>With movement mode on and an empty box: send the configured direction</td><td>Text to send</td></tr>
+<tr><th scope="row"><kbd>Numpad 0</kbd> to <kbd>9</kbd></th><td>With movement mode on: send the configured direction, even if there is text typed</td><td>Text to send</td></tr>
+<tr><th scope="row"><kbd>Alt+T</kbd>, <kbd>Alt+R</kbd>, <kbd>Alt+M</kbd></th><td>Go to Text to send, to Received or to Messages</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Alt+N</kbd></th><td>The Reconnect button, while it is visible</td><td>Whole window</td></tr>
+<tr><th scope="row"><kbd>Alt+F4</kbd></th><td>Close the window</td><td>Whole window</td></tr>
+</tbody>
+</table>
+<p>A note about the keys: <kbd>Ctrl++</kbd> uses the plus key of the main keyboard (on a US keyboard, the key with the equals and plus signs), and <kbd>Ctrl+-</kbd> uses the hyphen key. <kbd>Ctrl+º</kbd> uses the key to the left of the 1 on a Spanish keyboard; on a US keyboard the same key code usually belongs to the backslash key.</p>
+</section>
+
+<section id="message-review">
+<h2>8. Reading messages</h2>
+<p>You can review the Messages box from anywhere in the window, without moving the focus. Message number 1 is always the most recent one.</p>
+<ul>
+<li><kbd>Ctrl+1</kbd> to <kbd>Ctrl+9</kbd> read messages 1 to 9. <kbd>Ctrl+0</kbd> on its own reads message 10. Both the top row digits and the numeric keypad work.</li>
+<li><strong>Digit concatenation</strong>: if you press another digit before 400 milliseconds have passed, the digits are joined. <kbd>Ctrl+1</kbd> and right away <kbd>Ctrl+5</kbd> read message 15. Hold <kbd>Ctrl</kbd> down and type the number. Up to three digits are accepted; a fourth digit beeps and cancels.</li>
+<li><kbd>Escape</kbd> cancels a half-typed digit sequence.</li>
+<li><kbd>Ctrl+º</kbd> reviews backwards. The first press reads message 1. Each further press, if it comes within 800 milliseconds, reads message 2, 3, and so on. After a pause it starts again at 1.</li>
+<li>The screen reader says the number and the text, for example "3: Ann tells you: hello".</li>
+<li>If that message does not exist, it says "There are no messages.", "There is only one message." or "There are only N messages."</li>
+<li><kbd>Ctrl+F</kbd>, with the focus in Messages, says the date and time of the message where the cursor is. With the focus in Received, it says those of the last message. If there is none, it says "Time not found."</li>
+</ul>
+<p>These readings interrupt whatever the screen reader was saying.</p>
+</section>
+
+<section id="movement-mode">
+<h2>9. Movement mode</h2>
+<p>Movement mode turns some keys into directions, so that you can walk without typing. Turn it on and off with <kbd>F2</kbd>. The screen reader says "Movement mode on." or "Movement mode off." The state is remembered for each MUD or character.</p>
+<table>
+<caption>Movement mode keys and their default commands</caption>
+<thead>
+<tr><th scope="col">Key</th><th scope="col">Default command</th><th scope="col">When it acts</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><kbd>Up arrow</kbd></th><td><code>north</code></td><td>Only while the input box is empty</td></tr>
+<tr><th scope="row"><kbd>Down arrow</kbd></th><td><code>south</code></td><td>Only while the input box is empty</td></tr>
+<tr><th scope="row"><kbd>Left arrow</kbd></th><td><code>west</code></td><td>Only while the input box is empty</td></tr>
+<tr><th scope="row"><kbd>Right arrow</kbd></th><td><code>east</code></td><td>Only while the input box is empty</td></tr>
+<tr><th scope="row"><kbd>Page Up</kbd></th><td><code>up</code></td><td>Only while the input box is empty</td></tr>
+<tr><th scope="row"><kbd>Page Down</kbd></th><td><code>down</code></td><td>Only while the input box is empty</td></tr>
+<tr><th scope="row"><kbd>Home</kbd> and <kbd>End</kbd></th><td>None: they are free for you to give them a command</td><td>Only while the input box is empty</td></tr>
+<tr><th scope="row"><kbd>Numpad 8</kbd>, <kbd>2</kbd>, <kbd>4</kbd>, <kbd>6</kbd></th><td><code>north</code>, <code>south</code>, <code>west</code>, <code>east</code></td><td>Always</td></tr>
+<tr><th scope="row"><kbd>Numpad 7</kbd>, <kbd>9</kbd>, <kbd>1</kbd>, <kbd>3</kbd></th><td><code>northwest</code>, <code>northeast</code>, <code>southwest</code>, <code>southeast</code></td><td>Always</td></tr>
+<tr><th scope="row"><kbd>Numpad 5</kbd> and <kbd>0</kbd></th><td>None: they are free</td><td>Always</td></tr>
+</tbody>
+</table>
+<ul>
+<li>With the interface in Spanish, the default commands are the Spanish ones: <code>norte</code>, <code>sur</code>, and so on.</li>
+<li>With text typed, the arrows, <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, <kbd>Home</kbd> and <kbd>End</kbd> move the cursor again as usual.</li>
+<li>The history is still available with <kbd>Ctrl+Up arrow</kbd> and <kbd>Ctrl+Down arrow</kbd>.</li>
+<li>A key without a command does nothing special: it keeps its normal function.</li>
+<li>In password mode no key moves.</li>
+<li>Movement commands go through aliases and paths as if you had typed them, but they do not enter the history. If you are recording a path, they are noted down.</li>
+</ul>
+<p><strong>Configuring the keys</strong>: Tools menu, "Configure movement keys". The dialog has two groups, "Arrows and navigation" and "Numeric keypad", with one box for each of the 18 keys. Type the command you want each key to send. Leave a box empty to disable that key. The "Restore defaults" button goes back to the commands of the table.</p>
+<p>The keys belong to the character if the session has a character, and to the MUD if it has none. A character without keys of its own uses those of its MUD. The dialog tells you whose keys you are editing.</p>
+</section>
+
+<section id="silent-mode">
+<h2>10. Silent mode and all_speak</h2>
+<p>In silent mode, Omnimud stops announcing by voice the text of the MUD and the messages. The text still arrives in Received and in Messages, and is still written to the log. It is useful for fights or for areas with a lot of text.</p>
+<ul>
+<li>Turn it on and off with <kbd>F8</kbd>, or with the commands <code>callate</code> and <code>hablar</code>.</li>
+<li>The replies of the client itself, for example the reply to <code>calias</code>, are always announced.</li>
+<li>Reading with <kbd>Ctrl+1</kbd> to <kbd>Ctrl+0</kbd> keeps working.</li>
+</ul>
+<p><strong>The <code>all_speak:</code> marker</strong>. If a line of the MUD contains the text <code>all_speak:</code>, what follows it is announced by voice even in silent mode. The marker is never shown on screen nor written to the log. Some MUDs send it so that important things are not missed; you can also have your MUD emit it in the notices you care about, if the game allows that.</p>
+<p>A Lua script can speak at any time with <code>om.say</code>, in silent mode too.</p>
+</section>
+
+<section id="mute-stop">
+<h2>11. Muting the screen reader and stopping speech</h2>
+<ul>
+<li><strong>Mute screen reader</strong> (<kbd>Ctrl+M</kbd>). Omnimud stops sending announcements to the screen reader: no text of the MUD, no messages, no <kbd>Ctrl+1</kbd> readings. The screen reader still reads normally whatever you walk through with the cursor. When you turn it on it says "Screen reader announcements muted." and when you turn it off "Screen reader announcements enabled."</li>
+<li><strong>Stop speech</strong> (<kbd>Alt+S</kbd>). Cuts what the screen reader is saying at that moment and empties what is pending. It does not change any setting.</li>
+</ul>
+<p>The difference with silent mode: <kbd>F8</kbd> silences the text of the game but lets <code>all_speak:</code> and the replies of the client through. <kbd>Ctrl+M</kbd> silences everything.</p>
+</section>
+
+<section id="internal-commands">
+<h2>12. Internal commands</h2>
+<p>These are commands that you type in "Text to send" and that Omnimud itself handles. They are not sent to the MUD. Type them exactly as they appear in the table, in lower case. They are the same words with the interface in Spanish and in English; several of them are Spanish words.</p>
+<p>The reply of each command appears in Received, is written to the log and is announced by voice.</p>
+<table>
+<caption>Internal commands of Omnimud</caption>
+<thead>
+<tr><th scope="col">Command</th><th scope="col">What it does</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><code>cls</code></th><td>Clears the Received box and replies "OK".</td></tr>
+<tr><th scope="row"><code>calias</code></th><td>Opens the aliases window.</td></tr>
+<tr><th scope="row"><code>calias name</code></th><td>Tells which action the alias <code>name</code> is assigned to.</td></tr>
+<tr><th scope="row"><code>calias name action</code></th><td>Creates the alias. The action is everything after the name, spaces included.</td></tr>
+<tr><th scope="row"><code>uncalias name</code></th><td>Removes the alias.</td></tr>
+<tr><th scope="row"><code>triggers</code></th><td>Opens the triggers window.</td></tr>
+<tr><th scope="row"><code>-triggers</code></th><td>Disables the whole trigger system in this session, command triggers included.</td></tr>
+<tr><th scope="row"><code>+triggers</code></th><td>Enables the trigger system again.</td></tr>
+<tr><th scope="row"><code>-trigger name</code></th><td>Disables the trigger with that name. The change is saved.</td></tr>
+<tr><th scope="row"><code>+trigger name</code></th><td>Enables the trigger with that name. The change is saved.</td></tr>
+<tr><th scope="row"><code>paths</code></th><td>Opens the paths window.</td></tr>
+<tr><th scope="row"><code>_name</code></th><td>Walks the path <code>name</code>.</td></tr>
+<tr><th scope="row"><code>_name -r</code></th><td>Walks the path in reverse, to come back.</td></tr>
+<tr><th scope="row"><code>paths iniciar</code></th><td>Starts recording a path ("iniciar" means start).</td></tr>
+<tr><th scope="row"><code>paths ultima</code></th><td>Tells the last direction recorded ("ultima" means last).</td></tr>
+<tr><th scope="row"><code>paths ultima borrar</code></th><td>Removes the last direction recorded ("borrar" means delete).</td></tr>
+<tr><th scope="row"><code>paths grabado</code></th><td>Tells the path recorded so far ("grabado" means recorded).</td></tr>
+<tr><th scope="row"><code>paths cancelar</code></th><td>Discards the recording, after a confirmation.</td></tr>
+<tr><th scope="row"><code>paths detener</code></th><td>Ends the recording and opens the dialog to save the path ("detener" means stop).</td></tr>
+<tr><th scope="row"><code>callate</code></th><td>Turns silent mode on ("be quiet").</td></tr>
+<tr><th scope="row"><code>hablar</code></th><td>Turns silent mode off ("speak").</td></tr>
+</tbody>
+</table>
+<ul>
+<li>The alias, trigger and path commands require a session with a character.</li>
+<li>If aliases and triggers call each other in a loop, Omnimud cuts it at ten levels and warns: "Too many nested commands".</li>
+<li>Without a connection, commands for the MUD are not sent and the client says so.</li>
+</ul>
+</section>
+
+<section id="aliases">
+<h2>13. Aliases</h2>
+<p>An alias is an abbreviation: you type a short word and Omnimud sends a longer action. Open them with <kbd>F5</kbd> or with the <code>calias</code> command. They belong to each character.</p>
+<p>How they work:</p>
+<ul>
+<li>Only the <strong>first word</strong> of what you type is compared, exactly and case-sensitively.</li>
+<li>The first word is replaced with the action. The rest of the line is kept. With the alias <code>gc</code> for <code>get all from</code>, typing <code>gc corpse</code> sends <code>get all from corpse</code>.</li>
+<li>It is applied only once: an alias does not expand into another alias in the same word.</li>
+<li>The command of an alias cannot contain spaces.</li>
+<li>If command stacking is on, the action can hold several commands separated by the chosen character.</li>
+</ul>
+<p>The "Aliases of" window has a list with the columns Command, Action and Enabled, and these buttons: Add, Edit, Remove, Enable or Disable, Sort by, Import, Export… and Close.</p>
+<ul>
+<li>In the list: <kbd>Insert</kbd> adds, <kbd>F2</kbd> or <kbd>Enter</kbd> edit, <kbd>Del</kbd> removes and <kbd>Space</kbd> enables or disables. The change is announced, for example "Alias gc disabled".</li>
+<li>The <kbd>Applications</kbd> key opens a context menu with the same actions.</li>
+<li>"Sort by" opens a menu with the columns. The chosen order is remembered for each character.</li>
+<li>"Import" offers "From file…" and "From another character…". "Export…" saves all the aliases to an .omnimud file.</li>
+</ul>
+<p>The alias editor has the fields Command and Action and the Enabled check box. It warns if the command already exists, and asks if another alias already performs that same action.</p>
+</section>
+
+<section id="triggers">
+<h2>14. Triggers</h2>
+<p>A trigger reacts by itself when the MUD writes a given text. It can send a command, play a sound, hide the line or run a Lua script. Open them with <kbd>F6</kbd> or with the <code>triggers</code> command. They belong to each character.</p>
+
+<h3 id="trigger-list">The trigger list</h3>
+<p>The "Triggers of" window works like the aliases one. Columns: Name, Pattern, Type, Action, Priority and Enabled. Besides the buttons of the alias list, it has Move up and Move down.</p>
+<ul>
+<li><kbd>Alt+Up arrow</kbd> and <kbd>Alt+Down arrow</kbd> move the trigger in the evaluation order. The screen reader says the new position.</li>
+<li>Moving is only possible while the list is sorted by "Evaluation order", ascending. Otherwise the program tells you.</li>
+<li><kbd>Space</kbd> enables or disables the trigger.</li>
+</ul>
+
+<h3 id="trigger-patterns">Pattern types and wildcards</h3>
+<p>The "Trigger text" field is the text that fires the trigger. The "Pattern type" says how it is interpreted:</p>
+<ul>
+<li><strong>Literal text</strong>. It fires if the line contains that text. A <code>^</code> at the start requires the line to begin that way. A <code>$</code> at the end requires it to end that way. With both, the line must be exactly that.</li>
+<li><strong>Wildcards %s %d %w</strong>. Normal text with gaps:
+<ul>
+<li><code>%s</code>: any text, as short as possible.</li>
+<li><code>%d</code>: a number.</li>
+<li><code>%w</code>: one word, without spaces.</li>
+<li><code>%%</code>: a percent sign.</li>
+<li>With a digit in the middle, a fixed length: <code>%3d</code> is exactly three digits.</li>
+<li><code>^</code> at the start and <code>$</code> at the end anchor the line, as with literal text.</li>
+</ul></li>
+<li><strong>Regular expression</strong>. A .NET regular expression. The groups in parentheses are the captures. If the expression is badly written, or so slow that it could block the program, the editor does not accept it.</li>
+</ul>
+<p>What the wildcards or the groups capture is used in the action as <code>%1</code>, <code>%2</code>, and so on. An example with wildcards:</p>
+<pre><code>Trigger text: ^%w tells you: %s
+Action: tell %1 I cannot talk now, I am busy</code></pre>
+<p>The "Case sensitive" check box is unchecked by default.</p>
+
+<h3 id="trigger-options">Multiline, hide the line and priority</h3>
+<ul>
+<li><strong>Multiline (evaluate the whole block)</strong>. Unchecked, the trigger is evaluated against each complete line. Checked, it is evaluated against the whole block of lines that arrived together. In a multiline regular expression, <code>^</code> and <code>$</code> still mean start and end of each line. With wildcards, the block is treated as one long line.</li>
+<li><strong>Hide the line</strong>. The line that fires the trigger is not shown, not announced and not written to the log. It only applies to line triggers: with Multiline checked, this check box is disabled.</li>
+<li><strong>Priority</strong>. A number from 0 to 1000; 50 by default. Triggers with a higher priority are evaluated first. With equal priorities, the order of the list decides.</li>
+<li><strong>Enabled</strong>. A disabled trigger is not evaluated.</li>
+</ul>
+<p>Every trigger that matches fires: none stops the others. The text that the client itself writes, such as the replies to internal commands, does not fire triggers.</p>
+
+<h3 id="trigger-actions">What the trigger does</h3>
+<p>The "What will it do?" list has four choices:</p>
+<ul>
+<li><strong>Send a command</strong>. The action is a single line. It goes through aliases, paths, internal commands, stacking and repetition, as if you had typed it. For several steps use the command stacking character or a Lua script.</li>
+<li><strong>Play a sound</strong>. Type the file name in "Sound" or choose it with Browse… wav, mp3 and ogg files work. A name without a path is looked up first in the sound folder of the MUD and then in the <code>sounds</code> folder of the program. A full path on your disk also works.</li>
+<li><strong>Both</strong>. Plays the sound and sends the command.</li>
+<li><strong>Lua script</strong>. The Action box is renamed "Lua script" and accepts several lines. Inside it, <kbd>Tab</kbd> indents and <kbd>Ctrl+Tab</kbd> leaves the box. When you accept, the script is validated; if it has an error, the message tells the line and the cursor goes to it. See <a href="#lua">Lua scripts</a>.</li>
+</ul>
+<p>The "Play sound" button plays the given file. This button does not look in the sound folder of the MUD, so to try a sound from that folder choose it with Browse…</p>
+
+<h3 id="command-triggers">Command triggers (@)</h3>
+<p>If the trigger text starts with <code>@</code>, the trigger does not look at the text of the MUD. It fires when <strong>you type</strong> that word as the first word of a command. It lets you create your own commands.</p>
+<ul>
+<li>The trigger <code>@heal</code> fires when you type <code>heal</code>, or <code>heal ann</code>.</li>
+<li>The words that follow are <code>%1</code>, <code>%2</code>, and so on. In Lua they are <code>om.args</code>, and the whole line is <code>om.command</code>.</li>
+<li>The command you typed <strong>is not sent to the MUD</strong>.</li>
+<li>The name cannot contain spaces. It is compared after aliases are applied, and it honours the case check box.</li>
+<li>A command trigger is always literal text, cannot be multiline and does not hide lines. The editor disables those controls and explains it.</li>
+<li>With <code>-triggers</code> they do not fire either.</li>
+</ul>
+
+<h3 id="trigger-test">The Test button</h3>
+<p>Type an example line in "Sample text" and press Test. The "Result" box says, and the screen reader announces:</p>
+<ul>
+<li>"It matches." or "It does not match."</li>
+<li>The captures, for example "%1 = Ann".</li>
+<li>What it would do: "Would send: …", "Would play: …", "Would hide the line."</li>
+<li>For a Lua script, the script really runs against a fake host, and the result lists each thing it would have done: send, display, say, add a message, set a variable. If it fails, it tells the error and its line.</li>
+</ul>
+<p>The test never sends anything to the MUD.</p>
+</section>
+
+<section id="lua">
+<h2>15. Lua scripts</h2>
+<p>Triggers of the "Lua script" kind run Lua 5.2 code inside a safe environment. Everything the script can do is in the <code>om</code> table. The full reference, with examples, is in the file <a href="API_LUA.md">API_LUA.md</a>, which is installed next to this manual. It is written in Spanish. It also opens from the Help menu, "Lua scripting reference".</p>
+<p>An example for a trigger with the regular expression <code>^(\w+) tells you: '(.+)'$</code>:</p>
+<pre><code>om.send("say Hello, " .. om.captures[1])
+om.playsound("notice.wav")</code></pre>
+<p>The most used parts:</p>
+<ul>
+<li>Data: <code>om.line</code>, <code>om.block</code>, <code>om.lines</code>, <code>om.captures</code>, <code>om.args</code>, <code>om.command</code>, <code>om.mud.name</code>, <code>om.character.name</code>.</li>
+<li>Sending: <code>om.send</code> (as if you typed it), <code>om.sendraw</code> (straight to the MUD) and <code>om.get</code> (sends and returns the reply without showing it).</li>
+<li>Showing and speaking: <code>om.display</code>, <code>om.echo</code>, <code>om.say</code>, <code>om.message</code> (adds to the Messages box), <code>om.status</code> (status bar), <code>om.log</code>, <code>om.gag</code> (hides the line).</li>
+<li>Sound: <code>om.playsound</code> and <code>om.stopsound</code>.</li>
+<li>Session variables: <code>om.setvar</code>, <code>om.getvar</code>, <code>om.removevar</code>, <code>om.isset</code>. Lua global variables do not survive from one run to the next; these do, for as long as the session lasts.</li>
+<li>Time: <code>om.sleep</code>, <code>om.countdown</code>, <code>om.timer</code>, <code>om.canceltimer</code>.</li>
+</ul>
+<p>Safety and limits:</p>
+<ul>
+<li>A script cannot read or write files, use the network or run programs.</li>
+<li>No script can hang the client: an endless loop is cut automatically. There are limits on instructions, time and memory.</li>
+<li>An error in a script never closes Omnimud. It is shown in Received with the name of the trigger and the line number.</li>
+<li>The same trigger does not overlap with itself: if it fires again while its script is still running, that firing is dropped.</li>
+</ul>
+<p><a href="#message-rules">Message rule</a> sets of the Lua script type use the same language with a stricter contract.</p>
+</section>
+
+<section id="paths">
+<h2>16. Paths and directions</h2>
+<p>A path is a saved route: a list of directions that Omnimud sends in one go. Paths belong to each character. For them to work, the MUD needs a dictionary of directions.</p>
+
+<h3 id="directions">Directions of the MUD</h3>
+<p>Tools menu, "Directions for paths". A saved MUD is required. Each direction has three pieces of data:</p>
+<ul>
+<li><strong>Direction</strong>: the full command that is sent, for example <code>north</code>.</li>
+<li><strong>Abbreviation</strong>: a single character, which cannot be a digit. It is what you write inside the path, for example <code>n</code>.</li>
+<li><strong>Opposite direction</strong>: the command to walk back, for example <code>south</code>. It is needed to walk the path in reverse.</li>
+</ul>
+<p>Buttons: Add…, Edit…, Remove, Load common directions and Close.</p>
+<p>"Load common directions" adds the missing ones of this set: north (n), south (s), east (e), west (w), northeast (r), northwest (q), southeast (c), southwest (z), up (u), down (d), in (i) and out (o), each with its opposite. With the interface in Spanish the equivalent Spanish directions are loaded.</p>
+
+<h3 id="path-editing">Creating and using paths</h3>
+<p>The paths window opens with <kbd>F7</kbd> or with the <code>paths</code> command. It works like the aliases one, with the columns Name and Path.</p>
+<p>The route is written with abbreviations. A number before an abbreviation repeats it. For example, <code>3n2ew</code> means north, north, north, east, east, west. A number can have three digits at most, and the route cannot end with a number.</p>
+<p>The editor has the fields Name and Path, and the "Show expansion" button, which tells how many steps the route has and which they are. When you accept:</p>
+<ul>
+<li>It checks that every abbreviation exists in the directions of the MUD.</li>
+<li>If some direction has no opposite, it warns that the path cannot be walked backwards.</li>
+</ul>
+<p>To use a path, type an underscore and its name:</p>
+<ul>
+<li><code>_square-tavern</code> walks the path forwards.</li>
+<li><code>_square-tavern -r</code> walks it back: it reverses the order and replaces each direction with its opposite.</li>
+</ul>
+
+<h3 id="path-recording">Recording a path</h3>
+<ol>
+<li>Type <code>paths iniciar</code>. The status bar says "Recording path".</li>
+<li>Walk as usual, typing the directions or with movement mode. Each known direction is noted down and a short sound plays. Both the full command and the abbreviation work. The directions are sent to the MUD as always.</li>
+<li>If you make a mistake, <code>paths ultima</code> tells the last direction noted and <code>paths ultima borrar</code> removes it.</li>
+<li><code>paths grabado</code> tells what you have so far.</li>
+<li><code>paths detener</code> ends the recording and opens the new path dialog, with the route already written. You only have to give it a name.</li>
+<li><code>paths cancelar</code> discards the recording, after a confirmation.</li>
+</ol>
+</section>
+
+<section id="sound">
+<h2>17. Sound and MSP</h2>
+<p>Omnimud plays wav, mp3 and ogg files, and can mix several sounds at once. Sounds come from three sources:</p>
+<ul>
+<li><strong>MSP</strong> (MUD Sound Protocol): the MUD asks for sounds with <code>!!SOUND(...)</code> lines and for music with <code>!!MUSIC(...)</code>.</li>
+<li>The sounds of your triggers and your Lua scripts.</li>
+<li>The cues of the program itself: the click of the history, the cue when a direction is noted down and the cue when a link is opened.</li>
+</ul>
+<p>About MSP:</p>
+<ul>
+<li>MSP lines are never shown on screen, even when sound is off.</li>
+<li>They are only recognised at the start of a line. That way another player cannot make your client play anything by writing the order on a channel.</li>
+<li>The parameters volume (V), repeats (L), priority (P), continue (C), subfolder (T) and download address (U) are honoured. The name <code>off</code> stops the sounds or the music.</li>
+<li>A name with wildcards, such as <code>hit*.wav</code>, picks at random among the files that match. A name without an extension is looked up as wav.</li>
+<li>Priorities: while an effect is playing, another with a lower priority is not played; one with a higher priority replaces it. Music never overlaps other music. <code>!!MUSIC</code> with continue lets the music that is already playing carry on.</li>
+</ul>
+<p><strong>Sound folder</strong>. The sounds of the MUD are looked up in its sound folder: the one you set when <a href="#mud-dialog">editing the MUD</a> or, if that is empty, <code>data\sounds\name of the MUD</code>. No name sent by the MUD can leave that folder.</p>
+<p><strong>Downloading</strong>. If a sound is missing and the MUD has given a download address, Omnimud downloads it to that folder and plays it. HTTPS is always tried first. Unencrypted HTTP is only used if you allow it in the options. If the download fails, there is no warning: that sound simply does not play.</p>
+<p>The check boxes and the volume are in the <a href="#options-sounds">Sounds tab</a> of the options. Each game window only controls its own sounds.</p>
+</section>
+
+<section id="gmcp">
+<h2>18. GMCP: channels and the Actions menu</h2>
+<p>GMCP is a data channel between the MUD and the client, invisible to the player. If the MUD offers it, Omnimud turns it on by itself. The "Enable Telnet negotiation" option must be checked, as it is by default.</p>
+<p><strong>Channels to the Messages box</strong>. Channel messages that arrive through GMCP (<code>Comm.Channel.Text</code>) are added to the Messages box in the form "[channel] name: text". If the MUD also writes the same message as normal text, it is announced only once and it is not duplicated in Messages.</p>
+<p><strong>Actions menu</strong>. The MUD can tell what can be done at each moment, and Omnimud offers it as a normal menu:</p>
+<ul>
+<li><strong>Inventory</strong> (<code>Char.Inventory</code> package): each object is a submenu with its actions. A group of equal objects is a submenu of submenus. An object without actions is shown disabled: the menu also serves to know what you carry.</li>
+<li><strong>Exits</strong> (<code>Room.Info</code> package): one entry for each exit of the room. Choosing it sends that exit.</li>
+</ul>
+<p>How to use it:</p>
+<ul>
+<li>The Actions menu is the first one in the bar and opens with <kbd>Alt+A</kbd>. It is only visible while it has content. It appears and disappears without announcing anything, so as not to interrupt your reading.</li>
+<li>The same sections are in the context menu of the Received box.</li>
+<li>The menu is built at the moment you open it and does not change while it is open.</li>
+<li>After you choose an action, the focus goes back to "Text to send".</li>
+<li>If a list is very long, it is cut and ends with a disabled entry "… and N more".</li>
+<li>When you disconnect, the menu is emptied.</li>
+</ul>
+<p><strong>Safety</strong>. The content of the menu is sent by the server, so Omnimud cleans and limits it. An action can only send text to the MUD. It goes through your aliases and paths, but the internal commands of the client are not obeyed from there, and it does not enter the history. A server cannot touch your configuration from a menu.</p>
+</section>
+
+<section id="message-rules">
+<h2>19. Message rules</h2>
+<p>Message rules decide which text of the MUD is copied to the Messages box: what people tell you, channels, whispers. They are managed from the launcher, Tools menu, "Message rules…" (<kbd>Ctrl+R</kbd>).</p>
+<p>Rules are grouped in <strong>sets</strong>. Each MUD uses one set, or none. You choose it when <a href="#mud-dialog">editing the MUD</a>.</p>
+<p><strong>Built-in sets</strong>. Omnimud ships four: Callandor, Simauria, Balzhur and Cyberlife, made for Spanish MUDs. In the list they are read with the text "(built-in)". They are read-only. To adapt one, use <strong>Duplicate…</strong> and work on the copy.</p>
+<p>Buttons of the sets: New set…, Duplicate…, Rename… and Remove set. In the list of sets, <kbd>Insert</kbd> creates one, <kbd>F2</kbd> renames it and <kbd>Del</kbd> removes it. If you remove a set, the MUDs that used it are left without rules.</p>
+<p>A set is of one of two types. You choose it when you create the set, and change it in "Type of the set".</p>
+<p><strong>Patterns type</strong>. An ordered list of rules. Each rule has:</p>
+<ul>
+<li>Pattern: a regular expression that is tried against each line.</li>
+<li>Message template: the text that will go to Messages. <code>$1</code>, <code>$2</code>… are the groups of the pattern, <code>${name}</code> a named group and <code>$0</code> the whole match.</li>
+<li>Channel, optional.</li>
+<li>The check boxes "Case sensitive" and "Enabled".</li>
+</ul>
+<p>Rules are tried in order and the first that matches wins. They produce one message per line. In the rule list: <kbd>Insert</kbd> adds, <kbd>F2</kbd> or <kbd>Enter</kbd> edit, <kbd>Del</kbd> removes, <kbd>Space</kbd> enables or disables, and <kbd>Alt+Up arrow</kbd> and <kbd>Alt+Down arrow</kbd> move the rule. The same commands are in the buttons Add rule…, Edit rule…, Remove rule, Move up, Move down and Enable or disable.</p>
+<p><strong>Lua script type</strong>. A script sees the whole block of lines received, so it can capture messages of several lines. It reads <code>om.lines</code> or <code>om.block</code> and calls <code>om.message(text)</code> for each message. It cannot do anything else: it does not send, wait or play sounds. The four built-in sets are of this type.</p>
+<ul>
+<li>The script is written in a box of several lines. <kbd>Tab</kbd> types a tab and <kbd>Ctrl+Tab</kbd> leaves the box.</li>
+<li>"Save script" validates it. If there is an error, it tells the line and takes the cursor to it.</li>
+<li>It has strict limits of time and instructions per block. If it fails during the game, you are warned only once and the game goes on. If it exceeds its limits three blocks in a row, it is switched off until the rules are reloaded.</li>
+<li>Changing a set from Lua script to Patterns discards its script, after a confirmation.</li>
+</ul>
+<p>The full contract is in the section "Reglas de mensajes" of <a href="API_LUA.md">API_LUA.md</a>.</p>
+<p><strong>Testing</strong>. Type an example text in "Text to test against the set" and press "Test line". The result tells which rule matches and which message would come out, or "No message." With a script, it runs it on that block and lists the numbered messages. The editor of each rule also has its own "Run test" button.</p>
+<p>A message that has already been read as text of the MUD is not read again when it enters Messages.</p>
+<p>Warning: changes to the rules do not reach a game window that is already open. Close that window and connect again.</p>
+</section>
+
+<section id="options">
+<h2>20. Options</h2>
+
+<h3 id="options-inheritance">Three levels and inheritance</h3>
+<p>Options exist at three levels: <strong>global</strong>, for each <strong>MUD</strong> and for each <strong>character</strong>.</p>
+<ul>
+<li>The global options open from the launcher, with <kbd>Ctrl+O</kbd>.</li>
+<li>In the game window, <kbd>F9</kbd> opens the options of the level of that session: those of the character if you connected with a character, those of the MUD if you connected to a MUD without a character, and the global ones in a quick connect session. The title of the dialog tells whose they are.</li>
+</ul>
+<p>At the MUD and character levels, the first thing in the dialog is a check box: "Use the global options" on a MUD, or "Use the options of the MUD" on a character.</p>
+<ul>
+<li>With the box <strong>checked</strong>, that level has no options of its own and follows the level above. The tabs are shown disabled, with the inherited values.</li>
+<li>With the box <strong>unchecked</strong>, that level has its own complete set of options. The first time you uncheck it, you start from a copy of the inherited values.</li>
+<li>Inheritance works by block: either everything is its own or everything is inherited. Options are not inherited one by one.</li>
+<li>A character without options of its own uses those of its MUD. If the MUD has none either, it uses the global ones.</li>
+</ul>
+<p>The dialog has six tabs and a single set of buttons: OK, Cancel, Export… and Import… If a value is not valid, the program says so, switches to the tab of the field and gives it the focus. Changes are applied at once to the open game windows.</p>
+<p>The check boxes of this dialog have no access key: reach them with <kbd>Tab</kbd>.</p>
+
+<h3 id="options-general">General tab</h3>
+<ul>
+<li><strong>Screen reader</strong>: "Automatic (UI Automation)", "JAWS", "NVDA" or "None". Automatic by default. See <a href="#screen-readers">Tips for screen readers</a>.</li>
+<li><strong>Cursor in Received</strong> and <strong>Cursor in Messages</strong>. What the cursor does when text arrives: "Always go to the end of the text", "Keep it where it is" or "Go to the end only if it was already there". The third one by default.</li>
+<li><strong>History size (commands)</strong>: from 1 to 10,000. 50 by default.</li>
+<li><strong>Language</strong>: Automatic, Español or English. It can only be changed in the global options. The change is applied the next time you start Omnimud.</li>
+<li><strong>Maximum lines in Received</strong>: from 100 to 1,000,000. 10,000 by default.</li>
+<li><strong>Prompt wait (milliseconds)</strong>: from 0 to 60,000. 150 by default. It is the time Omnimud waits before showing text that arrived without a line break, such as a prompt. If your prompts are read in pieces, raise it.</li>
+<li><strong>Confirm before exiting</strong>. Checked by default.</li>
+<li><strong>Try to save the game before exiting</strong>. Checked by default. On closing it sends the save command and the quit command of the MUD.</li>
+<li><strong>Enable Telnet negotiation</strong>. Checked by default. Unchecked, Omnimud ignores the Telnet requests of the server. Without it there is no GMCP and no password mode.</li>
+<li><strong>Announce the text of the MUD</strong>. Checked by default.</li>
+<li><strong>Announce the messages</strong>. Checked by default.</li>
+<li><strong>Flash the window when text arrives in the background</strong>. Checked by default.</li>
+<li><strong>Check for updates when Omnimud starts</strong>. Only in the global options (it is the same switch as "Check for updates on startup" in the Tools menu of the launcher). Unchecked by default. See <a href="#updates">Updates</a>.</li>
+</ul>
+
+<h3 id="options-logs">Logs tab</h3>
+<ul>
+<li><strong>Log type</strong>: "Do not save logs", "One per day" or "One per session". One per day by default.</li>
+<li><strong>Log folder</strong>, with the Browse… button. Empty means the default folder, <code>data\logs</code>. If the folder does not exist, the program offers to create it.</li>
+</ul>
+<p>See <a href="#logs">Logs</a>.</p>
+
+<h3 id="options-sounds">Sounds tab</h3>
+<ul>
+<li><strong>Enable sound effects (MSP)</strong>. It also governs the sounds of triggers and the cues of the program.</li>
+<li><strong>Play sound effects while the window is in the background</strong>.</li>
+<li><strong>Enable music (MSP)</strong>.</li>
+<li><strong>Play music while the window is in the background</strong>.</li>
+<li><strong>Download sounds from the internet</strong>.</li>
+<li><strong>Allow unencrypted HTTP downloads when HTTPS fails</strong>. Unchecked by default. Some old MUDs only publish their sounds over HTTP.</li>
+<li><strong>Volume (0 to 100)</strong>. 100 by default.</li>
+</ul>
+<p>All the check boxes come checked, except the HTTP one.</p>
+
+<h3 id="options-connection">Connection tab</h3>
+<p>It holds the proxy settings. They are explained in <a href="#proxy">Proxy</a>.</p>
+
+<h3 id="options-appearance">Appearance tab</h3>
+<ul>
+<li><strong>Font</strong>: a list of the installed fonts. Consolas by default.</li>
+<li><strong>Size in points</strong>: from 4 to 200. 10 by default.</li>
+<li><strong>Change font…</strong>: opens the Windows font dialog.</li>
+<li><strong>Preview</strong>: a read-only box with a sample text in the chosen font.</li>
+</ul>
+<p>The font applies to Text to send, Received and Messages. The colours of the text are those the MUD sends with ANSI codes: 16 colours, 256 colours and true colour.</p>
+
+<h3 id="options-special">Special characters tab</h3>
+<ul>
+<li><strong>Use a character to send several commands at once</strong>, and <strong>Command stacking character</strong>. Off by default; the proposed character is the semicolon. With it, <code>open door;north;close door</code> sends three commands. To send the character itself, type it twice: <code>;;</code>. Each part is treated as a complete command, with its aliases and paths.</li>
+<li><strong>Use a character to repeat a command several times</strong>, and <strong>Repeat character</strong>. Off by default; the proposed character is the hash sign. With it, <code>3#north</code> sends <code>north</code> three times. The maximum is 50 repetitions.</li>
+</ul>
+<p>Each character must be exactly one character, cannot be a digit or a space, and the two must be different.</p>
+</section>
+
+<section id="proxy">
+<h2>21. Proxy</h2>
+<p>It is in the options, Connection tab. Most people do not need a proxy. Some company or school networks require one.</p>
+<ul>
+<li><strong>Proxy</strong>: "Do not use a proxy", "Use the proxy of the system" or "Enter it manually".</li>
+<li><strong>Proxy host</strong>, <strong>Proxy port</strong> and <strong>Proxy protocol</strong> (SOCKS5 or HTTP CONNECT). Only in manual mode.</li>
+<li><strong>Proxy user name</strong> (<kbd>Alt+J</kbd>) and <strong>New proxy password, empty to keep the current one</strong> (<kbd>Alt+Q</kbd>). Available in manual mode and in system mode. The stored password is never shown, not even as dots. Leave the box empty to keep it.</li>
+<li><strong>Delete the stored proxy password</strong>. Only enabled if one is stored.</li>
+<li><strong>Use the proxy for the MUD connection too</strong>. Unchecked by default.</li>
+</ul>
+<p>How it is applied:</p>
+<ul>
+<li>Sound downloads always follow the chosen proxy type. The update check honours it too.</li>
+<li>The connection to the MUD only goes through the proxy if you check the last box. Otherwise it connects directly.</li>
+<li>"Do not use a proxy" really is a direct connection, for downloads too.</li>
+<li>"Use the proxy of the system" reads the proxy settings of Windows. It honours their exclusions and never uses a proxy for a MUD running on your own computer.</li>
+<li>For the MUD, authentication is with user name and password. Integrated Windows authentication (NTLM or Kerberos) is not supported for the MUD connection.</li>
+<li>The settings are read on every connection attempt. If you fix something in the options, pressing Reconnect is enough.</li>
+</ul>
+<p>The proxy password is stored encrypted, is not exported and does not work on another computer. If the connection fails because of the proxy, the message says what happened and where to fix it: the proxy does not answer, it asks for or rejects the user name and password, it refuses to connect to the MUD, or the chosen protocol is not the one it speaks.</p>
+</section>
+
+<section id="logs">
+<h2>22. Logs</h2>
+<p>Omnimud can save everything that happens in each session to text files.</p>
+<ul>
+<li>By default one file per day is saved. Change it in the options, <a href="#options-logs">Logs tab</a>.</li>
+<li>The files go in <code>data\logs\name of the MUD\name of the character</code>, or in the folder you choose.</li>
+<li>The name of the file is the date, for example <code>2026-03-15.log</code>. With "One per session" it also carries the start time.</li>
+<li>They contain the text received, without colours, and the commands you sent. They are plain text in UTF-8, and text is always appended at the end.</li>
+<li>When a session ends, a line "Session ended on…" is written.</li>
+<li><strong>Passwords are never written</strong>: neither what you send in password mode, nor the lines of the login script that contain <code>%password</code>.</li>
+<li>Lines hidden by a trigger and the <code>all_speak:</code> marker are not written either.</li>
+<li>If the file cannot be opened or written, you are warned once and the game goes on without a log.</li>
+</ul>
+<p>Logs stay on your computer. Omnimud does not send them anywhere and does not include them in error reports.</p>
+</section>
+
+<section id="import-export">
+<h2>23. Import and export</h2>
+<p>Omnimud exchanges data in text files with the <code>.omnimud</code> extension. They are useful for backups, for moving your configuration to another computer or for sharing it with someone else.</p>
+<p><strong>What can be exported</strong>:</p>
+<ul>
+<li><strong>A MUD</strong> (launcher, <kbd>Ctrl+E</kbd>): its connection data, its login script, its directions, its movement keys, its options and its message rule set, with the Lua script if it has one. The program asks whether you also want to include its characters.</li>
+<li><strong>A character</strong> (launcher, <kbd>Ctrl+Shift+E</kbd>): its aliases, triggers, paths, movement keys and options.</li>
+<li><strong>A single list</strong> of aliases, triggers or paths: the Export… button of each list window.</li>
+<li><strong>A set of options</strong>: the Export… button of the options dialog.</li>
+</ul>
+<p><strong>Passwords are never exported</strong>: neither those of the characters nor the proxy one. The proxy user name is exported. Your personal information is not exported either.</p>
+<p><strong>Importing</strong>:</p>
+<ul>
+<li>In the launcher, <kbd>Ctrl+I</kbd> imports any .omnimud file. A character file is imported into the MUD you have selected in the tree.</li>
+<li>In the aliases, triggers and paths windows, the Import button offers "From file…" and "From another character…", which copies straight from another of your characters.</li>
+<li>In the options dialog, Import… loads the values into the dialog. They are not saved until you press OK.</li>
+</ul>
+<p><strong>Conflicts</strong>. If some element of the file already exists, the "Elements that already exist" dialog appears, with a list of check boxes. Check the ones you want to overwrite; the unchecked ones are skipped and stay as they are. There are the buttons "Overwrite all", "Skip all", "Import" and Cancel. A status line tells how many will be overwritten and how many skipped.</p>
+<p>At the end, the program sums up the result: how many elements were added, overwritten, skipped and how many failed. Importing is safe: a file that is damaged, too large or created by a newer version is rejected with a clear message and changes nothing.</p>
+</section>
+
+<section id="portability">
+<h2>24. Portability</h2>
+<p>All the data of Omnimud is in the <code>data</code> folder next to <code>Omnimud.exe</code>:</p>
+<ul>
+<li><code>data\omnimud.db</code>: the database with the MUDs, characters, aliases, triggers, paths, rules and options.</li>
+<li><code>data\master.key</code>: the key used to encrypt the passwords.</li>
+<li><code>data\logs</code>: the session logs.</li>
+<li><code>data\sounds</code>: the sounds of each MUD.</li>
+</ul>
+<p>Omnimud does not use the Windows Registry. To take the program to another computer or to a USB drive, copy the whole Omnimud folder, with its <code>data</code> folder. To make a backup, copy the <code>data</code> folder while Omnimud is closed.</p>
+<p><strong>Passwords</strong>. The saved passwords, of the characters and of the proxy, are encrypted and tied to your Windows user. When you take the folder to another computer, or to another Windows user, they cannot be decrypted. There is no error: the program behaves as if no password were saved, so none is sent when connecting. Edit each character and type its password again. Everything else travels intact.</p>
+<p><strong>A folder without write permission</strong>. If the folder of the program cannot be written to, for example inside "Program Files", Omnimud stores the data in your user profile, in <code>%AppData%\Omnimud</code>. In that case the installation is no longer portable. It is best to keep Omnimud in a folder where you can write.</p>
+<p>To update a portable installation, unzip the new version over the previous one, or into a new folder to which you then copy your <code>data</code> folder.</p>
+</section>
+
+<section id="updates">
+<h2>25. Updates</h2>
+<p>Omnimud can check whether there is a new version, but it never downloads or installs anything by itself.</p>
+<ul>
+<li><strong>Check for updates now</strong>: launcher, Tools menu. It checks right away and tells you the result, whether there is a new version, you already have the latest one, or the check fails.</li>
+<li><strong>Check for updates on startup</strong>: a check box in the same menu, which is also in the global options, General tab. <strong>It is off by default.</strong> If you turn it on, the check runs in the background at startup. It only tells you if there is a new version. A network failure at startup is silent.</li>
+</ul>
+<p>What exactly the check does:</p>
+<ul>
+<li>It makes a single anonymous query to the public GitHub API. It sends none of your data.</li>
+<li>It honours the configured <a href="#proxy">proxy</a>.</li>
+<li>If there is a new version, it shows a dialog with the version number, the release notes and two buttons: "Open the download page", which opens the page of that release on GitHub in your browser, and "Close".</li>
+</ul>
+<p>You do the download and the installation yourself, as in the initial <a href="#install">installation</a>. Your <code>data</code> folder is kept.</p>
+</section>
+
+<section id="feedback">
+<h2>26. Suggestions, errors and privacy</h2>
+<p>In the Help menu, both in the launcher and in the game window, you will find "Send suggestion…" and "Report an error…". Both entries open the same dialog, with the type already chosen.</p>
+
+<h3 id="report-dialog">The report dialog</h3>
+<ul>
+<li><strong>Type</strong>: Error or Suggestion.</li>
+<li><strong>Description</strong>: tell what happened or what you propose. If it is an error, say what you were doing, what you expected and what happened.</li>
+<li><strong>Include diagnostic data</strong>: a check box. It adds the version of Omnimud, of Windows and of .NET, the architecture, the language of the interface and the chosen screen reader mode. Nothing else.</li>
+<li><strong>Title</strong>: the title of the issue or the subject of the message. It is composed from the first line of the description and you can change it.</li>
+<li><strong>Preview of what will be sent</strong>: an <strong>editable</strong> box with the exact text that will be sent. You can read all of it and correct or delete anything you want before sending.</li>
+</ul>
+<p>Buttons:</p>
+<ul>
+<li><strong>Open in GitHub</strong>: opens in the browser a new issue, already filled in, in the Omnimud repository. A GitHub account is required, and you submit the issue yourself from the page. Issues are public.</li>
+<li><strong>Send by e-mail</strong>: opens your mail program with the message already written. You send it yourself. Before that, it asks whether you want to sign it with your <a href="#personal-info">personal information</a>.</li>
+<li><strong>Copy to clipboard</strong>: copies the report so that you can paste it wherever you want.</li>
+<li><strong>Personal information…</strong></li>
+<li><strong>Cancel</strong>.</li>
+</ul>
+<p>If the report is too long to fit in the link, the text in the link is trimmed and the full report is copied to the clipboard. Paste it yourself into the page or the message.</p>
+
+<h3 id="privacy">Privacy</h3>
+<ul>
+<li><strong>Nothing is sent automatically.</strong> Omnimud only opens your browser or your mail program. You do the sending, after seeing the text.</li>
+<li>Reports <strong>never include</strong> passwords, text of the MUD, session logs, host names of your MUDs or character names.</li>
+<li>Folder paths that contain your Windows user name are replaced with <code>%USERPROFILE%</code>.</li>
+<li>Omnimud has no telemetry and no usage statistics. The only connections it makes are: to the MUD, to the sound download address given by the MUD if you allow it, and to GitHub when you check for updates.</li>
+</ul>
+
+<h3 id="unexpected-error">Unexpected error</h3>
+<p>If something fails inside the program, a dialog titled "Unexpected error" appears, with the description of the failure and three buttons:</p>
+<ul>
+<li><strong>Report this error…</strong>: opens the report dialog with the details already included in the preview.</li>
+<li><strong>Copy details</strong>: copies the technical details to the clipboard.</li>
+<li><strong>Continue</strong>: closes the dialog.</li>
+</ul>
+<p>The focus starts on Continue; the details are in a text box that you read with the arrow keys. If more errors happen while the dialog is open, no more dialogs appear: their details are added to the same box, numbered.</p>
+<p>The program does not close: you can keep playing. If the same error happens again, please report it.</p>
+</section>
+
+<section id="personal-info">
+<h2>27. Personal information</h2>
+<p>It opens from the launcher, Tools menu, "Personal information…", or from the button with the same name in the report dialog. It has two fields, both optional:</p>
+<ul>
+<li>Name.</li>
+<li>Email address.</li>
+</ul>
+<p>What it is for and what it is not for:</p>
+<ul>
+<li>It is only used to sign a report when you send it by email, and it asks you first.</li>
+<li>It is not sent anywhere by itself.</li>
+<li>It is not included in GitHub issues, which are public.</li>
+<li>It is not exported in .omnimud files.</li>
+</ul>
+<p>You can leave both fields empty and use Omnimud normally. To delete the data, empty the fields and accept.</p>
+</section>
+
+<section id="screen-readers">
+<h2>28. Tips for screen readers</h2>
+<p>How Omnimud talks to your screen reader:</p>
+<ul>
+<li>With the "Screen reader" option set to <strong>Automatic (UI Automation)</strong>, which is the default, Omnimud sends UI Automation notifications. Current versions of NVDA, JAWS and Narrator understand them, without anybody's libraries. If the notification cannot be raised, it falls back to the JAWS and NVDA libraries in the <code>dlls</code> folder.</li>
+<li>With <strong>JAWS</strong> or <strong>NVDA</strong>, it talks straight to that screen reader through its library and does not use UI Automation.</li>
+<li>With <strong>None</strong>, Omnimud announces nothing. Your screen reader still reads whatever you walk through with the cursor.</li>
+<li>Lines that arrive together are grouped into a single announcement, so that the screen reader is not flooded and no text is lost.</li>
+</ul>
+<p><strong>If things are read twice</strong>:</p>
+<ul>
+<li>Try changing "Screen reader" from Automatic to the name of your screen reader, or the other way round. That way Omnimud uses a single route.</li>
+<li>If your screen reader already reads the new text of the window by itself, uncheck "Announce the text of the MUD" and, if needed, "Announce the messages".</li>
+<li>A channel message that arrives through GMCP and also as text is already announced only once. If you hear it repeated, tell us in an error report.</li>
+</ul>
+<p><strong>If nothing is read</strong>, check in this order:</p>
+<ol>
+<li>That the game window is in the foreground. Text is only announced while the window is active.</li>
+<li>That "Mute screen reader" (<kbd>Ctrl+M</kbd>) is not checked in the Tools menu.</li>
+<li>That silent mode (<kbd>F8</kbd>) is not checked.</li>
+<li>That "Screen reader" is not set to None, and that "Announce the text of the MUD" is checked.</li>
+<li>If you use an old version of your screen reader, one that does not understand UI Automation notifications, choose JAWS or NVDA instead of Automatic.</li>
+<li>That the <code>dlls</code> folder is still next to <code>Omnimud.exe</code>.</li>
+</ol>
+<p><strong>If the cursor does not move, or moves when you do not want it to</strong>. This is the "Cursor in Received" or "Cursor in Messages" option. By default, the cursor only jumps to the end if it already was at the end. To follow new text again after reviewing, press <kbd>Ctrl+End</kbd> inside the box. If you prefer the cursor always to go to the end, choose "Always go to the end of the text". If you never want it to move, choose "Keep it where it is".</p>
+<p>Other tips:</p>
+<ul>
+<li>When Received or Messages get the focus, the name of the box and only the line of the cursor are spoken, not the whole text.</li>
+<li>The input box carries no help text: that way nothing extra is read each time it gets the focus.</li>
+<li>To review conversations you do not need to leave the input box: use <kbd>Ctrl+1</kbd> to <kbd>Ctrl+0</kbd>.</li>
+<li><kbd>Alt+S</kbd> stops speech when the MUD writes too much.</li>
+</ul>
+
+<h3 id="nvda">NVDA</h3>
+<ul>
+<li>Omnimud has been tested with NVDA. UI Automation announcements work, and screens of many lines are read in full.</li>
+<li>Leave the option on Automatic. Choose "NVDA" only if something is not read.</li>
+<li>To diagnose a reading problem, set the NVDA log to the "Input/output" level: NVDA menu, Preferences, Settings, General, Logging level. Then reproduce the problem and open the log viewer with <kbd>NVDA+F1</kbd>, or from the Tools menu of NVDA. The lines that start with <code>Speaking [...]</code> tell what was spoken and in which order.</li>
+<li>If you send a report, you can paste those lines. Check first that they contain nothing private.</li>
+</ul>
+
+<h3 id="jaws">JAWS</h3>
+<ul>
+<li>With a current version of JAWS, leave the option on Automatic.</li>
+<li>If the text of the MUD is not announced, choose "JAWS" in the "Screen reader" option. Omnimud will then speak through the JAWS library.</li>
+<li>If JAWS repeats the text, try the other route, as explained above.</li>
+<li>Received and Messages are normal edit boxes: walk through them with the PC cursor and the usual reading keys.</li>
+</ul>
+</section>
+
+<section id="troubleshooting">
+<h2>29. Troubleshooting</h2>
+<ul>
+<li><strong>It does not connect.</strong> Read the error message: it tells the reason. Check the host and the port. If you use TLS, check that that port of the MUD is the encrypted one. If the failure is about the certificate, see <a href="#mud-dialog">Validate the server certificate</a>. If it mentions the proxy, see <a href="#proxy">Proxy</a>.</li>
+<li><strong>Accented letters look wrong.</strong> Change the encoding of the MUD. The most usual ones are <code>utf-8</code> and <code>iso-8859-1</code>.</li>
+<li><strong>It does not log in by itself.</strong> Check that you connect with a character, that it has its password saved and that the login script fits what the MUD asks. If you have changed computers, type the password again.</li>
+<li><strong>F3 or F4 are disabled.</strong> Type the save and quit commands when editing the MUD.</li>
+<li><strong>F5, F6 or F7 say that a character is required.</strong> You are in a quick connect session or connected to a MUD without a character. Create a character and connect with it.</li>
+<li><strong>A path says there are no directions.</strong> Open Tools, "Directions for paths", and press "Load common directions".</li>
+<li><strong>A path cannot be walked in reverse.</strong> One of its directions has no opposite direction. Edit it in the directions of the MUD.</li>
+<li><strong>A trigger does not fire.</strong> Check that it is enabled and that you have not typed <code>-triggers</code>. Use the Test button with a line copied from Received. Remember that a line trigger only sees complete lines: if the text comes spread over several, mark it as Multiline.</li>
+<li><strong>A trigger gets into a loop.</strong> Type <code>-triggers</code> to stop everything, fix the trigger and type <code>+triggers</code>.</li>
+<li><strong>Prompts are read late or in pieces.</strong> Adjust "Prompt wait" in the options.</li>
+<li><strong>The arrows do not browse the history.</strong> Movement mode is on. Use <kbd>Ctrl+Up arrow</kbd> and <kbd>Ctrl+Down arrow</kbd>, or turn it off with <kbd>F2</kbd>.</li>
+<li><strong>The numeric keypad types numbers instead of moving.</strong> Turn movement mode on with <kbd>F2</kbd> and check that Num Lock is on.</li>
+<li><strong>There is no sound.</strong> Check the Sounds tab and the volume. If the MUD downloads its sounds over HTTP, check the box that allows it. Check that the files are in the sound folder of the MUD. A failed download gives no warning.</li>
+<li><strong>The Messages box is empty.</strong> Assign a message rule set to the MUD, or create your own. If the box is not there, look in the View menu, "Show messages panel".</li>
+<li><strong>I changed the message rules and nothing happens.</strong> Close the game window and connect again.</li>
+<li><strong>F1 says the help file was not found.</strong> The <code>docs</code> folder next to <code>Omnimud.exe</code> is missing. Unzip the complete zip again.</li>
+<li><strong>The program does not save anything.</strong> The folder cannot be written to. See <a href="#portability">Portability</a>.</li>
+<li><strong>"Unexpected error" appears.</strong> Press "Report this error…" or "Copy details", and then Continue. See <a href="#unexpected-error">Unexpected error</a>.</li>
+</ul>
+</section>
+
+<section id="license">
+<h2>30. License and credits</h2>
+<p>Omnimud. Copyright © Juanjo Montiel.</p>
+<p>Omnimud is free software. You can redistribute it and modify it under the terms of the GNU General Public License, version 2 or, at your option, any later version, as published by the Free Software Foundation. SPDX identifier: <code>GPL-2.0-or-later</code>.</p>
+<p>It is distributed in the hope that it will be useful, but <strong>without any warranty</strong>. The full text of the license is in the <code>LICENSE</code> file that comes with the program.</p>
+<p>As a special exception, the copyright holder allows you to link and distribute Omnimud together with the screen reader communication libraries in the <code>dlls</code> folder, without that requiring those libraries to be under the GPL. Those libraries keep their own licenses.</p>
+<p>Third-party components:</p>
+<ul>
+<li>MoonSharp, the Lua interpreter.</li>
+<li>NAudio and NAudio.Vorbis, for audio.</li>
+<li>Dapper and Microsoft.Data.Sqlite, for data.</li>
+<li><code>nvdaControllerClient.dll</code>, by NV Access, under the LGPL 2.1 license.</li>
+<li><code>FSAPI.dll</code> and <code>jfwapi.dll</code>, the JAWS API, by Freedom Scientific. They belong to their authors and are included only to be able to talk to that screen reader.</li>
+</ul>
+<p>Omnimud 2 is the rewrite of the original Omnimud, published between 2008 and 2017. Thanks to everyone who has used it, tested it and improved it with their suggestions.</p>
+<p>Source code, downloads and issues: <a href="https://github.com/kastwey/omnimud">https://github.com/kastwey/omnimud</a>.</p>
+</section>
+</main>
+<footer>
+<p>Omnimud 2 user manual. This document is distributed with the program, under the same license.</p>
+<p><a href="#intro">Back to the top</a></p>
+</footer>
+</body>
+</html>

@@ -309,5 +309,65 @@ To remove it, type paths ultima borrar.</value>
   <data name="Proxy_NameHttpConnect" xml:space="preserve">
     <value>HTTP CONNECT</value>
   </data>
+  <data name="Report_TitleError" xml:space="preserve">
+    <value>[Error] {0}</value>
+  </data>
+  <data name="Report_TitleSuggestion" xml:space="preserve">
+    <value>[Suggestion] {0}</value>
+  </data>
+  <data name="Report_UntitledError" xml:space="preserve">
+    <value>Unexpected error</value>
+  </data>
+  <data name="Report_UntitledSuggestion" xml:space="preserve">
+    <value>Suggestion</value>
+  </data>
+  <data name="Report_SectionDescription" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="Report_NoDescription" xml:space="preserve">
+    <value>(no description)</value>
+  </data>
+  <data name="Report_SectionDiagnostics" xml:space="preserve">
+    <value>Diagnostic data:</value>
+  </data>
+  <data name="Report_DiagVersion" xml:space="preserve">
+    <value>Omnimud version: {0}</value>
+  </data>
+  <data name="Report_DiagWindows" xml:space="preserve">
+    <value>Windows version: {0}</value>
+  </data>
+  <data name="Report_DiagDotNet" xml:space="preserve">
+    <value>.NET version: {0}</value>
+  </data>
+  <data name="Report_DiagArchitecture" xml:space="preserve">
+    <value>Architecture: {0}</value>
+  </data>
+  <data name="Report_DiagLanguage" xml:space="preserve">
+    <value>Interface language: {0}</value>
+  </data>
+  <data name="Report_DiagScreenReader" xml:space="preserve">
+    <value>Screen reader mode: {0}</value>
+  </data>
+  <data name="Report_SectionException" xml:space="preserve">
+    <value>Error details:</value>
+  </data>
+  <data name="Report_InnerException" xml:space="preserve">
+    <value>Caused by:</value>
+  </data>
+  <data name="Report_ExceptionType" xml:space="preserve">
+    <value>Type: {0}</value>
+  </data>
+  <data name="Report_ExceptionMessage" xml:space="preserve">
+    <value>Message: {0}</value>
+  </data>
+  <data name="Report_StackTrace" xml:space="preserve">
+    <value>Stack trace:</value>
+  </data>
+  <data name="Report_StackCut" xml:space="preserve">
+    <value>[… stack trace cut: {0} more characters]</value>
+  </data>
+  <data name="Report_Truncated" xml:space="preserve">
+    <value>[The report did not fit in the link and was cut here. The full report is on your clipboard: please paste it over this text.]</value>
+  </data>
 
 </root>

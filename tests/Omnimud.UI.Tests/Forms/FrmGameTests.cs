@@ -602,7 +602,9 @@ public sealed class FrmGameTests
         _announcer.Received(1).Announce("Un orco llega.", AnnouncePriority.Queue);
     });
 
+    // Needs a desktop where a window can really become the active one: excluded in CI (see TestCategories).
     [Fact]
+    [Trait(TestCategories.Category, TestCategories.InteractiveDesktop)]
     public void WindowActivation_IsReportedToTheSession() => Sta.Run(() =>
     {
         using var form = Create();

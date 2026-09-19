@@ -109,4 +109,24 @@ internal static class Strings
     internal static string Proxy_ProtocolError => ResourceManager.GetString("Proxy_ProtocolError", Culture) ?? "";
     internal static string Proxy_NameSocks5 => ResourceManager.GetString("Proxy_NameSocks5", Culture) ?? "";
     internal static string Proxy_NameHttpConnect => ResourceManager.GetString("Proxy_NameHttpConnect", Culture) ?? "";
+    internal static string Report_TitleError => ResourceManager.GetString("Report_TitleError", Culture) ?? "";
+    internal static string Report_TitleSuggestion => ResourceManager.GetString("Report_TitleSuggestion", Culture) ?? "";
+    internal static string Report_UntitledError => ResourceManager.GetString("Report_UntitledError", Culture) ?? "";
+    internal static string Report_UntitledSuggestion => ResourceManager.GetString("Report_UntitledSuggestion", Culture) ?? "";
+    internal static string Report_SectionDescription => ResourceManager.GetString("Report_SectionDescription", Culture) ?? "";
+    internal static string Report_NoDescription => ResourceManager.GetString("Report_NoDescription", Culture) ?? "";
+    internal static string Report_SectionDiagnostics => ResourceManager.GetString("Report_SectionDiagnostics", Culture) ?? "";
+    internal static string Report_DiagVersion => ResourceManager.GetString("Report_DiagVersion", Culture) ?? "";
+    internal static string Report_DiagWindows => ResourceManager.GetString("Report_DiagWindows", Culture) ?? "";
+    internal static string Report_DiagDotNet => ResourceManager.GetString("Report_DiagDotNet", Culture) ?? "";
+    internal static string Report_DiagArchitecture => ResourceManager.GetString("Report_DiagArchitecture", Culture) ?? "";
+    internal static string Report_DiagLanguage => ResourceManager.GetString("Report_DiagLanguage", Culture) ?? "";
+    internal static string Report_DiagScreenReader => ResourceManager.GetString("Report_DiagScreenReader", Culture) ?? "";
+    internal static string Report_SectionException => ResourceManager.GetString("Report_SectionException", Culture) ?? "";
+    internal static string Report_InnerException => ResourceManager.GetString("Report_InnerException", Culture) ?? "";
+    internal static string Report_ExceptionType => ResourceManager.GetString("Report_ExceptionType", Culture) ?? "";
+    internal static string Report_ExceptionMessage => ResourceManager.GetString("Report_ExceptionMessage", Culture) ?? "";
+    internal static string Report_StackTrace => ResourceManager.GetString("Report_StackTrace", Culture) ?? "";
+    internal static string Report_StackCut => ResourceManager.GetString("Report_StackCut", Culture) ?? "";
+    internal static string Report_Truncated => ResourceManager.GetString("Report_Truncated", Culture) ?? "";
 }

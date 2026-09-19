@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using Omnimud.Core.Options;
+using Omnimud.Core.Reports;
 using Omnimud.Core.Storage;
 using Omnimud.Data;
 using Omnimud.Data.Migrations;
@@ -25,8 +26,11 @@ internal static class Program
         Application.ThreadException += (_, e) => ErrorReporter.Show(e.Exception);
         AppDomain.CurrentDomain.UnhandledException += (_, e) =>
         {
-            if (e.ExceptionObject is Exception ex) ErrorReporter.Show(ex);
+            // The thread that failed is about to die: wait until the user has seen the dialog.
+            if (e.ExceptionObject is Exception ex) ErrorReporter.ShowAndWait(ex);
         };
+        // Until the services exist the dialog has no report button; see below.
+        ErrorReporter.Configure(report: null);
 
         var legacyDirectory = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Omnimud");
@@ -47,6 +51,10 @@ internal static class Program
 
         // Language of the interface, before any window (or localized message) is created.
         new LanguageService().ApplyFromOptions(provider.GetRequiredService<IOptionsService>());
+
+        // From here on "Report this error" opens the report dialog with the exception.
+        var appDialogs = provider.GetRequiredService<IAppDialogs>();
+        ErrorReporter.Configure((exception, _) => appDialogs.ShowReport(Form.ActiveForm, ReportKind.Error, exception));
 
         Application.Run(provider.GetRequiredService<FrmLauncher>());
     }

@@ -17,6 +17,7 @@ namespace Omnimud.UI.Tests.Accessibility;
 /// does: the window runs its own message loop on an STA thread and the test queries it from
 /// another thread.
 /// </summary>
+[Trait(TestCategories.Category, TestCategories.InteractiveDesktop)]
 public sealed class GameWindowUiaTests
 {
     private sealed record BoxInfo(string Name, string ControlType, bool HasTextPattern, bool HasValuePattern, string HelpText, string LabeledBy, Msaa.Info Msaa);

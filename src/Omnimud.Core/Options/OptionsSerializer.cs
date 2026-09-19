@@ -37,10 +37,16 @@ public static class OptionsSerializer
 
     /// <summary>
     /// Keys that never leave this installation: they are stored in the database but left out of exported
-    /// files, and an import keeps whatever the target already had.
+    /// files, and an import keeps whatever the target already had. The proxy password because it is a secret;
+    /// <see cref="OmnimudOptions.CheckUpdatesOnStartup"/> because a file made by somebody else must never be able
+    /// to make Omnimud go to the network on its own: only the user ticking the box does that.
     /// </summary>
     public static IReadOnlySet<string> SecretKeys { get; } =
-        new HashSet<string>(StringComparer.OrdinalIgnoreCase) { nameof(OmnimudOptions.ProxyPasswordProtected) };
+        new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            nameof(OmnimudOptions.ProxyPasswordProtected),
+            nameof(OmnimudOptions.CheckUpdatesOnStartup)
+        };
 
     /// <summary>Every key that <see cref="Serialize"/> writes.</summary>
     public static IReadOnlyList<string> Keys { get; } = Properties.Select(p => p.Name).ToArray();

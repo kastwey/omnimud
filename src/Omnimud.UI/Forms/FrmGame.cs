@@ -18,6 +18,7 @@ public sealed partial class FrmGame : Form
     private readonly IMudSession _session;
     private readonly ISessionSound _sound;
     private readonly ISessionDialogs _dialogs;
+    private readonly IAppDialogs _app;
     private readonly IAnnouncer _announcer;
     private readonly MessageReviewer _reviewer;
 
@@ -29,8 +30,11 @@ public sealed partial class FrmGame : Form
     private bool _closing;
     private bool _messagesHiddenByUser;
 
-    public FrmGame(IMudSession session, ISessionSound sound, ISessionDialogs dialogs, TimeProvider? time = null, IAnnouncer? announcer = null)
+    /// <param name="app">Reports and help, shared with the launcher; null = a basic set that works without the container.</param>
+    public FrmGame(IMudSession session, ISessionSound sound, ISessionDialogs dialogs, TimeProvider? time = null, IAnnouncer? announcer = null,
+        IAppDialogs? app = null)
     {
+        _app = app ?? AppDialogs.CreateBasic();
         _session = session;
         _sound = sound;
         _dialogs = dialogs;

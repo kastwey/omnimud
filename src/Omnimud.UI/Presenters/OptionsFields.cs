@@ -18,6 +18,7 @@ public enum OptionsField
     FlashWindow,
     MaxLines,
     PromptFlushMilliseconds,
+    CheckUpdatesOnStartup,
     LogType,
     LogDirectory,
     EnableSounds,
@@ -66,6 +67,8 @@ public sealed record OptionsFields
     public bool FlashWindow { get; set; }
     public int MaxLines { get; set; }
     public int PromptFlushMilliseconds { get; set; }
+    /// <summary>Application-wide, like the language: only editable (and only read) in Global.</summary>
+    public bool CheckUpdatesOnStartup { get; set; }
 
     // Logs
     public LogMode LogType { get; set; }
@@ -139,6 +142,7 @@ public sealed record OptionsFields
             FlashWindow = o.FlashWindow,
             MaxLines = o.MaxLines,
             PromptFlushMilliseconds = o.PromptFlushMilliseconds,
+            CheckUpdatesOnStartup = o.CheckUpdatesOnStartup,
             LogType = o.LogType,
             LogDirectory = o.LogDirectory ?? string.Empty,
             EnableSounds = o.EnableSounds,
@@ -188,6 +192,7 @@ public sealed record OptionsFields
             FlashWindow = FlashWindow,
             MaxLines = MaxLines,
             PromptFlushMilliseconds = PromptFlushMilliseconds,
+            CheckUpdatesOnStartup = CheckUpdatesOnStartup,
             LogType = LogType,
             LogDirectory = NullIfBlank(LogDirectory),
             EnableSounds = EnableSounds,

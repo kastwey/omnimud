@@ -2070,4 +2070,205 @@
   <data name="Options_ErrProxyPasswordNoStore" xml:space="preserve">
     <value>This dialog cannot store passwords. Leave the proxy password empty.</value>
   </data>
+  <data name="Options_CheckUpdates" xml:space="preserve">
+    <value>Check for updates when Omnimud starts</value>
+  </data>
+  <data name="Launcher_MenuPersonalInfo" xml:space="preserve">
+    <value>&amp;Personal information...</value>
+  </data>
+  <data name="Launcher_MenuCheckUpdates" xml:space="preserve">
+    <value>Check for &amp;updates now</value>
+  </data>
+  <data name="Launcher_MenuCheckUpdatesOnStartup" xml:space="preserve">
+    <value>Check for updates on &amp;startup</value>
+  </data>
+  <data name="Menu_HelpSuggestion" xml:space="preserve">
+    <value>Send &amp;suggestion...</value>
+  </data>
+  <data name="Menu_HelpReportError" xml:space="preserve">
+    <value>&amp;Report an error...</value>
+  </data>
+  <data name="Help_CannotOpen" xml:space="preserve">
+    <value>The help file could not be opened: {0}</value>
+  </data>
+  <data name="Update_Title" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="Update_DialogTitle" xml:space="preserve">
+    <value>Omnimud {0} is available</value>
+  </data>
+  <data name="Update_Summary" xml:space="preserve">
+    <value>Version {0} of Omnimud is available (you have {1}). Release: {2}. Nothing is downloaded or installed automatically.</value>
+  </data>
+  <data name="Update_NotesLabel" xml:space="preserve">
+    <value>&amp;Release notes:</value>
+  </data>
+  <data name="Update_NoNotes" xml:space="preserve">
+    <value>This release has no notes.</value>
+  </data>
+  <data name="Update_OpenPage" xml:space="preserve">
+    <value>&amp;Open the download page</value>
+  </data>
+  <data name="Update_Close" xml:space="preserve">
+    <value>&amp;Close</value>
+  </data>
+  <data name="Update_UpToDate" xml:space="preserve">
+    <value>You have the latest version of Omnimud ({0}).</value>
+  </data>
+  <data name="Update_NoReleasesYet" xml:space="preserve">
+    <value>No version of Omnimud has been published yet. You have version {0}.</value>
+  </data>
+  <data name="Update_FailNetwork" xml:space="preserve">
+    <value>Could not check for updates: there is no Internet connection or GitHub cannot be reached. If you use a proxy, review it in the global options.</value>
+  </data>
+  <data name="Update_FailTimeout" xml:space="preserve">
+    <value>Could not check for updates: GitHub did not answer in time.</value>
+  </data>
+  <data name="Update_FailRateLimited" xml:space="preserve">
+    <value>Could not check for updates: GitHub has received too many requests from your network address. Try again in an hour.</value>
+  </data>
+  <data name="Update_FailUnexpected" xml:space="preserve">
+    <value>Could not check for updates: GitHub gave an unexpected answer.</value>
+  </data>
+  <data name="Update_CannotOpenPage" xml:space="preserve">
+    <value>The page could not be opened in the browser: {0}</value>
+  </data>
+  <data name="Update_AlreadyChecking" xml:space="preserve">
+    <value>A check for updates is already running.</value>
+  </data>
+  <data name="PersonalInfo_Title" xml:space="preserve">
+    <value>Personal information</value>
+  </data>
+  <data name="PersonalInfo_Hint" xml:space="preserve">
+    <value>Both fields are optional. They are only used to sign a report when you send it by e-mail, and you are asked each time. They are never sent anywhere by themselves, never added to GitHub issues and never exported.</value>
+  </data>
+  <data name="PersonalInfo_NameLabel" xml:space="preserve">
+    <value>&amp;Name:</value>
+  </data>
+  <data name="PersonalInfo_EmailLabel" xml:space="preserve">
+    <value>&amp;E-mail address:</value>
+  </data>
+  <data name="PersonalInfo_ErrNameTooLong" xml:space="preserve">
+    <value>The name cannot have more than {0} characters.</value>
+  </data>
+  <data name="PersonalInfo_ErrNameInvalid" xml:space="preserve">
+    <value>The name contains characters that are not allowed.</value>
+  </data>
+  <data name="PersonalInfo_ErrEmailInvalid" xml:space="preserve">
+    <value>The e-mail address does not look right. It should be like name@example.org, or empty.</value>
+  </data>
+  <data name="ReportDlg_TitleError" xml:space="preserve">
+    <value>Report an error</value>
+  </data>
+  <data name="ReportDlg_TitleSuggestion" xml:space="preserve">
+    <value>Send a suggestion</value>
+  </data>
+  <data name="ReportDlg_Privacy" xml:space="preserve">
+    <value>Nothing is sent automatically: the buttons open your browser or your mail program with the text of the preview, and you send it yourself. The report never includes passwords, text from the MUD, logs, MUD addresses or character names.</value>
+  </data>
+  <data name="ReportDlg_KindLabel" xml:space="preserve">
+    <value>&amp;Type:</value>
+  </data>
+  <data name="ReportDlg_KindError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ReportDlg_KindSuggestion" xml:space="preserve">
+    <value>Suggestion</value>
+  </data>
+  <data name="ReportDlg_DescriptionLabel" xml:space="preserve">
+    <value>&amp;Description:</value>
+  </data>
+  <data name="ReportDlg_IncludeDiagnostics" xml:space="preserve">
+    <value>&amp;Include diagnostic data</value>
+  </data>
+  <data name="ReportDlg_TitleLabel" xml:space="preserve">
+    <value>Titl&amp;e:</value>
+  </data>
+  <data name="ReportDlg_PreviewLabel" xml:space="preserve">
+    <value>Pre&amp;view of what will be sent (you can edit it):</value>
+  </data>
+  <data name="ReportDlg_OpenGitHub" xml:space="preserve">
+    <value>Open in &amp;GitHub</value>
+  </data>
+  <data name="ReportDlg_SendEmail" xml:space="preserve">
+    <value>Send by e-&amp;mail</value>
+  </data>
+  <data name="ReportDlg_Copy" xml:space="preserve">
+    <value>&amp;Copy to clipboard</value>
+  </data>
+  <data name="ReportDlg_PersonalInfo" xml:space="preserve">
+    <value>Personal i&amp;nformation...</value>
+  </data>
+  <data name="ReportDlg_ConfirmRegenerate" xml:space="preserve">
+    <value>You changed the description, the type or the diagnostic data after editing the preview by hand. Do you want to compose the preview again? Your changes to the preview will be lost. Choose No to send the preview as it is.</value>
+  </data>
+  <data name="ReportDlg_ConfirmSignature" xml:space="preserve">
+    <value>Do you want to sign the message with your personal information? This would be added at the end: {0}</value>
+  </data>
+  <data name="ReportDlg_Copied" xml:space="preserve">
+    <value>The report has been copied to the clipboard.</value>
+  </data>
+  <data name="ReportDlg_ErrClipboard" xml:space="preserve">
+    <value>The report could not be copied to the clipboard.</value>
+  </data>
+  <data name="ReportDlg_ErrNoDescriptionError" xml:space="preserve">
+    <value>Describe the error: what you were doing and what happened.</value>
+  </data>
+  <data name="ReportDlg_ErrNoDescriptionSuggestion" xml:space="preserve">
+    <value>Write your suggestion.</value>
+  </data>
+  <data name="ReportDlg_ErrNoTitle" xml:space="preserve">
+    <value>The title cannot be empty.</value>
+  </data>
+  <data name="ReportDlg_ErrNoPreview" xml:space="preserve">
+    <value>The report is empty.</value>
+  </data>
+  <data name="ReportDlg_ErrOpenBrowser" xml:space="preserve">
+    <value>The browser could not be opened. You can create the issue yourself at {0}</value>
+  </data>
+  <data name="ReportDlg_ErrOpenBrowserCopied" xml:space="preserve">
+    <value>The browser could not be opened. The report has been copied to the clipboard: create the issue at {0} and paste it.</value>
+  </data>
+  <data name="ReportDlg_ErrOpenEmail" xml:space="preserve">
+    <value>The mail program could not be opened. You can write to {0}</value>
+  </data>
+  <data name="ReportDlg_ErrOpenEmailCopied" xml:space="preserve">
+    <value>The mail program could not be opened. The report has been copied to the clipboard: write to {0} and paste it.</value>
+  </data>
+  <data name="ReportDlg_TruncatedCopied" xml:space="preserve">
+    <value>The report is too long for a link, so it will open cut short. The full report has been copied to the clipboard: paste it over the text that appears.</value>
+  </data>
+  <data name="ReportDlg_TruncatedNotCopied" xml:space="preserve">
+    <value>The report is too long for a link, so it will open cut short, and it could not be copied to the clipboard. Come back here, press Copy to clipboard and paste it yourself.</value>
+  </data>
+  <data name="UnexpectedError_Title" xml:space="preserve">
+    <value>Unexpected error</value>
+  </data>
+  <data name="UnexpectedError_Message" xml:space="preserve">
+    <value>Something went wrong inside Omnimud. The program keeps running: you can carry on, and it would help a lot if you reported the error.</value>
+  </data>
+  <data name="UnexpectedError_MessageMany" xml:space="preserve">
+    <value>{0} errors have happened. The program keeps running. The details of all of them are below.</value>
+  </data>
+  <data name="UnexpectedError_DetailsLabel" xml:space="preserve">
+    <value>&amp;Details:</value>
+  </data>
+  <data name="UnexpectedError_Report" xml:space="preserve">
+    <value>&amp;Report this error...</value>
+  </data>
+  <data name="UnexpectedError_Copy" xml:space="preserve">
+    <value>C&amp;opy details</value>
+  </data>
+  <data name="UnexpectedError_Continue" xml:space="preserve">
+    <value>&amp;Continue</value>
+  </data>
+  <data name="UnexpectedError_Another" xml:space="preserve">
+    <value>Error number {0}:</value>
+  </data>
+  <data name="UnexpectedError_Copied" xml:space="preserve">
+    <value>Details copied to the clipboard.</value>
+  </data>
+  <data name="UnexpectedError_NotCopied" xml:space="preserve">
+    <value>The details could not be copied to the clipboard.</value>
+  </data>
 </root>

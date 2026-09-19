@@ -2070,4 +2070,205 @@
   <data name="Options_ErrProxyPasswordNoStore" xml:space="preserve">
     <value>Este diálogo no puede guardar contraseñas. Deja vacía la contraseña del proxy.</value>
   </data>
+  <data name="Options_CheckUpdates" xml:space="preserve">
+    <value>Comprobar si hay actualizaciones al iniciar Omnimud</value>
+  </data>
+  <data name="Launcher_MenuPersonalInfo" xml:space="preserve">
+    <value>In&amp;formación personal...</value>
+  </data>
+  <data name="Launcher_MenuCheckUpdates" xml:space="preserve">
+    <value>&amp;Comprobar actualizaciones ahora</value>
+  </data>
+  <data name="Launcher_MenuCheckUpdatesOnStartup" xml:space="preserve">
+    <value>Comprobar actualizaciones al i&amp;niciar</value>
+  </data>
+  <data name="Menu_HelpSuggestion" xml:space="preserve">
+    <value>Enviar &amp;sugerencia...</value>
+  </data>
+  <data name="Menu_HelpReportError" xml:space="preserve">
+    <value>&amp;Informar de un error...</value>
+  </data>
+  <data name="Help_CannotOpen" xml:space="preserve">
+    <value>No se pudo abrir el fichero de ayuda: {0}</value>
+  </data>
+  <data name="Update_Title" xml:space="preserve">
+    <value>Actualizaciones</value>
+  </data>
+  <data name="Update_DialogTitle" xml:space="preserve">
+    <value>Omnimud {0} disponible</value>
+  </data>
+  <data name="Update_Summary" xml:space="preserve">
+    <value>Está disponible la versión {0} de Omnimud (tienes la {1}). Publicación: {2}. No se descarga ni se instala nada automáticamente.</value>
+  </data>
+  <data name="Update_NotesLabel" xml:space="preserve">
+    <value>&amp;Notas de la versión:</value>
+  </data>
+  <data name="Update_NoNotes" xml:space="preserve">
+    <value>Esta versión no tiene notas.</value>
+  </data>
+  <data name="Update_OpenPage" xml:space="preserve">
+    <value>&amp;Abrir la página de descarga</value>
+  </data>
+  <data name="Update_Close" xml:space="preserve">
+    <value>&amp;Cerrar</value>
+  </data>
+  <data name="Update_UpToDate" xml:space="preserve">
+    <value>Tienes la última versión de Omnimud ({0}).</value>
+  </data>
+  <data name="Update_NoReleasesYet" xml:space="preserve">
+    <value>Todavía no se ha publicado ninguna versión de Omnimud. Tienes la versión {0}.</value>
+  </data>
+  <data name="Update_FailNetwork" xml:space="preserve">
+    <value>No se pudo comprobar si hay actualizaciones: no hay conexión a Internet o no se puede llegar a GitHub. Si usas un proxy, revísalo en las opciones globales.</value>
+  </data>
+  <data name="Update_FailTimeout" xml:space="preserve">
+    <value>No se pudo comprobar si hay actualizaciones: GitHub no respondió a tiempo.</value>
+  </data>
+  <data name="Update_FailRateLimited" xml:space="preserve">
+    <value>No se pudo comprobar si hay actualizaciones: GitHub ha recibido demasiadas peticiones desde tu dirección de red. Vuelve a intentarlo dentro de una hora.</value>
+  </data>
+  <data name="Update_FailUnexpected" xml:space="preserve">
+    <value>No se pudo comprobar si hay actualizaciones: GitHub dio una respuesta inesperada.</value>
+  </data>
+  <data name="Update_CannotOpenPage" xml:space="preserve">
+    <value>No se pudo abrir la página en el navegador: {0}</value>
+  </data>
+  <data name="Update_AlreadyChecking" xml:space="preserve">
+    <value>Ya hay una comprobación de actualizaciones en marcha.</value>
+  </data>
+  <data name="PersonalInfo_Title" xml:space="preserve">
+    <value>Información personal</value>
+  </data>
+  <data name="PersonalInfo_Hint" xml:space="preserve">
+    <value>Los dos campos son opcionales. Solo se usan para firmar un informe cuando lo envías por correo, y se te pregunta cada vez. Nunca se envían a ningún sitio por sí solos, ni se añaden a los issues de GitHub, ni se exportan.</value>
+  </data>
+  <data name="PersonalInfo_NameLabel" xml:space="preserve">
+    <value>&amp;Nombre:</value>
+  </data>
+  <data name="PersonalInfo_EmailLabel" xml:space="preserve">
+    <value>&amp;Correo electrónico:</value>
+  </data>
+  <data name="PersonalInfo_ErrNameTooLong" xml:space="preserve">
+    <value>El nombre no puede tener más de {0} caracteres.</value>
+  </data>
+  <data name="PersonalInfo_ErrNameInvalid" xml:space="preserve">
+    <value>El nombre contiene caracteres no permitidos.</value>
+  </data>
+  <data name="PersonalInfo_ErrEmailInvalid" xml:space="preserve">
+    <value>La dirección de correo no parece correcta. Debe ser del tipo nombre@ejemplo.org, o quedar vacía.</value>
+  </data>
+  <data name="ReportDlg_TitleError" xml:space="preserve">
+    <value>Informar de un error</value>
+  </data>
+  <data name="ReportDlg_TitleSuggestion" xml:space="preserve">
+    <value>Enviar una sugerencia</value>
+  </data>
+  <data name="ReportDlg_Privacy" xml:space="preserve">
+    <value>Nada se envía automáticamente: los botones abren tu navegador o tu programa de correo con el texto de la vista previa, y lo envías tú. El informe nunca incluye contraseñas, texto del MUD, registros, direcciones de MUD ni nombres de personaje.</value>
+  </data>
+  <data name="ReportDlg_KindLabel" xml:space="preserve">
+    <value>&amp;Tipo:</value>
+  </data>
+  <data name="ReportDlg_KindError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ReportDlg_KindSuggestion" xml:space="preserve">
+    <value>Sugerencia</value>
+  </data>
+  <data name="ReportDlg_DescriptionLabel" xml:space="preserve">
+    <value>&amp;Descripción:</value>
+  </data>
+  <data name="ReportDlg_IncludeDiagnostics" xml:space="preserve">
+    <value>&amp;Incluir datos de diagnóstico</value>
+  </data>
+  <data name="ReportDlg_TitleLabel" xml:space="preserve">
+    <value>Tít&amp;ulo:</value>
+  </data>
+  <data name="ReportDlg_PreviewLabel" xml:space="preserve">
+    <value>&amp;Vista previa de lo que se enviará (puedes editarla):</value>
+  </data>
+  <data name="ReportDlg_OpenGitHub" xml:space="preserve">
+    <value>Abrir en &amp;GitHub</value>
+  </data>
+  <data name="ReportDlg_SendEmail" xml:space="preserve">
+    <value>Enviar por &amp;correo</value>
+  </data>
+  <data name="ReportDlg_Copy" xml:space="preserve">
+    <value>Copiar al &amp;portapapeles</value>
+  </data>
+  <data name="ReportDlg_PersonalInfo" xml:space="preserve">
+    <value>I&amp;nformación personal...</value>
+  </data>
+  <data name="ReportDlg_ConfirmRegenerate" xml:space="preserve">
+    <value>Has cambiado la descripción, el tipo o los datos de diagnóstico después de editar la vista previa a mano. ¿Quieres componer de nuevo la vista previa? Se perderán tus cambios en ella. Elige No para enviar la vista previa tal como está.</value>
+  </data>
+  <data name="ReportDlg_ConfirmSignature" xml:space="preserve">
+    <value>¿Quieres firmar el mensaje con tu información personal? Se añadiría al final: {0}</value>
+  </data>
+  <data name="ReportDlg_Copied" xml:space="preserve">
+    <value>El informe se ha copiado al portapapeles.</value>
+  </data>
+  <data name="ReportDlg_ErrClipboard" xml:space="preserve">
+    <value>No se pudo copiar el informe al portapapeles.</value>
+  </data>
+  <data name="ReportDlg_ErrNoDescriptionError" xml:space="preserve">
+    <value>Describe el error: qué estabas haciendo y qué ocurrió.</value>
+  </data>
+  <data name="ReportDlg_ErrNoDescriptionSuggestion" xml:space="preserve">
+    <value>Escribe tu sugerencia.</value>
+  </data>
+  <data name="ReportDlg_ErrNoTitle" xml:space="preserve">
+    <value>El título no puede quedar vacío.</value>
+  </data>
+  <data name="ReportDlg_ErrNoPreview" xml:space="preserve">
+    <value>El informe está vacío.</value>
+  </data>
+  <data name="ReportDlg_ErrOpenBrowser" xml:space="preserve">
+    <value>No se pudo abrir el navegador. Puedes crear el issue tú mismo en {0}</value>
+  </data>
+  <data name="ReportDlg_ErrOpenBrowserCopied" xml:space="preserve">
+    <value>No se pudo abrir el navegador. El informe se ha copiado al portapapeles: crea el issue en {0} y pégalo.</value>
+  </data>
+  <data name="ReportDlg_ErrOpenEmail" xml:space="preserve">
+    <value>No se pudo abrir el programa de correo. Puedes escribir a {0}</value>
+  </data>
+  <data name="ReportDlg_ErrOpenEmailCopied" xml:space="preserve">
+    <value>No se pudo abrir el programa de correo. El informe se ha copiado al portapapeles: escribe a {0} y pégalo.</value>
+  </data>
+  <data name="ReportDlg_TruncatedCopied" xml:space="preserve">
+    <value>El informe es demasiado largo para un enlace, así que se abrirá recortado. El informe completo se ha copiado al portapapeles: pégalo encima del texto que aparezca.</value>
+  </data>
+  <data name="ReportDlg_TruncatedNotCopied" xml:space="preserve">
+    <value>El informe es demasiado largo para un enlace, así que se abrirá recortado, y no se pudo copiar al portapapeles. Vuelve aquí, pulsa Copiar al portapapeles y pégalo tú.</value>
+  </data>
+  <data name="UnexpectedError_Title" xml:space="preserve">
+    <value>Error inesperado</value>
+  </data>
+  <data name="UnexpectedError_Message" xml:space="preserve">
+    <value>Algo ha fallado dentro de Omnimud. El programa sigue funcionando: puedes continuar, y ayudaría mucho que informaras del error.</value>
+  </data>
+  <data name="UnexpectedError_MessageMany" xml:space="preserve">
+    <value>Han ocurrido {0} errores. El programa sigue funcionando. Los detalles de todos están debajo.</value>
+  </data>
+  <data name="UnexpectedError_DetailsLabel" xml:space="preserve">
+    <value>&amp;Detalles:</value>
+  </data>
+  <data name="UnexpectedError_Report" xml:space="preserve">
+    <value>&amp;Informar de este error...</value>
+  </data>
+  <data name="UnexpectedError_Copy" xml:space="preserve">
+    <value>C&amp;opiar detalles</value>
+  </data>
+  <data name="UnexpectedError_Continue" xml:space="preserve">
+    <value>&amp;Continuar</value>
+  </data>
+  <data name="UnexpectedError_Another" xml:space="preserve">
+    <value>Error número {0}:</value>
+  </data>
+  <data name="UnexpectedError_Copied" xml:space="preserve">
+    <value>Detalles copiados al portapapeles.</value>
+  </data>
+  <data name="UnexpectedError_NotCopied" xml:space="preserve">
+    <value>No se pudieron copiar los detalles al portapapeles.</value>
+  </data>
 </root>

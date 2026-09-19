@@ -45,7 +45,7 @@ public sealed class OptionsFileStoreTests : IDisposable
 
         await store.SaveAsync(InDir("a.omnimud"), sample);
 
-        (await store.LoadAsync(InDir("a.omnimud"))).Should().Be(sample with { ProxyPasswordProtected = null }, "everything but the proxy password travels");
+        (await store.LoadAsync(InDir("a.omnimud"))).Should().Be(sample with { ProxyPasswordProtected = null, CheckUpdatesOnStartup = false }, "everything travels but the proxy password and the update check (a file never makes Omnimud go to the network)");
         var text = await File.ReadAllTextAsync(InDir("a.omnimud"));
         text.Should().Contain("\"format\": \"omnimud\"").And.Contain("\"kind\": \"options\"");
         text.Should().NotContain(nameof(OmnimudOptions.ProxyPasswordProtected)).And.NotContain(sample.ProxyPasswordProtected!);
@@ -59,7 +59,7 @@ public sealed class OptionsFileStoreTests : IDisposable
 
         await store.SaveAsync(InDir("b.omnimud"), sample);
 
-        (await store.LoadAsync(InDir("b.omnimud"))).Should().Be(sample with { ProxyPasswordProtected = null });
+        (await store.LoadAsync(InDir("b.omnimud"))).Should().Be(sample with { ProxyPasswordProtected = null, CheckUpdatesOnStartup = false });
         (await File.ReadAllTextAsync(InDir("b.omnimud"))).Should().NotContain(sample.ProxyPasswordProtected!);
     }
 
@@ -72,7 +72,7 @@ public sealed class OptionsFileStoreTests : IDisposable
         var store = new ExchangeOptionsFileStore(exchange);
 
         await exchange.SaveToFileAsync(InDir("c.omnimud"), await exchange.ExportOptionsAsync(OptionScope.Global, null));
-        (await store.LoadAsync(InDir("c.omnimud"))).Should().Be(sample with { ProxyPasswordProtected = null });
+        (await store.LoadAsync(InDir("c.omnimud"))).Should().Be(sample with { ProxyPasswordProtected = null, CheckUpdatesOnStartup = false });
         (await File.ReadAllTextAsync(InDir("c.omnimud"))).Should().NotContain(sample.ProxyPasswordProtected!, "the service does not export the proxy password either");
 
         // And a file written by the dialog can be imported by the service.

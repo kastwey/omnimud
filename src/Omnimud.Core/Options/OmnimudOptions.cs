@@ -27,6 +27,12 @@ public sealed record OmnimudOptions
     public int MaxLines { get; init; } = 10_000;
     /// <summary>Milliseconds to wait for a newline before treating pending text as a prompt.</summary>
     public int PromptFlushMilliseconds { get; init; } = 150;
+    /// <summary>
+    /// Application-wide, like <see cref="Language"/>: only the GLOBAL value is ever read. OFF by default: Omnimud never
+    /// goes to the network on its own unless the user asks for it. The check is one anonymous request to the public
+    /// GitHub API; nothing is downloaded or installed.
+    /// </summary>
+    public bool CheckUpdatesOnStartup { get; init; }
 
     // ── Logs ───────────────────────────────────────────────────────────────
     public LogMode LogType { get; init; } = LogMode.PerDay;

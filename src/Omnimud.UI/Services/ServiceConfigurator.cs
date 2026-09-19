@@ -1,16 +1,19 @@
 using Microsoft.Extensions.DependencyInjection;
 using Omnimud.Core.Connection;
 using Omnimud.Core.Options;
+using Omnimud.Core.Reports;
 using Omnimud.Core.Security;
 using Omnimud.Core.Session;
 using Omnimud.Core.Sound;
 using Omnimud.Core.Storage;
+using Omnimud.Core.Updates;
 using Omnimud.Data;
 using Omnimud.Data.Exchange;
 using Omnimud.Data.Options;
 using Omnimud.Data.Repositories;
 using Omnimud.Data.Session;
 using Omnimud.UI.Forms;
+using Omnimud.UI.Presenters;
 using Omnimud.UI.Services.Audio;
 
 namespace Omnimud.UI.Services;
@@ -63,6 +66,20 @@ internal static class ServiceConfigurator
         // Message boxes and file pickers behind an interface; owned by whatever form is active.
         services.AddSingleton<IUserPrompts>(_ => new WinFormsUserPrompts());
         services.AddSingleton<ISessionDialogs, SessionDialogs>();
+
+        // Phase 7: updates, reports, personal information and help. Nothing here talks to the network by itself:
+        // the update check only runs when the user asks for it (or switched it on), and reports only open the
+        // browser or the mail program.
+        services.AddSingleton<IExternalLauncher, ShellExternalLauncher>();
+        services.AddSingleton<IClipboardService, WinFormsClipboard>();
+        services.AddSingleton<IHelpService>(sp => new HelpService(sp.GetRequiredService<IUserPrompts>()));
+        services.AddSingleton<IPersonalInfoStore>(sp => new OptionPersonalInfoStore(sp.GetRequiredService<IOptionRepository>()));
+        services.AddSingleton<IPrivateTermsProvider, RepositoryPrivateTermsProvider>();
+        services.AddSingleton<IAppDialogs>(sp => new AppDialogs(sp.GetRequiredService<IUserPrompts>(), sp.GetRequiredService<IPersonalInfoStore>(),
+            sp.GetRequiredService<IHelpService>(), sp.GetRequiredService<IExternalLauncher>(), sp.GetRequiredService<IClipboardService>(),
+            sp.GetRequiredService<IPrivateTermsProvider>(), sp.GetRequiredService<IOptionsService>()));
+        services.AddSingleton<IUpdateChecker>(sp => new ProxyAwareUpdateChecker(sp.GetRequiredService<IOptionsService>(),
+            sp.GetRequiredService<IProxySettingsResolver>(), AppInfo.SemanticVersion));
         services.AddSingleton<IGameWindowFactory, GameWindowFactory>();
         services.AddTransient<FrmLauncher>();
     }
