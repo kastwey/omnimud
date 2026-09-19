@@ -41,8 +41,8 @@ public static class ReportDestinations
     /// <summary>New issue form of the project.</summary>
     public static Uri NewIssue { get; } = new("https://github.com/kastwey/omnimud/issues/new");
 
-    /// <summary>Where reports by e-mail go: the public contact address of the project. Change it here if it moves.</summary>
-    public const string AuthorEmail = "info@omnimud.org";
+    /// <summary>Where reports by e-mail go: the author's address. Change it here if it moves.</summary>
+    public const string AuthorEmail = "juanjo@jmontiel.es";
 }
 
 /// <summary>Shared by the senders: fit a title and a body into an address of limited length.</summary>
