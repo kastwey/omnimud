@@ -24,6 +24,7 @@ SOLID, accesibilidad desde el principio, tests a mansalva para probarlo todo, y 
 7. Cambios de estado sin reflejo en el foco (activar/desactivar trigger, etc.) se anuncian por `IAnnouncer`.
 8. Todo texto visible sale de los `.resx` (inglés y español). **No uses `RichTextBox`** en diálogos (ver las trampas en 04_ESTADO.md); para texto multilínea usa `TextBox` con `Multiline`.
 9. Nada depende del ratón ni del color.
+10. **Todo `ContextMenuStrip` lleva `ContextMenuAccessibility.Attach(menu)`**, puesto después del manejador de `Opening` que lo rellene. Sin eso el menú se abre en silencio: WinForms solo emite «menú abierto» si el objeto accesible del menú ya existe (y la primera vez no existe), y no selecciona ningún elemento, así que nada recibe el foco; NVDA calla hasta pulsar una flecha y JAWS dice «Menú» sin elemento. La barra de menús no lo sufre porque selecciona sola el primer elemento de cada submenú. Medido en .NET 10 escuchando MSAA y UIA desde otro proceso; lo vigila `ContextMenuAccessibilityTests`, que además falla si aparece un fichero con un menú contextual sin el arreglo.
 
 ## Cadenas localizadas
 

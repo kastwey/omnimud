@@ -4,6 +4,7 @@ using Omnimud.Data.Entities;
 using Omnimud.Data.Repositories;
 using Omnimud.UI.Resources;
 using Omnimud.UI.Services;
+using Omnimud.UI.Services.Accessibility;
 
 namespace Omnimud.UI.Forms;
 
@@ -69,6 +70,7 @@ public sealed class FrmDirections : Form
         menu.Items.Add(Strings.Directions_Add, null, (_, _) => AddNew());
         menu.Items.Add(Strings.Directions_Edit, null, (_, _) => EditSelected());
         menu.Items.Add(Strings.Directions_Remove, null, (_, _) => RemoveSelected());
+        ContextMenuAccessibility.Attach(menu);
         _list.ContextMenuStrip = menu;
 
         Controls.AddRange([label, _list, btnAdd, _btnEdit, _btnRemove, btnCommon, btnClose, _lblStatus]);

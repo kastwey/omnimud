@@ -10,6 +10,7 @@ using Omnimud.Data.Repositories;
 using Omnimud.UI.Presenters;
 using Omnimud.UI.Resources;
 using Omnimud.UI.Services;
+using Omnimud.UI.Services.Accessibility;
 
 namespace Omnimud.UI.Forms;
 
@@ -37,6 +38,7 @@ public sealed class FrmLauncher : Form
     private readonly List<(ToolStripMenuItem Item, LauncherCommand Command)> _commandItems = [];
     private bool _painting;
     private bool _emptyAreaMenu;
+    private bool _treeMenuFromMouse;
 
     /// <summary>The constructor the container resolves today: what is missing comes from <paramref name="services"/>.</summary>
     public FrmLauncher(IServiceProvider services, IMudRepository mudRepo, ICharacterRepository charRepo, IPasswordProtector protector)
@@ -142,6 +144,8 @@ public sealed class FrmLauncher : Form
         _treeMenu = new ContextMenuStrip { Name = "_treeMenu" };
         _treeMenu.Opening += (_, e) => e.Cancel = FillTreeContextMenu(_emptyAreaMenu) == 0;
         _treeMenu.Closed += (_, _) => _emptyAreaMenu = false;
+        // After the handler that fills it: the screen reader hears the menu and its first item as soon as it opens.
+        ContextMenuAccessibility.Attach(_treeMenu, () => _treeMenuFromMouse);
 
         Controls.AddRange([lblTree, _tree, btnConnect, btnQuick, btnAddMud, btnAddChar, btnEdit, btnRemove, btnSetDefault, _lblStatus, menu]);
         MainMenuStrip = menu;
@@ -348,6 +352,7 @@ public sealed class FrmLauncher : Form
     /// <param name="mouseLocation">Client point of the right click; null when asked from the keyboard (Applications key, Shift+F10).</param>
     private void ShowTreeContextMenu(Point? mouseLocation)
     {
+        _treeMenuFromMouse = mouseLocation is not null;
         if (mouseLocation is { } point)
         {
             _emptyAreaMenu = PrepareMouseMenu(point);

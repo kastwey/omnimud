@@ -164,6 +164,7 @@ public abstract class EntityListForm<T> : Form where T : class
 
         BuildListMenu(hasToggle, hasMove);
         _list.ContextMenuStrip = _listMenu;
+        foreach (var menu in new[] { _listMenu, _sortMenu, _importMenu }) ContextMenuAccessibility.Attach(menu);
 
         CancelButton = close;
         AcceptButton = _btnEdit; // Enter on the list edits
@@ -352,8 +353,7 @@ public abstract class EntityListForm<T> : Form where T : class
 
     private static Task ShowMenu(ContextMenuStrip menu, Control anchor)
     {
-        menu.Show(anchor, new Point(0, anchor.Height));
-        if (menu.Items.Count > 0) menu.Items[0].Select(); // arrows work at once
+        menu.Show(anchor, new Point(0, anchor.Height)); // ContextMenuAccessibility selects the first item
         return Task.CompletedTask;
     }
 

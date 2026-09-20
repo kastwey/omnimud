@@ -3,6 +3,7 @@ using Omnimud.Core.Actions;
 using Omnimud.UI.Controls;
 using Omnimud.UI.Resources;
 using Omnimud.UI.Services;
+using Omnimud.UI.Services.Accessibility;
 
 namespace Omnimud.UI.Forms;
 
@@ -17,6 +18,7 @@ partial class FrmGame
     private ToolStripMenuItem _cmFind = null!;
     private ToolStripMenuItem _cmFindNext = null!;
     private int _boxMenuFixedItems;
+    private bool _boxMenuFromMouse;
 
     // ── Main menu ──────────────────────────────────────────────────────────
 
@@ -81,6 +83,8 @@ partial class FrmGame
         {
             if (_boxMenu.SourceControl is AnsiTerminalBox box) PrepareBoxMenu(box);
         };
+        // After the handler that fills it: the screen reader hears the menu and its first item as soon as it opens.
+        ContextMenuAccessibility.Attach(_boxMenu, () => _boxMenuFromMouse);
 
         // The boxes ask for the menu themselves (right click, Applications key, Shift+F10), so that from
         // the keyboard it opens next to the caret and not wherever the mouse happens to be.
@@ -116,7 +120,10 @@ partial class FrmGame
     /// <param name="location">Client point of the right click; null when asked from the keyboard
     /// (Applications key, Shift+F10): then it opens under the caret, where the user is reading.</param>
     private void ShowBoxMenu(AnsiTerminalBox box, Point? location)
-        => _boxMenu.Show(box, location ?? box.KeyboardMenuLocation());
+    {
+        _boxMenuFromMouse = location is not null;
+        _boxMenu.Show(box, location ?? box.KeyboardMenuLocation());
+    }
 
     internal ContextMenuStrip BoxMenu => _boxMenu;
 }

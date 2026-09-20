@@ -198,6 +198,7 @@ public sealed class FrmMessageRules : Form
         var menu = new ContextMenuStrip();
         foreach (var (text, keys, action) in items)
             menu.Items.Add(new ToolStripMenuItem(text, null, (_, _) => Run(action)) { ShortcutKeyDisplayString = keys });
+        ContextMenuAccessibility.Attach(menu);
         return menu;
     }
 
