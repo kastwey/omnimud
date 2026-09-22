@@ -1,3 +1,4 @@
+using Omnimud.Core.Commands;
 using Omnimud.Core.Messages;
 using Omnimud.Core.Resources;
 using Omnimud.Core.Scripting;
@@ -99,6 +100,8 @@ public sealed partial class MudSession
         if (!_ruleScriptErrorReported)
         {
             _ruleScriptErrorReported = true;
+            // As the original did when a message rule failed: the error sound, and the reason once.
+            ((IInputHost)this).PlayUiSound("error");
             WriteSystem(string.Format(Strings.Session_MessageScriptError, result.Error), AnnouncePriority.Queue);
         }
 

@@ -129,6 +129,9 @@ public sealed partial class MudSession : IMudSession, IScriptHost, IInputHost
         {
             if (_silentMode == value) return;
             _silentMode = value;
+            // A change nobody can see (F8, the menu or the callate/hablar commands) is confirmed out loud,
+            // as the original did; the reply is a client reply, so it is spoken even in silent mode.
+            WriteSystem(value ? Strings.Silent_On : Strings.Silent_Off, AnnouncePriority.Queue);
             Raise(SilentModeChanged, value);
         }
     }

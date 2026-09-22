@@ -70,6 +70,37 @@ public class SscanfMatcherTests
         result![0].Should().Be("42");
     }
 
+    [Theory]
+    [InlineData("Gandalf el Gris llega del norte", "^%2w Gris llega", "Gandalf el")]
+    [InlineData("Gandalf el Gris llega del norte", "^%3w llega", "Gandalf el Gris")]
+    [InlineData("Ves a Frodo, Sam y Pippin.", "Ves a %3w", "Frodo, Sam y")]
+    [InlineData("Orco te mira", "^%1w te mira$", "Orco")]
+    public void Match_NumberedWord_CapturesThatManyWords_LikeTheOriginalClient(string text, string pattern, string expected)
+    {
+        // The original client's %Nw took N words separated by a space, a dot or a comma, in one capture.
+        var result = SscanfMatcher.Match(text, pattern, caseSensitive: false);
+
+        result.Should().NotBeNull();
+        result![0].Should().Be(expected);
+    }
+
+    [Fact]
+    public void Match_NumberedWord_DoesNotMatchTooFewWords()
+    {
+        SscanfMatcher.Match("Frodo llega", "^%3w llega", caseSensitive: false).Should().BeNull();
+    }
+
+    [Theory]
+    [InlineData("Codigo 1234567890 fin", "Codigo %10d fin", "1234567890")]
+    [InlineData("abcdefghijkl", "%12s", "abcdefghijkl")]
+    public void Match_NumberedSpecifier_AcceptsMoreThanOneDigit(string text, string pattern, string expected)
+    {
+        var result = SscanfMatcher.Match(text, pattern, caseSensitive: false);
+
+        result.Should().NotBeNull();
+        result![0].Should().Be(expected);
+    }
+
     [Fact]
     public void Match_MultipleMixedCaptures()
     {

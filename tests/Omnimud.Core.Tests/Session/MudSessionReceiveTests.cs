@@ -377,8 +377,8 @@ public sealed class MudSessionReceiveTests : IAsyncDisposable
 
         await _h.ReceiveAsync("ruido\nAviso: all_speak:te atacan\n");
 
-        _h.PlainLines.Should().Equal("ruido", "Aviso: te atacan");
-        _h.Spoken.Should().Equal("te atacan");
+        _h.PlainLines.Should().Equal("Activando modo silencioso.", "ruido", "Aviso: te atacan");
+        _h.Spoken.Should().Equal("Activando modo silencioso.", "te atacan");
     }
 
     [Fact]
@@ -555,7 +555,7 @@ public sealed class MudSessionReceiveTests : IAsyncDisposable
         await _h.ReceiveAsync("Ana te dice algo\n");
 
         _h.AddedMessages.Should().ContainSingle();
-        _h.Spoken.Should().BeEmpty();
+        _h.Spoken.Should().Equal("Activando modo silencioso."); // only the confirmation of the mode, not the message
     }
 
     // ── Robustness ─────────────────────────────────────────────────────────

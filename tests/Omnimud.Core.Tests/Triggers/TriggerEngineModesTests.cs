@@ -102,6 +102,18 @@ public class TriggerEngineModesTests
     }
 
     [Fact]
+    public void RegexMultilineTrigger_DotCrossesLineBreaks_LikeTheOriginalClient()
+    {
+        // The original compiled its regexes with Singleline: "." also matched a line break, so a block
+        // trigger could capture across lines.
+        _sut.LoadTriggers([Make(@"Te dice: '(.+)'", "r", type: PatternType.Regex, multiline: true)]);
+
+        var match = _sut.ProcessBlock("Gandalf te dice: 'Ven al\nconsejo ahora'").Single();
+
+        match.Captures.Should().Equal("Ven al\nconsejo ahora");
+    }
+
+    [Fact]
     public void RegexTrigger_NamedAndNumberedGroupsBecomeCaptures()
     {
         _sut.LoadTriggers([Make(@"(\d+)/(\d+) pv", "r", type: PatternType.Regex)]);

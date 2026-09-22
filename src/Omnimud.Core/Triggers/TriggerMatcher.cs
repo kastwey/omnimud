@@ -90,7 +90,8 @@ public sealed class TriggerMatcher : ITriggerMatcher
 
         try
         {
-            var options = RegexOptions.None;
+            // Singleline as in the original client, so that "." also matches a line break in a block trigger.
+            var options = RegexOptions.Singleline;
             if (!trigger.CaseSensitive)
                 options |= RegexOptions.IgnoreCase;
             // Block triggers see several lines: ^ and $ must still mean "of a line".

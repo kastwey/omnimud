@@ -105,6 +105,7 @@ El servidor propio del original (catálogo XML + `AutoUpdater.exe`, servicio SOA
 
 ## Pendiente
 
+10. **Huecos de paridad por decidir** (fase 8): (a) submenú «Omnimud en la web» de Ayuda con página, lista de distribución y correo al autor: no existe, y la web y la lista puede que ya no; (b) el original ocultaba los menús mientras se conectaba; (c) Ctrl+F con el foco en Recibido dice la hora del último mensaje, no la del mensaje bajo el cursor (el original tenía otro defecto ahí); (d) al hacer login automático, la línea con el nombre del personaje sí va al log (la contraseña no; el original no registraba ninguna); (e) `om.countdown` sin opciones no suena: comprobar si el original usaba `reloj.mp3`/`reloj_fin.mp3` por defecto; (f) no hay doble confirmación al sobrescribir un MUD con personajes al importar; (g) si el usuario abre una URL y falla, se muestra un mensaje en vez del sonido de exclamación.
 0. **Probar con NVDA el menú Acciones**: que Alt+A lo abre y los submenús se leen bien (incluido el elemento deshabilitado de un objeto sin acciones y «… y N más»); que tecla Aplicaciones y Mayús+F10 en Recibido abren el contextual junto al cursor; que al elegir una acción el foco vuelve a Texto a enviar sin lecturas de más; que al aparecer o desaparecer el menú no se dice nada.
 1. **Probar con NVDA lo nuevo**: si dice "en blanco" al mover con flechas sobre el cuadro vacío; el menú contextual junto al nodo; la lista con casillas del diálogo de conflictos; el editor de triggers.
 2. **Proxy, a mano**: probar contra un proxy real de la red del usuario (Manual con usuario y contraseña, y Automático con el proxy de Windows, incluidos `socks=` y un PAC); con NVDA, que Alt+K y Alt+W llegan a los cuadros nuevos y que el de contraseña se anuncia como protegido.
@@ -131,8 +132,30 @@ Retirado lo que quedó de la versión anterior a `MudSession` y que la aplicaci�
 - **Tests**: retirados los que solo probaban esas clases; los casos que no estaban cubiertos en la pieza viva se portaron antes (patrón catastrófico en `MessageRuleSet`, sonido de trigger sin campo de sonido en la sesión, una decisión por conflicto en `ListExchangePresenter`).
 - Se conservan a propósito, aunque la aplicación no los use hoy: `MudSessionFactory` (la ventana crea la sesión en `GameWindowFactory`), las interfaces `IAliasResolver`, `IPathEngine` e `ITriggerEngine`, e `ISoundPlayer.StopByType`.
 
+## Fase 8: verificación de paridad (2026-09-22)
+
+Se recorrió el documento 01 (§3 a §15, unos 130 comportamientos concretos) contra el código. Corregido en esta ronda, con tests:
+
+- **Comodín `%Nw`**: capturaba N caracteres; ahora captura N palabras separadas por espacio, punto o coma, en un solo grupo, como el original. Los especificadores numerados (`%Ns`, `%Nd`, `%Nw`) admiten más de un dígito (`%10d`).
+- **Regex de triggers con `Singleline`**, como el original: `.` también casa un salto de línea, así que un trigger de bloque puede capturar texto que cruza líneas.
+- **Modo silencioso**: el cambio se confirma en voz alta venga de donde venga (F8, menú o `callate`/`hablar`); antes solo lo hacían los comandos.
+- **`error.wav`** suena cuando falla una regla de mensajes en Lua (una vez, junto con el aviso).
+
+Diferencias con el original que se dejan y quedan declaradas abajo: orden de tabulación, respuestas del cliente sin pasar por triggers, lector por defecto, telnet por defecto, diálogo único de conflictos al importar, sin migración de datos del original, Window-Eyes retirado, historial sin duplicados consecutivos, tamaño del historial 50, acción de regex con `%1…%N` en vez de cadena de reemplazo, `om.lastactivity()` en segundos.
+
+Pendiente de decidir (ver la lista de pendientes): submenú «Omnimud en la web» de Ayuda, ocultar los menús mientras se conecta, Ctrl+F sobre Recibido, nombre del personaje en el log al hacer login, sonidos por defecto de la cuenta atrás, doble confirmación al sobrescribir un MUD con personajes.
+
 ## Diferencias deliberadas con el original
 
+- El orden de tabulación es Enviar → Recibido → Mensajes → botón (el original ponía el botón primero); pedido por el usuario.
+- Las respuestas del cliente a los comandos internos se ven, se registran y se hablan, pero no pasan por los triggers (evita bucles).
+- Lector de pantalla por defecto: Automático (UI Automation con respaldo JAWS/NVDA); el original usaba JAWS. Window-Eyes retirado.
+- La negociación telnet viene activada por defecto (la v2 negocia bien GMCP, EOR y GA); en el original venía desactivada.
+- Al importar, los conflictos se resuelven en un único diálogo con casillas, con resumen final, en vez de una pregunta por elemento.
+- No se migran los datos del original (Registro y ficheros `.oxf`): decidido con el usuario.
+- El historial de comandos no guarda un duplicado consecutivo y su tamaño por defecto es 50 (el original, 10).
+- La acción de un trigger de regex sustituye `%1`…`%N` con los grupos; no es una cadena de reemplazo de `Regex.Replace` (`$1` no se interpreta).
+- `om.lastactivity()` devuelve los segundos desde el último envío, no la hora.
 - El menú «Acciones» del original (Salvar, Abandonar…) se llama ahora «Partida»; «Acciones» es el menú de lo que ofrece el MUD por GMCP.
 - El cuadro de Mensajes está siempre visible (se oculta desde el menú Ver); el original lo escondía si el MUD no tenía regla.
 - Si el servidor corta, la ventana no se cierra: ofrece Reconectar.

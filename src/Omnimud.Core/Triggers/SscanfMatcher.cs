@@ -17,6 +17,7 @@ public static class SscanfMatcher
     /// - %s: any characters (non-greedy)
     /// - %d: digits only
     /// - %w: word characters (non-whitespace)
+    /// - %Ns, %Nd, %Nw: N characters, N digits, N words (the original client's numbered forms)
     /// - %%: literal percent sign
     /// </remarks>
     public static IReadOnlyList<string>? Match(string text, string pattern, bool caseSensitive)
@@ -95,24 +96,28 @@ public static class SscanfMatcher
                         i += 2;
                         break;
                     default:
-                        // Check for numbered format: %2s, %3d, etc.
-                        if (char.IsDigit(next) && i + 2 < pattern.Length)
+                        // Numbered format, %Ns %Nd %Nw, with N of one or more digits.
+                        var digits = 0;
+                        while (i + 1 + digits < pattern.Length && char.IsDigit(pattern[i + 1 + digits]))
+                            digits++;
+                        if (digits > 0 && i + 1 + digits < pattern.Length && int.TryParse(pattern.AsSpan(i + 1, digits), out var length) && length > 0)
                         {
-                            var length = next - '0';
-                            var spec = pattern[i + 2];
+                            var spec = pattern[i + 1 + digits];
                             switch (spec)
                             {
                                 case 's':
                                     sb.Append($"(.{{{length}}})");
-                                    i += 3;
+                                    i += 2 + digits;
                                     break;
                                 case 'd':
                                     sb.Append($@"(\d{{{length}}})");
-                                    i += 3;
+                                    i += 2 + digits;
                                     break;
                                 case 'w':
-                                    sb.Append($@"(\S{{{length}}})");
-                                    i += 3;
+                                    // N words, as in the original client: words separated by a space, a dot or a comma,
+                                    // captured together in one group ("%2w" on "Gandalf el Gris llega" gives "Gandalf el").
+                                    sb.Append($@"([^\s.,]+(?:[\s.,]+[^\s.,]+){{{length - 1}}})");
+                                    i += 2 + digits;
                                     break;
                                 default:
                                     sb.Append(Regex.Escape(pattern[i].ToString()));

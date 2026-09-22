@@ -653,8 +653,7 @@ public sealed class InputProcessor
             return;
         }
 
-        // The confirmation is a client reply, which is always announced.
-        _host.WriteSystem(silent ? Strings.Silent_On : Strings.Silent_Off);
+        // The session confirms the change out loud, whoever asks for it (this command, F8 or the menu).
         _host.SilentMode = silent;
     }
 

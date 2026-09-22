@@ -393,6 +393,20 @@ public sealed class MudSessionInputTests : IAsyncDisposable
         _h.Spoken.Should().HaveCount(4); // replies are spoken even in silent mode
     }
 
+    [Fact]
+    public async Task SilentMode_SetFromTheWindow_IsConfirmedOutLoud_LikeTheCommand()
+    {
+        // F8 and the menu set the property directly; the change is invisible, so it is announced (original §15.8).
+        await _h.StartAsync();
+
+        _h.Session.SilentMode = true;
+        _h.Session.SilentMode = true; // no change, no second reply
+        _h.Session.SilentMode = false;
+
+        _h.SystemLines.Should().Equal("Activando modo silencioso.", "Desactivando modo silencioso.");
+        _h.Spoken.Should().HaveCount(2);
+    }
+
     // ── Paths ──────────────────────────────────────────────────────────────
 
     [Fact]

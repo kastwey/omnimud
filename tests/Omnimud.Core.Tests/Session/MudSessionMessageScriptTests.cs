@@ -337,6 +337,18 @@ public sealed class MudSessionMessageScriptTests : IAsyncDisposable
         _h.AddedMessages.Select(m => m.Text).Should().Equal("Ana dice 'de verdad'");
     }
 
+    [Fact]
+    public async Task ScriptFailure_PlaysTheErrorSound_OnceLikeTheReport()
+    {
+        // The original played error.wav when a message rule failed.
+        await StartAsync("error('roto')");
+        await _h.ReceiveAsync("a\r\n");
+        await _h.ReceiveAsync("b\r\n");
+
+        _h.UiSounds.Should().Equal("error");
+        ScriptErrors.Should().ContainSingle();
+    }
+
     // ── Reload ─────────────────────────────────────────────────────────────
 
     [Fact]
