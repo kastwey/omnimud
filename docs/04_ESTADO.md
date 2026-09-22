@@ -141,6 +141,12 @@ Se recorrió el documento 01 (§3 a §15, unos 130 comportamientos concretos) co
 - **Modo silencioso**: el cambio se confirma en voz alta venga de donde venga (F8, menú o `callate`/`hablar`); antes solo lo hacían los comandos.
 - **`error.wav`** suena cuando falla una regla de mensajes en Lua (una vez, junto con el aviso).
 
+Comprobaciones no funcionales de la fase 8:
+
+- **Alto contraste**: el terminal usa los colores del sistema (`SystemColors.Window`/`WindowText`) cuando está activo y la paleta ANSI lo respeta (`AnsiPalette.Resolve` recibe `HighContrast`); se reaplica al cambiar los colores del sistema.
+- **Escala al 200 %**: todos los formularios pasan por `FormKit.SetupDialog` o `EditorDialogs.Prepare` (o lo fijan ellos), que ponen `AutoScaleMode.Font`; la aplicación arranca en `PerMonitorV2`.
+- **Rendimiento con 10.000 líneas**: medido y corregido. Cada inserción por Text Object Model reflujaba y notificaba con la ventana visible (unos 10 ms por línea; `WM_SETREDRAW` no lo evita); con `ITextDocument.Freeze`/`Unfreeze` alrededor de la inserción baja a unos 2 ms. `AnsiTerminalBoxPerformanceTests` vigila que 10.000 líneas y el recorte se mantengan por debajo de un techo holgado.
+
 Diferencias con el original que se dejan y quedan declaradas abajo: orden de tabulación, respuestas del cliente sin pasar por triggers, lector por defecto, telnet por defecto, diálogo único de conflictos al importar, sin migración de datos del original, Window-Eyes retirado, historial sin duplicados consecutivos, tamaño del historial 50, acción de regex con `%1…%N` en vez de cadena de reemplazo, `om.lastactivity()` en segundos.
 
 Pendiente de decidir (ver la lista de pendientes): submenú «Omnimud en la web» de Ayuda, ocultar los menús mientras se conecta, Ctrl+F sobre Recibido, nombre del personaje en el log al hacer login, sonidos por defecto de la cuenta atrás, doble confirmación al sobrescribir un MUD con personajes.

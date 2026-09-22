@@ -331,6 +331,9 @@ public sealed class AnsiTerminalBox : RichTextBox
             if (doc is null) return false;
 
             doc.Undo(TomSuspend);
+            // WM_SETREDRAW does not stop the Text Object Model from laying the text out and notifying on every
+            // insertion; Freeze does (measured: about 10 ms per line with the window visible, 2 ms frozen).
+            doc.Freeze();
             try
             {
                 dynamic probe = doc.Range(0, 0);
@@ -347,6 +350,7 @@ public sealed class AnsiTerminalBox : RichTextBox
             }
             finally
             {
+                doc.Unfreeze();
                 doc.Undo(TomResume);
             }
             return true;
