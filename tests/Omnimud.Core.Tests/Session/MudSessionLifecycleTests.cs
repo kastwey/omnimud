@@ -486,8 +486,8 @@ public sealed class MudSessionLifecycleTests : IAsyncDisposable
         await _h.Session.CloseAsync(false);
 
         LogFiles().Single().Should().EndWith(Path.Combine("Reinos", "Zork", "2026-03-14.log"));
+        // The login ("Zork", the automatic name) is not logged.
         File.ReadAllLines(LogFiles().Single()).Should().Equal(
-            "Zork",
             "Estás en una plaza.",
             "aviso",
             "",
@@ -511,7 +511,7 @@ public sealed class MudSessionLifecycleTests : IAsyncDisposable
 
         var log = ReadLog();
         log.Should().NotContain("secreto").And.NotContain("otra-clave");
-        log.Should().Contain("Zork").And.Contain("mirar");
+        log.Should().NotContain("Zork", "no line of the automatic login is logged").And.Contain("mirar");
     }
 
     [Fact]
@@ -541,7 +541,7 @@ public sealed class MudSessionLifecycleTests : IAsyncDisposable
 
         LogFiles().Select(Path.GetFileName).Should().BeEquivalentTo(["2026-03-14 10-30-00.log", "2026-03-14 10-31-00.log"]);
         File.ReadAllLines(LogFiles().Order().First()).Should().Equal(
-            "Zork", "primera", "El servidor ha cerrado la conexión.", "Partida finalizada el 14/03/2026 a las 10:30:00.");
+            "primera", "El servidor ha cerrado la conexión.", "Partida finalizada el 14/03/2026 a las 10:30:00.");
     }
 
     [Fact]
@@ -555,6 +555,21 @@ public sealed class MudSessionLifecycleTests : IAsyncDisposable
         await _h.Session.CloseAsync(false);
 
         ReadLog().Should().Contain("útil").And.NotContain("spam");
+    }
+
+    [Fact]
+    public async Task Log_NoLineOfTheLogin_IsLogged_NameIncluded()
+    {
+        // The original did not log the login at all; the name identifies the player as much as the password does.
+        _h.SetOptions(o => o with { LogType = LogMode.PerDay });
+        _h.Profile = _h.Profile with { LoginScript = "conectar %character\n%password\nidioma es" };
+        await _h.StartAsync(connect: false);
+
+        await _h.Session.ConnectAsync();
+        await _h.Session.CloseAsync(false);
+
+        _h.SentLines.Should().Equal("conectar Zork", "secreto", "idioma es");
+        ReadLog().Should().Contain("idioma es").And.NotContain("Zork").And.NotContain("secreto");
     }
 
     [Fact]

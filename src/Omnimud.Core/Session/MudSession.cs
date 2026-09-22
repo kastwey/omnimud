@@ -443,7 +443,9 @@ public sealed partial class MudSession : IMudSession, IScriptHost, IInputHost
             for (var i = 0; i < lines.Length; i++)
             {
                 var line = lines[i];
-                var secret = line.Contains("%password", StringComparison.OrdinalIgnoreCase);
+                // As the original: no line of the login goes to the log (nor to the history), name included.
+                var secret = line.Contains("%password", StringComparison.OrdinalIgnoreCase)
+                    || line.Contains("%character", StringComparison.OrdinalIgnoreCase);
                 var resolved = line
                     .Replace("%character", Profile.CharacterName ?? string.Empty, StringComparison.OrdinalIgnoreCase)
                     .Replace("%password", Profile.CharacterPassword ?? string.Empty, StringComparison.OrdinalIgnoreCase);
